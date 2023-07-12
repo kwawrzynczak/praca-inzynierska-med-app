@@ -1,0 +1,5 @@
+build
+coverage
+babel.config.js
+app.d.ts
+tailwind.config.js
