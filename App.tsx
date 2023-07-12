@@ -2,6 +2,7 @@
 import { Button, StyledText } from '@components';
 import { StatusBar } from 'expo-status-bar';
 import { View } from 'react-native';
+import { StartScreen } from '@screens';
 import {
   Poppins_100Thin,
   Poppins_200ExtraLight,
@@ -32,11 +33,12 @@ const App = () => {
     return null;
   }
   return (
-    <View className="flex-1 items-center justify-center bg-primary">
-      <Button>Mam już konto</Button>
-      <StyledText>Tekst</StyledText>
-      <StatusBar style="auto" />
-    </View>
+    // <View className="flex-1 items-center justify-center bg-primary">
+    //   <Button>Mam już konto</Button>
+    //   <StyledText className="text-lg text-light">Tekst</StyledText>
+    //   <StatusBar style="auto" />
+    // </View>
+    <StartScreen />
   );
 };
 

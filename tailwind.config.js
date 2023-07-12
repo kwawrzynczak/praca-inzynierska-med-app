@@ -21,7 +21,7 @@ module.exports = {
         secondary: colors.slate[900],
         accent: colors.indigo[400],
         dark: colors.zinc[950],
-        light: colors.zinc[700],
+        light: colors.zinc[600],
       },
     },
   },

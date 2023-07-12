@@ -40,7 +40,8 @@
       "node": {
         "paths": ["src"],
         "alias": {
-          "@components": "./src/components"
+          "@components": "./src/components",
+          "@screens": "./src/screens"
         }
       }
     }

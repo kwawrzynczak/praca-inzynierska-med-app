@@ -4,12 +4,11 @@ import clsx from 'clsx';
 import { Text as ReactNativeText, type TextProps } from 'react-native';
 
 interface StyledTextProps extends TextProps {
-  weight?: string;
   className?: string;
 }
 
-export const StyledText = ({ weight = 'normal', className, children, ...rest }: StyledTextProps) => (
-  <ReactNativeText className={clsx(`font-${weight}`, className)} {...rest}>
+export const StyledText = ({ className, children, ...rest }: StyledTextProps) => (
+  <ReactNativeText className={clsx(`font-normal`, className)} {...rest}>
     {children}
   </ReactNativeText>
 );
