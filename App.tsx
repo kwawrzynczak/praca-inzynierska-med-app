@@ -36,9 +36,12 @@ const App = () => {
     // <View className="flex-1 items-center justify-center bg-primary">
     //   <Button>Mam już konto</Button>
     //   <StyledText className="text-lg text-light">Tekst</StyledText>
-    //   <StatusBar style="auto" />
+    //
     // </View>
-    <StartScreen />
+    <>
+      <StartScreen />
+      <StatusBar style="light" />
+    </>
   );
 };
 
