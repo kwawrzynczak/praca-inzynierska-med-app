@@ -1,6 +1,9 @@
+/* eslint-disable tailwindcss/no-custom-classname */
 import { StyledText } from '@components/StyledText';
 import clsx from 'clsx';
-import { Pressable } from 'react-native';
+import { Pressable, Animated } from 'react-native';
+import { useAnimation } from '@hooks';
+import { AnimationHook } from '@types';
 
 interface ButtonProps {
   children: string;
@@ -10,16 +13,23 @@ interface ButtonProps {
 }
 
 export const Button = ({ children, className, variant = 'primary', onPress }: ButtonProps) => {
+  const { opacityValue, fadeIn, fadeOut }: AnimationHook = useAnimation();
   return (
     <Pressable
+      onPressIn={fadeIn}
+      onPressOut={fadeOut}
       className={clsx(
-        'h-14 w-[300px] flex-row items-center justify-center rounded-xl px-6',
+        `h-14 w-[300px] flex-row items-center justify-center rounded-xl px-6`,
         className,
         variant === 'primary' && 'bg-accent',
         variant === 'secondary' && 'bg-white',
       )}
       onPress={onPress}
     >
+      <Animated.View
+        className="absolute left-0 top-0 h-full w-[300px] rounded-xl bg-blue-600"
+        style={{ opacity: opacityValue }}
+      />
       <StyledText
         className={clsx(
           'font-semibold text-lg tracking-wider text-white',
@@ -27,6 +37,10 @@ export const Button = ({ children, className, variant = 'primary', onPress }: Bu
           variant === 'secondary' && 'text-dark',
         )}
       >
+        <Animated.View
+          className="absolute left-0 top-0 h-full w-[300px] rounded-xl bg-blue-600"
+          style={{ opacity: opacityValue }}
+        />
         {children}
       </StyledText>
     </Pressable>

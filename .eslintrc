@@ -42,7 +42,8 @@
         "alias": {
           "@components": "./src/components",
           "@screens": "./src/screens",
-          "@hooks": "./src/hooks"
+          "@hooks": "./src/hooks",
+          "@types": "./src/types"
         }
       }
     }
