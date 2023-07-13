@@ -9,14 +9,14 @@ interface AnimationConfig {
 }
 
 const FADE_IN_ANIMATION_CONFIG: AnimationConfig = {
-  toValue: 0.7,
-  duration: 100,
+  toValue: 0.75,
+  duration: 75,
   useNativeDriver: true,
 };
 
 const FADE_OUT_ANIMATION_CONFIG: AnimationConfig = {
   toValue: 0,
-  duration: 100,
+  duration: 120,
   useNativeDriver: true,
 };
 
