@@ -6,9 +6,10 @@ interface ButtonProps {
   children: string;
   className?: string;
   variant?: 'primary' | 'secondary';
+  onPress?: () => void;
 }
 
-export const Button = ({ children, className, variant = 'primary' }: ButtonProps) => {
+export const Button = ({ children, className, variant = 'primary', onPress }: ButtonProps) => {
   return (
     <Pressable
       className={clsx(
@@ -17,6 +18,7 @@ export const Button = ({ children, className, variant = 'primary' }: ButtonProps
         variant === 'primary' && 'bg-accent',
         variant === 'secondary' && 'bg-white',
       )}
+      onPress={onPress}
     >
       <StyledText
         className={clsx(

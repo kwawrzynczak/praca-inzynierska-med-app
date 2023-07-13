@@ -19,7 +19,7 @@ module.exports = {
       colors: {
         primary: colors.stone[200],
         secondary: colors.slate[900],
-        accent: colors.indigo[400],
+        accent: colors.blue[400],
         dark: colors.zinc[950],
         light: colors.zinc[600],
       },
