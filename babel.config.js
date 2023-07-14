@@ -16,6 +16,7 @@ module.exports = function (api) {
         },
       ],
       'nativewind/babel',
+      'expo-router/babel',
     ],
   };
 };

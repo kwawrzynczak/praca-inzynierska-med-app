@@ -7,7 +7,7 @@ import { useAnimation } from '@hooks';
 import { AnimationHook } from '@types';
 
 interface ButtonProps extends PressableProps {
-  children?: string;
+  children?: React.ReactNode;
   className?: string;
   variant?: 'primary' | 'secondary';
   onPress?: () => void;

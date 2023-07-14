@@ -22,7 +22,8 @@
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
-    }
+      "favicon": "./src/assets/favicon.png"
+    },
+    "scheme": "praca-inzynierska-med-app"
   }
 }
