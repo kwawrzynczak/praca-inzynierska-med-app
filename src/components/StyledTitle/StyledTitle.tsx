@@ -1,7 +1,7 @@
 import { Text } from 'react-native';
 
 interface StyledTitleProps {
-  children?: string;
+  children?: React.ReactNode;
 }
 
 export const StyledTitle = ({ children }: StyledTitleProps) => {

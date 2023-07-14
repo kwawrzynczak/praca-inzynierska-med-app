@@ -1,9 +1,8 @@
-import { StyledButton, StyledText, StyledInput, StyledTitle } from '@components';
+import { StyledButton } from '@components';
 import { useState } from 'react';
-import { Pressable, View } from 'react-native';
+import { View } from 'react-native';
 import { CalendarIcon } from 'react-native-heroicons/solid';
 import { LoginScreen } from '@screens';
-import { Formik } from 'formik';
 
 export const StartScreen = () => {
   const [page, setPage] = useState('1');

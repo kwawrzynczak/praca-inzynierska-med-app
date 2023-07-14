@@ -14,7 +14,7 @@ export const StyledInput = ({ className, title = '', ...rest }: StyledInputProps
       <StyledText className="mb-1 ml-2">{title}</StyledText>
       <TextInput
         className={clsx(
-          'mb-4 w-[320px] rounded-xl border border-zinc-300 bg-white px-4 pb-4 pt-2 text-lg shadow-sm focus:border-accent',
+          'mb-4 w-[320px] rounded-xl border border-zinc-300 bg-white px-4 py-2 text-lg shadow-sm focus:border-accent',
           title === '' && 'hidden',
         )}
         {...rest}
