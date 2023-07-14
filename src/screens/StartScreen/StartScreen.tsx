@@ -1,4 +1,4 @@
-import { StyledButton, StyledText, StyledInput } from '@components';
+import { StyledButton, StyledText, StyledInput, StyledTitle } from '@components';
 import { useState } from 'react';
 import { Pressable, View } from 'react-native';
 import { CalendarIcon } from 'react-native-heroicons/solid';
@@ -33,9 +33,10 @@ export const StartScreen = () => {
       )}
       {page === '2' && (
         <View className="flex-1 items-center justify-center bg-primary">
+          <StyledTitle>Logowanie</StyledTitle>
           <Formik initialValues={{ email: '' }} onSubmit={(values) => console.log(values)}>
             {({ handleChange, handleBlur, handleSubmit, values }) => (
-              <View>
+              <View className="mt-32">
                 <StyledInput
                   title="Twój adres email"
                   onChangeText={handleChange('email')}
@@ -57,7 +58,7 @@ export const StartScreen = () => {
                     </StyledText>
                   </Pressable>
 
-                  <StyledButton onPress={handleSubmit} className="mt-2">
+                  <StyledButton onPress={handleSubmit} className="mt-2 self-center">
                     Zaloguj się
                   </StyledButton>
                 </View>
