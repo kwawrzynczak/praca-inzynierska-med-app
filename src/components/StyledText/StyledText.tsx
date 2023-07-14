@@ -8,7 +8,7 @@ interface StyledTextProps extends TextProps {
 }
 
 export const StyledText = ({ className, children, ...rest }: StyledTextProps) => (
-  <ReactNativeText className={clsx(`font-normal`, className)} {...rest}>
+  <ReactNativeText className={clsx(`font-normal text-base`, className)} {...rest}>
     {children}
   </ReactNativeText>
 );

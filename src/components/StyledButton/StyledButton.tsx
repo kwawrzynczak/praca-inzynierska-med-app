@@ -1,30 +1,31 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable tailwindcss/no-custom-classname */
 import { StyledText } from '@components/StyledText';
 import clsx from 'clsx';
-import { Pressable, Animated } from 'react-native';
+import { Pressable, Animated, type PressableProps } from 'react-native';
 import { useAnimation } from '@hooks';
 import { AnimationHook } from '@types';
 
-interface ButtonProps {
-  children: string;
+interface ButtonProps extends PressableProps {
+  children?: string;
   className?: string;
   variant?: 'primary' | 'secondary';
   onPress?: () => void;
 }
 
-export const Button = ({ children, className, variant = 'primary', onPress }: ButtonProps) => {
+export const StyledButton = ({ children, className, variant = 'primary', ...rest }: ButtonProps) => {
   const { opacityValue, fadeIn, fadeOut }: AnimationHook = useAnimation();
   return (
     <Pressable
       onPressIn={fadeIn}
       onPressOut={fadeOut}
       className={clsx(
-        'h-14 w-[300px] flex-row items-center justify-center rounded-xl px-6 shadow',
+        'h-14 w-[300px] flex-row items-center justify-center rounded-xl px-6 shadow-sm',
         className,
-        variant === 'primary' && 'bg-accent',
-        variant === 'secondary' && 'bg-white',
+        variant === 'primary' && 'bg-accent shadow-zinc-400',
+        variant === 'secondary' && 'bg-white shadow-zinc-300',
       )}
-      onPress={onPress}
+      {...rest}
     >
       <Animated.View
         className={clsx(
@@ -36,7 +37,7 @@ export const Button = ({ children, className, variant = 'primary', onPress }: Bu
       />
       <StyledText
         className={clsx(
-          'font-semibold text-lg tracking-wider text-white',
+          'font-medium text-lg tracking-wider text-white',
           variant === 'primary' && 'text-white',
           variant === 'secondary' && 'text-dark',
         )}

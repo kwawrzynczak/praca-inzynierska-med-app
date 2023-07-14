@@ -1,8 +1,9 @@
-import { Button, StyledText } from '@components';
+import { StyledButton, StyledText, StyledInput } from '@components';
 import { useState } from 'react';
-import { View } from 'react-native';
+import { Pressable, View } from 'react-native';
 import { CalendarIcon } from 'react-native-heroicons/solid';
 import { LoginScreen } from '@screens';
+import { Formik } from 'formik';
 
 export const StartScreen = () => {
   const [page, setPage] = useState('1');
@@ -20,17 +21,51 @@ export const StartScreen = () => {
             </View>
           </View>
           <View className="flex-1 items-center bg-primary">
-            <Button variant="secondary">Jestem podopiecznym</Button>
-            <Button variant="secondary" className="mt-3">
+            <StyledButton variant="secondary">Jestem podopiecznym</StyledButton>
+            <StyledButton variant="secondary" className="mt-3">
               Jestem opiekunem
-            </Button>
-            <Button className="mt-20" onPress={() => setPage('2')}>
+            </StyledButton>
+            <StyledButton className="mt-20" onPress={() => setPage('2')}>
               Mam już konto
-            </Button>
+            </StyledButton>
           </View>
         </>
       )}
-      {page === '2' && <LoginScreen />}
+      {page === '2' && (
+        <View className="flex-1 items-center justify-center bg-primary">
+          <Formik initialValues={{ email: '' }} onSubmit={(values) => console.log(values)}>
+            {({ handleChange, handleBlur, handleSubmit, values }) => (
+              <View>
+                <StyledInput
+                  title="Twój adres email"
+                  onChangeText={handleChange('email')}
+                  onBlur={handleBlur('email')}
+                  value={values.email}
+                />
+
+                <StyledInput
+                  title="Twoje hasło"
+                  onChangeText={handleChange('email')}
+                  onBlur={handleBlur('email')}
+                  value={values.email}
+                />
+
+                <View className="mt-12">
+                  <Pressable>
+                    <StyledText className="text-center font-medium text-dark " onPress={() => setPage('1')}>
+                      Nie masz konta? Zarejestruj się!
+                    </StyledText>
+                  </Pressable>
+
+                  <StyledButton onPress={handleSubmit} className="mt-2">
+                    Zaloguj się
+                  </StyledButton>
+                </View>
+              </View>
+            )}
+          </Formik>
+        </View>
+      )}
     </>
   );
 };
