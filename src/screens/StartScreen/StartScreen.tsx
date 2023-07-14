@@ -2,6 +2,7 @@ import { Button, StyledText } from '@components';
 import { useState } from 'react';
 import { View } from 'react-native';
 import { CalendarIcon } from 'react-native-heroicons/solid';
+import { LoginScreen } from '@screens';
 
 export const StartScreen = () => {
   const [page, setPage] = useState('1');
@@ -29,14 +30,7 @@ export const StartScreen = () => {
           </View>
         </>
       )}
-      {page === '2' && (
-        <View className="flex-1 items-center justify-center bg-primary">
-          <StyledText className="text-dark">Nie masz konta? Zarejestruj się!</StyledText>
-          <Button className="mt-2" onPress={() => setPage('1')}>
-            Zaloguj się
-          </Button>
-        </View>
-      )}
+      {page === '2' && <LoginScreen />}
     </>
   );
 };
