@@ -31,42 +31,7 @@ export const StartScreen = () => {
           </View>
         </>
       )}
-      {page === '2' && (
-        <View className="flex-1 items-center justify-center bg-primary">
-          <StyledTitle>Logowanie</StyledTitle>
-          <Formik initialValues={{ email: '' }} onSubmit={(values) => console.log(values)}>
-            {({ handleChange, handleBlur, handleSubmit, values }) => (
-              <View className="mt-32">
-                <StyledInput
-                  title="Twój adres email"
-                  onChangeText={handleChange('email')}
-                  onBlur={handleBlur('email')}
-                  value={values.email}
-                />
-
-                <StyledInput
-                  title="Twoje hasło"
-                  onChangeText={handleChange('email')}
-                  onBlur={handleBlur('email')}
-                  value={values.email}
-                />
-
-                <View className="mt-12">
-                  <Pressable>
-                    <StyledText className="text-center font-medium text-dark " onPress={() => setPage('1')}>
-                      Nie masz konta? Zarejestruj się!
-                    </StyledText>
-                  </Pressable>
-
-                  <StyledButton onPress={handleSubmit} className="mt-2 self-center">
-                    Zaloguj się
-                  </StyledButton>
-                </View>
-              </View>
-            )}
-          </Formik>
-        </View>
-      )}
+      {page === '2' && <LoginScreen />}
     </>
   );
 };

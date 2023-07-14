@@ -15,6 +15,7 @@ export const StyledInput = ({ className, title = '', ...rest }: StyledInputProps
       <TextInput
         className={clsx(
           'mb-4 w-[320px] rounded-xl border border-zinc-300 bg-white px-4 pb-4 pt-2 text-lg shadow-sm focus:border-accent',
+          title === '' && 'hidden',
         )}
         {...rest}
       />

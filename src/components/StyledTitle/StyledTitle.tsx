@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import { Text } from 'react-native';
 
 interface StyledTitleProps {
@@ -6,5 +5,5 @@ interface StyledTitleProps {
 }
 
 export const StyledTitle = ({ children }: StyledTitleProps) => {
-  return <Text className="font-semibold text-2xl tracking-wider">{children}</Text>;
+  return <Text className="text-center font-semibold text-2xl tracking-wider">{children}</Text>;
 };
