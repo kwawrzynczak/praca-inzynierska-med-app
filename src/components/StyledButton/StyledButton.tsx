@@ -20,7 +20,7 @@ export const StyledButton = ({ children, className, variant = 'primary', ...rest
       onPressIn={fadeIn}
       onPressOut={fadeOut}
       className={clsx(
-        'h-14 w-[300px] flex-row items-center justify-center rounded-xl px-6 shadow-sm',
+        'h-14 w-[300px] flex-row items-center justify-center self-center rounded-xl px-6 shadow-sm',
         className,
         variant === 'primary' && 'bg-accent shadow-zinc-400',
         variant === 'secondary' && 'bg-white shadow-zinc-300',

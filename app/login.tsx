@@ -28,19 +28,19 @@ const LoginScreen = () => {
               secureTextEntry
             />
 
-            <View className="mt-12">
+            <Link href="/" asChild>
               <Pressable>
-                <StyledText className="text-center font-medium text-dark ">Nie masz konta? Zarejestruj się!</StyledText>
+                <StyledText className="bg-red-500 text-center font-medium text-dark">
+                  Nie masz konta? Zarejestruj się!
+                </StyledText>
               </Pressable>
-
-              <StyledButton onPress={handleSubmit} className="mt-2 self-center">
-                Zaloguj się
-              </StyledButton>
-            </View>
+            </Link>
+            <StyledButton onPress={handleSubmit} className="mt-2">
+              Zaloguj się
+            </StyledButton>
           </View>
         )}
       </Formik>
-      <Link href="/">Wróć</Link>
     </TitleTemplate>
   );
 };

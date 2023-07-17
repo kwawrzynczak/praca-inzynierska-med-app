@@ -1,36 +1,11 @@
 import { StyledButton } from '@components';
 import { Link } from 'expo-router';
-import {
-  Poppins_100Thin,
-  Poppins_200ExtraLight,
-  Poppins_300Light,
-  Poppins_400Regular,
-  Poppins_500Medium,
-  Poppins_600SemiBold,
-  Poppins_700Bold,
-  Poppins_800ExtraBold,
-  Poppins_900Black,
-  useFonts,
-} from '@expo-google-fonts/poppins';
+import { TitleTemplate } from '@templates';
+
 import { View } from 'react-native';
 import { CalendarIcon } from 'react-native-heroicons/solid';
 
 const StartScreen = () => {
-  const [fontsLoaded] = useFonts({
-    Poppins_100Thin,
-    Poppins_200ExtraLight,
-    Poppins_300Light,
-    Poppins_400Regular,
-    Poppins_500Medium,
-    Poppins_600SemiBold,
-    Poppins_700Bold,
-    Poppins_800ExtraBold,
-    Poppins_900Black,
-  });
-
-  if (!fontsLoaded) {
-    return null;
-  }
   return (
     <>
       <View className="z-10 bg-primary">
@@ -46,11 +21,9 @@ const StartScreen = () => {
         <StyledButton variant="secondary" className="mt-3">
           Jestem opiekunem
         </StyledButton>
-        <StyledButton className="mt-20">
-          <Link className="h-12 w-[300px]" href="/login">
-            Wróć
-          </Link>
-        </StyledButton>
+        <Link className="h-12 w-[300px]" href="/login" asChild>
+          <StyledButton className="mt-20">Mam już konto</StyledButton>
+        </Link>
       </View>
     </>
   );

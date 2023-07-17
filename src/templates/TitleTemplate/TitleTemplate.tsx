@@ -8,7 +8,7 @@ interface TitleTemplateProps {
 
 export const TitleTemplate = ({ title, children }: TitleTemplateProps) => {
   return (
-    <View className="flex-1 items-center justify-center bg-primary">
+    <View className="h-screen w-screen flex-1 items-center justify-center bg-primary">
       <View>
         <StyledTitle>{title}</StyledTitle>
       </View>
