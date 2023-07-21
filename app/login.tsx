@@ -1,12 +1,11 @@
-import { StyledButton, StyledInput, StyledText, StyledTitle } from '@components';
+import { StyledButton, StyledInput, StyledText } from '@components';
 import { Pressable, View } from 'react-native';
 import { Formik } from 'formik';
-import { TitleTemplate } from '@templates';
 import { Link } from 'expo-router';
 
 const LoginScreen = () => {
   return (
-    <TitleTemplate title="Logowanie">
+    <View>
       <Formik initialValues={{ email: '', password: '' }} onSubmit={(values) => console.log(values)}>
         {({ handleChange, handleBlur, handleSubmit, values }) => (
           <View className="mt-32">
@@ -41,7 +40,7 @@ const LoginScreen = () => {
           </View>
         )}
       </Formik>
-    </TitleTemplate>
+    </View>
   );
 };
 

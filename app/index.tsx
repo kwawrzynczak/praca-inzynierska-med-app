@@ -1,7 +1,5 @@
 import { StyledButton } from '@components';
 import { Link } from 'expo-router';
-import { TitleTemplate } from '@templates';
-
 import { View } from 'react-native';
 import { CalendarIcon } from 'react-native-heroicons/solid';
 
@@ -16,7 +14,7 @@ const StartScreen = () => {
           </View>
         </View>
       </View>
-      <View className="flex-1 items-center bg-primary">
+      <View className="flex-1 items-center bg-red-500">
         <StyledButton variant="secondary">Jestem podopiecznym</StyledButton>
         <StyledButton variant="secondary" className="mt-3">
           Jestem opiekunem
