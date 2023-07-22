@@ -15,7 +15,7 @@ const FADE_IN_ANIMATION_CONFIG: Animated.TimingAnimationConfig = {
 
 const FADE_OUT_ANIMATION_CONFIG: Animated.TimingAnimationConfig = {
   toValue: 0,
-  duration: 120,
+  duration: 75,
   useNativeDriver: true,
 };
 

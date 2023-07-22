@@ -20,7 +20,7 @@ export const StyledButton = ({ children, className, variant = 'primary', ...rest
       onPressIn={fadeIn}
       onPressOut={fadeOut}
       className={clsx(
-        'h-12 w-[300px] flex-row items-center justify-center self-center rounded-xl px-6 shadow-sm',
+        'h-12 w-[300px] flex-row items-center justify-center self-center rounded-xl px-6',
         className,
         variant === 'primary' && 'bg-accent shadow-zinc-400',
         variant === 'secondary' && 'bg-white shadow-zinc-300',
@@ -30,8 +30,8 @@ export const StyledButton = ({ children, className, variant = 'primary', ...rest
       <Animated.View
         className={clsx(
           'absolute left-0 top-0 h-full w-[300px] rounded-xl',
-          variant === 'primary' && 'bg-[#7297ce]',
-          variant === 'secondary' && 'bg-slate-200',
+          variant === 'primary' && 'bg-blue-900/60',
+          variant === 'secondary' && 'bg-accent/50',
         )}
         style={{ opacity: opacityValue }}
       />
