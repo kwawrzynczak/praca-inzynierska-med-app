@@ -18,10 +18,8 @@ module.exports = {
       },
       colors: {
         primary: colors.stone[200],
-        secondary: colors.slate[900],
+        secondary: '#666',
         accent: colors.blue[400],
-        dark: colors.zinc[950],
-        light: colors.zinc[600],
         background: '#E9EEFF',
       },
     },

@@ -8,13 +8,13 @@ interface StyledInputProps extends TextInputProps {
   title?: string;
 }
 
-export const Input = ({ className, title = '', ...rest }: StyledInputProps) => {
+export const Input = ({ className, title, ...rest }: StyledInputProps) => {
   return (
     <>
-      <Text className="mb-1 ml-2">{title}</Text>
+      {!!title && <Text className="mb-1 font-medium text-secondary">{title}</Text>}
       <ReactNativeInput
         className={clsx(
-          'mb-4 rounded-lg border border-white bg-white px-4 py-3 shadow-sm focus:border-accent',
+          'mb-4 h-12 rounded-lg border border-white bg-white px-4 py-3 focus:border-accent',
           title === '' && 'hidden',
         )}
         {...rest}

@@ -12,7 +12,7 @@ interface StyledButtonProps extends PressableProps {
   onPress?: () => void;
 }
 
-export const StyledButton = ({ children, className, variant = 'primary', ...rest }: StyledButtonProps) => {
+export const Button = ({ children, className, variant = 'primary', ...rest }: StyledButtonProps) => {
   const { opacityValue, fadeIn, fadeOut } = useAnimation();
 
   return (
@@ -37,9 +37,9 @@ export const StyledButton = ({ children, className, variant = 'primary', ...rest
       />
       <Text
         className={clsx(
-          'font-medium tracking-wider text-white',
+          'font-semibold tracking-wider text-white',
           variant === 'primary' && 'text-white',
-          variant === 'secondary' && 'text-dark',
+          variant === 'secondary' && 'text-secondary',
         )}
       >
         {children}
