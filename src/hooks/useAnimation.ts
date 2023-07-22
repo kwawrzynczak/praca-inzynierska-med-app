@@ -1,20 +1,19 @@
 import { useRef } from 'react';
 import { Animated } from 'react-native';
-import { AnimationHook } from '@types';
 
-interface AnimationConfig {
-  toValue: number;
-  duration: number;
-  useNativeDriver: boolean;
+interface AnimationHook {
+  opacityValue: Animated.Value;
+  fadeIn: () => void;
+  fadeOut: () => void;
 }
 
-const FADE_IN_ANIMATION_CONFIG: AnimationConfig = {
+const FADE_IN_ANIMATION_CONFIG: Animated.TimingAnimationConfig = {
   toValue: 0.75,
   duration: 75,
   useNativeDriver: true,
 };
 
-const FADE_OUT_ANIMATION_CONFIG: AnimationConfig = {
+const FADE_OUT_ANIMATION_CONFIG: Animated.TimingAnimationConfig = {
   toValue: 0,
   duration: 120,
   useNativeDriver: true,

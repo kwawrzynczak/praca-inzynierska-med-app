@@ -1,4 +1,3 @@
-export * from './StyledText';
-export * from './StyledInput';
-export * from './StyledButton';
-export * from './StyledTitle';
+export * from './Text';
+export * from './Input';
+export * from './Button';

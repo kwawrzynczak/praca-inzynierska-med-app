@@ -1,20 +1,20 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable tailwindcss/no-custom-classname */
-import { StyledText } from '@components/StyledText';
-import clsx from 'clsx';
-import { Pressable, Animated, type PressableProps } from 'react-native';
+import { Animated, Pressable, type PressableProps } from 'react-native';
+import { Text } from '@components/Text';
 import { useAnimation } from '@hooks';
-import { AnimationHook } from '@types';
+import clsx from 'clsx';
 
-interface ButtonProps extends PressableProps {
+interface StyledButtonProps extends PressableProps {
   children?: React.ReactNode;
   className?: string;
   variant?: 'primary' | 'secondary';
   onPress?: () => void;
 }
 
-export const StyledButton = ({ children, className, variant = 'primary', ...rest }: ButtonProps) => {
-  const { opacityValue, fadeIn, fadeOut }: AnimationHook = useAnimation();
+export const StyledButton = ({ children, className, variant = 'primary', ...rest }: StyledButtonProps) => {
+  const { opacityValue, fadeIn, fadeOut } = useAnimation();
+
   return (
     <Pressable
       onPressIn={fadeIn}
@@ -35,7 +35,7 @@ export const StyledButton = ({ children, className, variant = 'primary', ...rest
         )}
         style={{ opacity: opacityValue }}
       />
-      <StyledText
+      <Text
         className={clsx(
           'font-medium text-lg tracking-wider text-white',
           variant === 'primary' && 'text-white',
@@ -43,7 +43,7 @@ export const StyledButton = ({ children, className, variant = 'primary', ...rest
         )}
       >
         {children}
-      </StyledText>
+      </Text>
     </Pressable>
   );
 };
