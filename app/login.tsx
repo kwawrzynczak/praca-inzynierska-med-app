@@ -28,7 +28,7 @@ const LoginScreen = () => {
 
                 <Input
                   title="Hasło"
-                  placeholder="********"
+                  placeholder="**********"
                   placeholderTextColor="#666"
                   textContentType="password"
                   onChangeText={handleChange('password')}
