@@ -36,13 +36,14 @@ const LoginScreen = () => {
                   value={values.password}
                   secureTextEntry
                 />
-
-                <Link href="/" asChild>
-                  <Pressable className="flex flex-row justify-center">
-                    <Text className="font-medium text-secondary">Nie pamiętasz hasła? </Text>
-                    <Text className="font-bold text-accent">Zresetuj hasło</Text>
-                  </Pressable>
-                </Link>
+                <View className="flex-row justify-center">
+                  <Text className="font-medium text-secondary">Nie pamiętasz hasła? </Text>
+                  <Link href="/" asChild>
+                    <Pressable>
+                      <Text className="font-bold text-accent">Zresetuj hasło</Text>
+                    </Pressable>
+                  </Link>
+                </View>
               </View>
               <Button onPress={handleSubmit} className="">
                 Zaloguj się

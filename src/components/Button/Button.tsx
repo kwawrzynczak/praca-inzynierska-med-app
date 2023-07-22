@@ -31,13 +31,13 @@ export const Button = ({ children, className, variant = 'primary', ...rest }: St
         className={clsx(
           'absolute left-0 top-0 h-full w-[300px] rounded-xl',
           variant === 'primary' && 'bg-blue-900/60',
-          variant === 'secondary' && 'bg-accent/50',
+          variant === 'secondary' && 'bg-blue-600/30',
         )}
         style={{ opacity: opacityValue }}
       />
       <Text
         className={clsx(
-          'font-semibold tracking-wider text-white',
+          'font-semibold tracking-wider',
           variant === 'primary' && 'text-white',
           variant === 'secondary' && 'text-secondary',
         )}
