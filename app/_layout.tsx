@@ -1,4 +1,3 @@
-import { Stack } from 'expo-router';
 import {
   Poppins_100Thin,
   Poppins_200ExtraLight,
@@ -11,6 +10,7 @@ import {
   Poppins_900Black,
   useFonts,
 } from '@expo-google-fonts/poppins';
+import { Stack } from 'expo-router';
 
 const StackLayout = () => {
   const [fontsLoaded] = useFonts({
@@ -31,6 +31,7 @@ const StackLayout = () => {
   return (
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: false }} />
+      <Stack.Screen name="login" options={{ headerShown: false }} />
     </Stack>
   );
 };

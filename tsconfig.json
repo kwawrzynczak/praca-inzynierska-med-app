@@ -14,7 +14,9 @@
       "@types": ["src/types"],
       "@types/*": ["src/types/*"],
       "@templates": ["src/templates"],
-      "@templates/*": ["src/templates/*"]
+      "@templates/*": ["src/templates/*"],
+      "@images": ["src/images"],
+      "@images/*": ["src/images/*"]
     }
   }
 }

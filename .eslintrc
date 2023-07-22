@@ -46,7 +46,8 @@
           "@screens": "./src/screens",
           "@hooks": "./src/hooks",
           "@types": "./src/types",
-          "@templates": "./src/templates"
+          "@templates": "./src/templates",
+          "@images": "./src/images"
         }
       }
     }

@@ -1,11 +1,11 @@
-import { Pressable, View } from 'react-native';
+import { Pressable, SafeAreaView, View } from 'react-native';
 import { Input, StyledButton, Text } from '@components';
 import { Link } from 'expo-router';
 import { Formik } from 'formik';
 
 const LoginScreen = () => {
   return (
-    <View>
+    <SafeAreaView className="flex-1 bg-background">
       <Formik initialValues={{ email: '', password: '' }} onSubmit={(values) => console.log(values)}>
         {({ handleChange, handleBlur, handleSubmit, values }) => (
           <View className="mt-32">
@@ -38,7 +38,7 @@ const LoginScreen = () => {
           </View>
         )}
       </Formik>
-    </View>
+    </SafeAreaView>
   );
 };
 

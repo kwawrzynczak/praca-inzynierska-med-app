@@ -22,6 +22,7 @@ module.exports = {
         accent: colors.blue[400],
         dark: colors.zinc[950],
         light: colors.zinc[600],
+        background: '#E9EEFF',
       },
     },
   },

@@ -14,7 +14,7 @@ export const Input = ({ className, title = '', ...rest }: StyledInputProps) => {
       <Text className="mb-1 ml-2">{title}</Text>
       <ReactNativeInput
         className={clsx(
-          'mb-4 rounded-lg border border-primary bg-white px-4 py-3 shadow-sm focus:border-accent',
+          'mb-4 rounded-lg border border-white bg-white px-4 py-3 shadow-sm focus:border-accent',
           title === '' && 'hidden',
         )}
         {...rest}
