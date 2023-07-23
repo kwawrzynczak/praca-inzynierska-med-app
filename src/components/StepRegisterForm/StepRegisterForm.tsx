@@ -1,5 +1,7 @@
 import { Pressable, View } from 'react-native';
-import { Button, Input, Text } from '@components';
+import { Button } from '@components/Button';
+import { Input } from '@components/Input';
+import { Text } from '@components/Text';
 import { Link } from 'expo-router';
 import { Formik } from 'formik';
 

@@ -2,7 +2,7 @@
 import * as React from 'react';
 import Svg, { Circle, Path, SvgProps } from 'react-native-svg';
 
-export const UserImage = (props: SvgProps) => {
+export const PatientImage = (props: SvgProps) => {
   return (
     <Svg width={303.71} height={525.42} viewBox="0 0 303.71 525.42" {...props}>
       <Path

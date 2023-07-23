@@ -1,3 +1,3 @@
 export * from './CaretakerImage';
 export * from './OnboardingImage';
-export * from './UserImage';
+export * from './PatientImage';
