@@ -10,7 +10,6 @@ const RegisterScreen = () => {
         Krok {currentStepIndex + 1}/{steps.length}
       </Text>
       {step}
-      {currentStepIndex !== 0 && <Button>jajo</Button>}
     </SafeAreaView>
   );
 };

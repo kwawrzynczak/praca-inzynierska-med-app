@@ -48,12 +48,14 @@ const LoginScreen = () => {
               <Button onPress={handleSubmit} className="">
                 Zaloguj się
               </Button>
-              <Link href="/" asChild>
-                <Pressable className="mt-3 flex flex-row justify-center">
-                  <Text className="font-medium text-secondary">Nie masz konta? </Text>
-                  <Text className="font-bold text-accent">Zarejestruj się!</Text>
-                </Pressable>
-              </Link>
+              <View className="mt-3 flex-row justify-center">
+                <Text className="font-medium text-secondary">Nie masz konta? </Text>
+                <Link href="/register" asChild>
+                  <Pressable>
+                    <Text className="font-bold text-accent">Zarejestruj się</Text>
+                  </Pressable>
+                </Link>
+              </View>
             </View>
           )}
         </Formik>
