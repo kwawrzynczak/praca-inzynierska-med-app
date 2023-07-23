@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import * as React from 'react';
-import Svg, { Circle, G, Path, SvgProps } from 'react-native-svg';
+import Svg, { Circle, Path, SvgProps } from 'react-native-svg';
 
 export const UserImage = (props: SvgProps) => {
   return (
