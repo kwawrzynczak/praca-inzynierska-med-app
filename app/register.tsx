@@ -1,7 +1,5 @@
-import { Pressable, SafeAreaView, View } from 'react-native';
-import { Button, Input, Text } from '@components';
-import { Link } from 'expo-router';
-import { Formik } from 'formik';
+import { SafeAreaView, View } from 'react-native';
+import { Button, Text } from '@components';
 
 const RegisterScreen = () => {
   return (
