@@ -13,7 +13,7 @@ const TabsLayout = () => (
       }}
     />
     <Tabs.Screen
-      name="medicine"
+      name="medication"
       options={{
         tabBarLabel: 'Leki',
         headerTitle: 'Leki',
