@@ -8,16 +8,24 @@ const TabsLayout = () => (
       name="calendar"
       options={{
         tabBarLabel: 'Kalendarz',
-        headerTitle: 'HomeScreen',
-        tabBarIcon: ({ color, size }) => <FontAwesome5 name="list" size={size} color={color} />,
+        headerTitle: 'Kalendarz',
+        tabBarIcon: ({ color, size }) => <FontAwesome5 name="calendar-alt" size={size} color={color} />,
+      }}
+    />
+    <Tabs.Screen
+      name="medicine"
+      options={{
+        tabBarLabel: 'Leki',
+        headerTitle: 'Leki',
+        tabBarIcon: ({ color, size }) => <FontAwesome5 name="pills" size={size} color={color} />,
       }}
     />
     <Tabs.Screen
       name="settings"
       options={{
         tabBarLabel: 'Ustawienia',
-        headerTitle: 'Settings',
-        tabBarIcon: ({ color, size }) => <FontAwesome5 name="user" size={size} color={color} />,
+        headerTitle: 'Ustawienia',
+        tabBarIcon: ({ color, size }) => <FontAwesome5 name="user-cog" size={size} color={color} />,
       }}
     />
   </Tabs>
