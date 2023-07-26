@@ -3,7 +3,7 @@ import { Button, Text } from '@components';
 import { OnbardingImage } from '@images';
 import { Link } from 'expo-router';
 
-const Onboarding = () => {
+const OnboardingScreen = () => {
   return (
     <SafeAreaView className="flex-1 items-center bg-background">
       <Text className="mt-12 font-bold text-3xl text-accent">HealthHub</Text>
@@ -21,4 +21,4 @@ const Onboarding = () => {
   );
 };
 
-export default Onboarding;
+export default OnboardingScreen;

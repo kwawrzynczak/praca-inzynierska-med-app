@@ -1,5 +1,5 @@
-import { SafeAreaView, View } from 'react-native';
-import { Button, StepAccountType, StepRegisterForm, Text } from '@components';
+import { SafeAreaView } from 'react-native';
+import { Button, StepAccountType, StepRegisterForm } from '@components';
 import { useMultistepForm } from '@hooks';
 import { Link } from 'expo-router';
 

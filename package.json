@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@expo-google-fonts/poppins": "^0.2.3",
+    "@expo/vector-icons": "^13.0.0",
     "clsx": "^1.2.1",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "expo": "~48.0.18",
