@@ -40,7 +40,7 @@ const LoginScreen = () => {
                   <Text className="font-medium text-secondary">Nie pamiętasz hasła? </Text>
                   <Link href="/" asChild>
                     <Pressable>
-                      <Text className="font-bold text-accent">Zresetuj hasło</Text>
+                      <Text className="font-bold text-accent underline">Zresetuj hasło</Text>
                     </Pressable>
                   </Link>
                 </View>
@@ -52,7 +52,7 @@ const LoginScreen = () => {
                 <Text className="font-medium text-secondary">Nie masz konta? </Text>
                 <Link href="/register" asChild>
                   <Pressable>
-                    <Text className="font-bold text-accent">Zarejestruj się</Text>
+                    <Text className="font-bold text-accent underline">Zarejestruj się</Text>
                   </Pressable>
                 </Link>
               </View>

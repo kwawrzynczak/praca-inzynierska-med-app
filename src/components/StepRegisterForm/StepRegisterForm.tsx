@@ -46,24 +46,7 @@ export const StepRegisterForm = () => {
                 value={values.validatePassword}
                 secureTextEntry
               />
-              <View className="flex-row justify-center">
-                <Text className="font-medium text-secondary">Nie pamiętasz hasła? </Text>
-                <Link href="/" asChild>
-                  <Pressable>
-                    <Text className="font-bold text-accent">Zresetuj hasło</Text>
-                  </Pressable>
-                </Link>
-              </View>
             </View>
-            <Button onPress={handleSubmit} className="">
-              Zaloguj się
-            </Button>
-            <Link href="/" asChild>
-              <Pressable className="mt-3 flex flex-row justify-center">
-                <Text className="font-medium text-secondary">Nie masz konta? </Text>
-                <Text className="font-bold text-accent">Zarejestruj się!</Text>
-              </Pressable>
-            </Link>
           </View>
         )}
       </Formik>

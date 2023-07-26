@@ -20,7 +20,7 @@ export const Button = ({ children, className, variant = 'primary', ...rest }: St
       onPressIn={fadeIn}
       onPressOut={fadeOut}
       className={clsx(
-        'h-12 w-[300px] flex-row items-center justify-center self-center rounded-xl px-6',
+        'h-12 w-72 flex-row items-center justify-center self-center rounded-xl px-6',
         className,
         variant === 'primary' && 'bg-accent shadow-zinc-400',
         variant === 'secondary' && 'bg-white shadow-zinc-300',
@@ -29,7 +29,7 @@ export const Button = ({ children, className, variant = 'primary', ...rest }: St
     >
       <Animated.View
         className={clsx(
-          'absolute left-0 top-0 h-full w-[300px] rounded-xl',
+          'absolute left-0 top-0 h-full w-72 rounded-xl',
           variant === 'primary' && 'bg-blue-900/60',
           variant === 'secondary' && 'bg-blue-600/30',
         )}
