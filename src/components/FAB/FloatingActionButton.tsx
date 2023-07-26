@@ -19,14 +19,14 @@ export const FloatingActionButton = ({ children, className, ...rest }: StyledBut
     <Pressable
       onPressIn={fadeIn}
       onPressOut={fadeOut}
-      className={clsx('z-0 h-14 w-14 items-center justify-center rounded-full bg-accent', className)}
+      className={clsx('z-0 h-12 w-12 items-center justify-center rounded-full bg-accent', className)}
       {...rest}
     >
       <Animated.View
-        className={clsx('absolute left-0 top-0 h-14 w-14 rounded-full bg-blue-600/60')}
+        className={clsx('absolute left-0 top-0 h-12 w-12 rounded-full bg-blue-600/60')}
         style={{ opacity: opacityValue }}
       />
-      <FontAwesome5 name="plus" color="white" size="25px" />
+      <FontAwesome5 name="plus" color="white" size={25} />
     </Pressable>
   );
 };
