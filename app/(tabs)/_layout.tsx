@@ -16,7 +16,7 @@ const TabsLayout = () => (
       name="medication"
       options={{
         tabBarLabel: 'Leki',
-        headerTitle: 'Leki',
+        headerShown: false,
         tabBarIcon: ({ color, size }) => <FontAwesome5 name="pills" size={size} color={color} />,
       }}
     />

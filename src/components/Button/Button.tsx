@@ -9,7 +9,6 @@ interface StyledButtonProps extends PressableProps {
   children?: React.ReactNode;
   className?: string;
   variant?: 'primary' | 'secondary';
-  onPress?: () => void;
 }
 
 export const Button = ({ children, className, variant = 'primary', ...rest }: StyledButtonProps) => {

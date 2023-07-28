@@ -1,8 +1,8 @@
 export interface Medication {
-  id?: string;
+  id: string;
   name: string;
   amount: string;
   substance: string;
   time: string;
-  done?: boolean;
+  isDone: boolean;
 }

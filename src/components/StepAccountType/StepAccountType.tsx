@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { Pressable, View } from 'react-native';
 import { Text } from '@components/Text';
 import { CaretakerImage, PatientImage } from '@images';
 import clsx from 'clsx';
 
-const ROLE_BUTTONS = [
+const roleButtons = [
   {
     id: 'patient',
     text: 'Jestem podopiecznym',
@@ -21,8 +21,8 @@ export const StepAccountType = () => {
   const [selectedId, setSelectedId] = useState<string>();
   return (
     <View className="h-3/4 items-center justify-center">
-      {ROLE_BUTTONS.map(({ id, text, image }) => (
-        <>
+      {roleButtons.map(({ id, text, image }) => (
+        <Fragment key={id}>
           <Pressable
             className={clsx(
               'h-52 w-52 justify-center rounded-full bg-accent/60',
@@ -33,7 +33,7 @@ export const StepAccountType = () => {
             {image}
           </Pressable>
           <Text className="mb-6 mt-4 text-center font-medium text-lg text-secondary">{text}</Text>
-        </>
+        </Fragment>
       ))}
     </View>
   );

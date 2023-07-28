@@ -7,9 +7,16 @@ interface MedicationListElementProps extends Medication {
   onPress?: () => void;
 }
 
-export const MedicationListElement = ({ name, amount, substance, time, done, onPress }: MedicationListElementProps) => {
+export const MedicationListElement = ({
+  name,
+  amount,
+  substance,
+  time,
+  isDone,
+  onPress,
+}: MedicationListElementProps) => {
   return (
-    <View className="mb-3 w-80 flex-row items-center justify-between rounded-2xl bg-white p-4">
+    <View className="mb-3 w-80 flex-row items-center justify-between rounded-2xl bg-white px-4 py-3">
       <View>
         <Text className="font-semibold text-lg">{name}</Text>
         <View className="flex-row">
@@ -22,7 +29,7 @@ export const MedicationListElement = ({ name, amount, substance, time, done, onP
         <FontAwesome5 name="clock" size={16} />
         <Text>{time}</Text>
         <Pressable onPress={onPress}>
-          {done ? (
+          {isDone ? (
             <FontAwesome5 solid name="check-circle" size={32} color="#60a5fa" />
           ) : (
             <FontAwesome5 name="circle" size={32} color="#60a5fa" />

@@ -2,19 +2,7 @@ import { FlatList, SafeAreaView, View } from 'react-native';
 import { Button, Text } from '@components';
 import { Link } from 'expo-router';
 
-const DATA = [
-  { name: '1' },
-  { name: '2' },
-  { name: '3' },
-  { name: '4' },
-  { name: '5' },
-  { name: '5' },
-  { name: '5' },
-  { name: '5' },
-  { name: '5' },
-  { name: '5' },
-  { name: '5' },
-];
+const DATA = [{ name: '1' }, { name: '2' }, { name: '3' }, { name: '4' }, { name: '5' }, { name: '6' }];
 
 const CalendarScreen = () => {
   return (
