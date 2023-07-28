@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { FlatList, SafeAreaView } from 'react-native';
 import { FloatingActionButton, MedicationListElement, Text } from '@components';
 
@@ -8,7 +9,6 @@ const MEDICATION_LIST = [
     amount: '1',
     substance: '10',
     time: '10:00',
-    done: true,
   },
   {
     id: '2',
@@ -16,11 +16,16 @@ const MEDICATION_LIST = [
     amount: '1',
     substance: '10',
     time: '10:00',
-    done: false,
   },
 ];
 
 const MedicationScreen = () => {
+  const [check, setCheck] = useState(false);
+  const checkMedicine = () => {
+    setCheck((prev) => {
+      return !prev;
+    });
+  };
   return (
     <SafeAreaView className="flex-1 items-center justify-center bg-background">
       <Text>Medicine</Text>
@@ -34,7 +39,8 @@ const MedicationScreen = () => {
             amount={item.amount}
             substance={item.substance}
             time={item.time}
-            done={item.done}
+            done={check}
+            onPress={checkMedicine}
           />
         )}
         keyExtractor={(item) => item.id}

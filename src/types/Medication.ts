@@ -4,5 +4,5 @@ export interface Medication {
   amount: string;
   substance: string;
   time: string;
-  done: boolean;
+  done?: boolean;
 }
