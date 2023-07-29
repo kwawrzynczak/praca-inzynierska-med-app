@@ -24,18 +24,14 @@ const initialMedicationList = [
 ];
 
 const MedicationScreen = () => {
-  const [bottom, setBottom] = useState(false);
   const [medicationList, setMedicationList] = useState(initialMedicationList);
   // ref
   const bottomSheetRef = useRef<BottomSheet>(null);
-
+  const handleClosePress = () => bottomSheetRef?.current?.close();
+  const handleExpandPress = () => bottomSheetRef?.current?.expand();
   // variables
   const snapPoints = useMemo(() => ['90%'], []);
 
-  // callbacks
-  const handleSheetChanges = useCallback((index: number) => {
-    console.log('handleSheetChanges', index);
-  }, []);
   const addMediaction = ({ id, name, amount, substance, time, isDone }: Medication) => {
     const newMedication = {
       id,
@@ -45,7 +41,7 @@ const MedicationScreen = () => {
       time,
       isDone,
     };
-    setMedicationList([newMedication, ...medicationList]);
+    setMedicationList((prev) => [newMedication, ...prev]);
   };
   return (
     <SafeAreaView className="flex-1 items-center justify-center bg-background">
@@ -53,7 +49,6 @@ const MedicationScreen = () => {
       {/* <Text className="mt-4 text-center font-medium text-lg text-secondary">
         Zaloguj się, aby móc zarządzać swoją dokumentacją medyczną.
       </Text> */}
-      <Button onPress={() => setBottom((prev) => !prev)}>Reset</Button>
       <FlatList
         contentContainerStyle={{ alignItems: 'center' }}
         className="mt-5 h-full w-screen border-red-500"
@@ -87,23 +82,19 @@ const MedicationScreen = () => {
       >
         Add test
       </Button> */}
-      <FloatingActionButton className="absolute bottom-2" onPress={() => setBottom(true)} />
-      {bottom && (
-        <BottomSheet
-          ref={bottomSheetRef}
-          index={0}
-          snapPoints={snapPoints}
-          onChange={(index) => {
-            handleSheetChanges(index);
-            if (index !== 0) setBottom(false);
-          }}
-          enablePanDownToClose
-        >
-          <View className="flex-1 items-center">
-            <Text>Awesome 🎉</Text>
-          </View>
-        </BottomSheet>
-      )}
+      <FloatingActionButton className="absolute bottom-2" onPress={handleExpandPress} />
+
+      <BottomSheet
+        ref={bottomSheetRef}
+        index={0}
+        snapPoints={snapPoints}
+        onClose={handleClosePress}
+        enablePanDownToClose
+      >
+        <View className="flex-1 items-center">
+          <Text>Awesome 🎉</Text>
+        </View>
+      </BottomSheet>
     </SafeAreaView>
   );
 };
