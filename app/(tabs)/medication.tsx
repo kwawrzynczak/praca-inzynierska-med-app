@@ -1,8 +1,9 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { FlatList, SafeAreaView, View } from 'react-native';
 import { Button, FloatingActionButton, MedicationListElement, Text } from '@components';
 import BottomSheet from '@gorhom/bottom-sheet';
 import { Medication } from '@types';
+import { useLocalSearchParams, usePathname, useRouter } from 'expo-router';
 
 const initialMedicationList = [
   {
@@ -24,13 +25,18 @@ const initialMedicationList = [
 ];
 
 const MedicationScreen = () => {
+  const pathname = usePathname();
   const [medicationList, setMedicationList] = useState(initialMedicationList);
   // ref
   const bottomSheetRef = useRef<BottomSheet>(null);
   const handleClosePress = () => bottomSheetRef?.current?.close();
   const handleExpandPress = () => bottomSheetRef?.current?.expand();
   // variables
-  const snapPoints = useMemo(() => ['90%'], []);
+  const snapPoints = useMemo(() => ['92%'], []);
+
+  useEffect(() => {
+    handleClosePress();
+  }, [pathname]);
 
   const addMediaction = ({ id, name, amount, substance, time, isDone }: Medication) => {
     const newMedication = {
@@ -62,7 +68,7 @@ const MedicationScreen = () => {
             substance={item.substance}
             time={item.time}
             isDone
-            onPress={() => console.log('press1')}
+            onPress={() => console.log(pathname)}
           />
         )}
         keyExtractor={(item) => item.id}
@@ -86,7 +92,7 @@ const MedicationScreen = () => {
 
       <BottomSheet
         ref={bottomSheetRef}
-        index={0}
+        index={-1}
         snapPoints={snapPoints}
         onClose={handleClosePress}
         enablePanDownToClose
