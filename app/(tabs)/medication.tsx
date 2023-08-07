@@ -1,9 +1,10 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { FlatList, SafeAreaView, View } from 'react-native';
+import { Easing } from 'react-native-reanimated';
 import { Button, FloatingActionButton, MedicationListElement, Text } from '@components';
-import BottomSheet from '@gorhom/bottom-sheet';
+import BottomSheet, { useBottomSheetSpringConfigs, useBottomSheetTimingConfigs } from '@gorhom/bottom-sheet';
 import { Medication } from '@types';
-import { useLocalSearchParams, usePathname, useRouter } from 'expo-router';
+import { Tabs, usePathname, useRouter, useSegments } from 'expo-router';
 
 const initialMedicationList = [
   {
@@ -25,18 +26,22 @@ const initialMedicationList = [
 ];
 
 const MedicationScreen = () => {
-  const pathname = usePathname();
   const [medicationList, setMedicationList] = useState(initialMedicationList);
   // ref
   const bottomSheetRef = useRef<BottomSheet>(null);
   const handleClosePress = () => bottomSheetRef?.current?.close();
   const handleExpandPress = () => bottomSheetRef?.current?.expand();
+
   // variables
   const snapPoints = useMemo(() => ['92%'], []);
 
-  useEffect(() => {
-    handleClosePress();
-  }, [pathname]);
+  const animationConfigs = useBottomSheetSpringConfigs({
+    damping: 80,
+    overshootClamping: true,
+    restDisplacementThreshold: 0.1,
+    restSpeedThreshold: 0.1,
+    stiffness: 200,
+  });
 
   const addMediaction = ({ id, name, amount, substance, time, isDone }: Medication) => {
     const newMedication = {
@@ -49,6 +54,7 @@ const MedicationScreen = () => {
     };
     setMedicationList((prev) => [newMedication, ...prev]);
   };
+
   return (
     <SafeAreaView className="flex-1 items-center justify-center bg-background">
       <Text className="mt-12 font-bold text-2xl text-accent">Przypomnienia o lekach</Text>
@@ -68,13 +74,12 @@ const MedicationScreen = () => {
             substance={item.substance}
             time={item.time}
             isDone
-            onPress={() => console.log(pathname)}
           />
         )}
         keyExtractor={(item) => item.id}
       />
 
-      {/* <Button
+      <Button
         onPress={() =>
           addMediaction({
             id: 'test',
@@ -87,7 +92,8 @@ const MedicationScreen = () => {
         }
       >
         Add test
-      </Button> */}
+      </Button>
+
       <FloatingActionButton className="absolute bottom-2" onPress={handleExpandPress} />
 
       <BottomSheet
@@ -95,6 +101,7 @@ const MedicationScreen = () => {
         index={-1}
         snapPoints={snapPoints}
         onClose={handleClosePress}
+        animationConfigs={animationConfigs}
         enablePanDownToClose
       >
         <View className="flex-1 items-center">
