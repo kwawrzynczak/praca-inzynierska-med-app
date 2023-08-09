@@ -1,5 +1,6 @@
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, View } from 'react-native';
+import { Text } from '@components/Text';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { type Medication } from '@types';
 
@@ -20,8 +21,8 @@ export const MedicationListElement = ({
       <View>
         <Text className="font-semibold text-lg">{name}</Text>
         <View className="flex-row">
-          <Text className="text-secondary">{amount} tab,</Text>
-          <Text className="text-secondary">{substance}mg</Text>
+          <Text>{amount} tab,</Text>
+          <Text>{substance}mg</Text>
         </View>
       </View>
 

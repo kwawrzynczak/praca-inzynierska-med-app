@@ -55,10 +55,9 @@ const MedicationScreen = () => {
 
   return (
     <SafeAreaView className="flex-1 items-center justify-center bg-background">
-      <Text className="mt-12 font-bold text-2xl text-accent">Przypomnienia o lekach</Text>
-      {/* <Text className="mt-4 text-center font-medium text-lg text-secondary">
-        Zaloguj się, aby móc zarządzać swoją dokumentacją medyczną.
-      </Text> */}
+      <Text variant="title" className="mt-12">
+        Przypomnienia o lekach
+      </Text>
       <FlatList
         contentContainerStyle={{ alignItems: 'center' }}
         className="mt-5 h-full w-screen border-red-500"
@@ -94,6 +93,7 @@ const MedicationScreen = () => {
 
       <FloatingActionButton className="absolute bottom-2" onPress={handleExpandPress} />
 
+      {/* BottomSheet component */}
       <BottomSheet
         ref={bottomSheetRef}
         index={-1}

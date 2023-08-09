@@ -22,11 +22,11 @@ export const MedicationForm = () => {
           secureTextEntry
         />
         <View className="flex-row justify-center">
-          <Text className="font-medium text-secondary">Nie pamiętasz hasła? </Text>
+          <Text className="font-medium">Nie pamiętasz hasła? </Text>
         </View>
       </View>
 
-      <Button>Zaloguj się</Button>
+      <Button>Dodaj przypomnienie</Button>
     </View>
   );
 };

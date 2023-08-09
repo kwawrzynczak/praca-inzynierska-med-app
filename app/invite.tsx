@@ -5,8 +5,10 @@ import { Link } from 'expo-router';
 const RegisterScreen = () => {
   return (
     <SafeAreaView className="flex-1 items-center justify-center bg-background">
-      <Text className="mt-12 font-bold text-2xl text-accent">Znajdź podopiecznego</Text>
-      <Text className="mt-4 text-center font-medium text-lg text-secondary">
+      <Text variant="title" className="mt-12">
+        Znajdź podopiecznego
+      </Text>
+      <Text variant="subtitle" className="mt-4 text-center">
         Wyślij zaproszenie do podopiecznego, aby móc zarządzać jego dokumentacją medyczną.
       </Text>
       <View className="h-1/2">
@@ -19,7 +21,7 @@ const RegisterScreen = () => {
         />
       </View>
       <Link href="/invite" asChild>
-        <Button className="active:bg-red-500">Wyślij zaproszenie</Button>
+        <Button>Wyślij zaproszenie</Button>
       </Link>
     </SafeAreaView>
   );
