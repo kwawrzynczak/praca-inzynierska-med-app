@@ -7,10 +7,10 @@
 - wysyłanie zaproszenia do podopiecznego
 - powiadomienia
 
-## Leki TODO:
+## Leki TODO: Zostawiamy do czasu zrobienia backu :)
 
 - resetowanie stanu BottomSheet po opuszczeniu ekranu Medication
-- podział na poranek, południe, wieczór, etc.
+- podział na poranek, południe, wieczór, etc. ==> SectionList component
 - info o leku po naciśnięciu
 - kalendarz + wybór daty?
 - formularz dodawania lekarstwa

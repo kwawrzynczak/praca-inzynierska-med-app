@@ -1,24 +1,35 @@
-import { FlatList, SafeAreaView, View } from 'react-native';
+import { Fragment, useState } from 'react';
+import { FlatList, Pressable, SafeAreaView, View } from 'react-native';
 import { Button, Text } from '@components';
 import { Link } from 'expo-router';
+import { twMerge } from 'tailwind-merge';
 
-const DATA = [{ name: '1' }, { name: '2' }, { name: '3' }, { name: '4' }, { name: '5' }, { name: '6' }];
+const sectionButtons = [
+  { id: 'active', text: 'Nadchodzące' },
+  { id: 'inactive', text: 'Zakończone' },
+];
 
 const CalendarScreen = () => {
-  return (
-    <SafeAreaView className="flex-1 items-center justify-center bg-background">
-      <Text>Kalendarz</Text>
+  const [selectedId, setSelectedId] = useState('active');
 
-      <FlatList
-        horizontal
-        data={DATA}
-        renderItem={({ item }) => (
-          <View className="mx-3 h-12 w-12 items-center justify-center rounded-full bg-accent">
-            <Text className="font-semibold text-xl text-white">{item.name}</Text>
-          </View>
-        )}
-        keyExtractor={(item) => item.name}
-      />
+  return (
+    <SafeAreaView className="flex-1 items-center bg-background">
+      <View className="mt-4 flex-row items-center justify-center rounded-xl bg-accent p-1.5">
+        {sectionButtons.map(({ id, text }) => (
+          <Fragment key={id}>
+            <Pressable
+              className={twMerge('w-44 items-center bg-accent py-2 rounded-lg', selectedId === id && 'bg-white')}
+              onPress={() => setSelectedId(id)}
+            >
+              <Text className={twMerge('font-medium text-base text-white', selectedId === id && 'text-accent')}>
+                {text}
+              </Text>
+            </Pressable>
+          </Fragment>
+        ))}
+      </View>
+      {selectedId === 'active' && <Text>Nadchodzące</Text>}
+      {selectedId === 'inactive' && <Text>Zakończone</Text>}
     </SafeAreaView>
   );
 };

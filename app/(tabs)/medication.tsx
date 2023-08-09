@@ -4,6 +4,7 @@ import { Button, FloatingActionButton, MedicationForm, MedicationListElement, Te
 import BottomSheet, { useBottomSheetSpringConfigs } from '@gorhom/bottom-sheet';
 import { Medication } from '@types';
 
+const DATA = [{ name: '1' }, { name: '2' }, { name: '3' }, { name: '4' }, { name: '5' }, { name: '6' }];
 const initialMedicationList = [
   {
     id: '1',
@@ -29,9 +30,8 @@ const MedicationScreen = () => {
   const bottomSheetRef = useRef<BottomSheet>(null);
   const handleClosePress = () => bottomSheetRef?.current?.close();
   const handleExpandPress = () => bottomSheetRef?.current?.expand();
-
   // variables
-  const snapPoints = useMemo(() => ['92%'], []);
+  const snapPoints = useMemo(() => ['100%'], []);
 
   const animationConfigs = useBottomSheetSpringConfigs({
     damping: 80,
@@ -55,9 +55,22 @@ const MedicationScreen = () => {
 
   return (
     <SafeAreaView className="flex-1 items-center justify-center bg-background">
+      {/* Kalendarz */}
+      <FlatList
+        horizontal
+        data={DATA}
+        renderItem={({ item }) => (
+          <View className="mx-3 h-12 w-12 items-center justify-center rounded-full bg-accent">
+            <Text className="font-semibold text-xl text-white">{item.name}</Text>
+          </View>
+        )}
+        keyExtractor={(item) => item.name}
+      />
+
+      {/* SectionList */}
       <FlatList
         contentContainerStyle={{ alignItems: 'center' }}
-        className="mt-5 h-full w-screen border-red-500"
+        className="mt-5 h-full w-screen"
         data={medicationList}
         renderItem={({ item }) => (
           <MedicationListElement
@@ -73,7 +86,7 @@ const MedicationScreen = () => {
         keyExtractor={(item) => item.id}
       />
 
-      <Button
+      {/* <Button
         onPress={() =>
           addMediaction({
             id: 'test',
@@ -86,7 +99,7 @@ const MedicationScreen = () => {
         }
       >
         Add test
-      </Button>
+      </Button> */}
 
       <FloatingActionButton className="absolute bottom-2" onPress={handleExpandPress} />
 
