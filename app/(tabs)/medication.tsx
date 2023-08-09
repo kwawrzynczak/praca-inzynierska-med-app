@@ -1,10 +1,8 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import { FlatList, SafeAreaView, View } from 'react-native';
-import { Easing } from 'react-native-reanimated';
-import { Button, FloatingActionButton, MedicationListElement, Text } from '@components';
-import BottomSheet, { useBottomSheetSpringConfigs, useBottomSheetTimingConfigs } from '@gorhom/bottom-sheet';
+import { Button, FloatingActionButton, MedicationForm, MedicationListElement, Text } from '@components';
+import BottomSheet, { useBottomSheetSpringConfigs } from '@gorhom/bottom-sheet';
 import { Medication } from '@types';
-import { Tabs, usePathname, useRouter, useSegments } from 'expo-router';
 
 const initialMedicationList = [
   {
@@ -105,7 +103,7 @@ const MedicationScreen = () => {
         enablePanDownToClose
       >
         <View className="flex-1 items-center">
-          <Text>Awesome 🎉</Text>
+          <MedicationForm />
         </View>
       </BottomSheet>
     </SafeAreaView>
