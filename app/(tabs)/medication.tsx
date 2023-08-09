@@ -55,9 +55,6 @@ const MedicationScreen = () => {
 
   return (
     <SafeAreaView className="flex-1 items-center justify-center bg-background">
-      <Text variant="title" className="mt-12">
-        Przypomnienia o lekach
-      </Text>
       <FlatList
         contentContainerStyle={{ alignItems: 'center' }}
         className="mt-5 h-full w-screen border-red-500"
