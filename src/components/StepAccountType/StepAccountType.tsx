@@ -2,7 +2,7 @@ import { Fragment, useState } from 'react';
 import { Pressable, View } from 'react-native';
 import { Text } from '@components/Text';
 import { CaretakerImage, PatientImage } from '@images';
-import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 const roleButtons = [
   {
@@ -24,7 +24,7 @@ export const StepAccountType = () => {
       {roleButtons.map(({ id, text, image }) => (
         <Fragment key={id}>
           <Pressable
-            className={clsx(
+            className={twMerge(
               'h-52 w-52 justify-center rounded-full bg-accent/60',
               selectedId === id && 'scale-105 bg-blue-600/60',
             )}
