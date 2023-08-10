@@ -1,6 +1,6 @@
 import { Fragment, useState } from 'react';
 import { FlatList, Pressable, SafeAreaView, View } from 'react-native';
-import { Button, Text } from '@components';
+import { Button, CalendarListElement, Text } from '@components';
 import { Link } from 'expo-router';
 import { twMerge } from 'tailwind-merge';
 
@@ -28,7 +28,12 @@ const CalendarScreen = () => {
           </Fragment>
         ))}
       </View>
-      {selectedId === 'active' && <Text>Nadchodzące</Text>}
+      {selectedId === 'active' && (
+        <>
+          <CalendarListElement />
+          <CalendarListElement />
+        </>
+      )}
       {selectedId === 'inactive' && <Text>Zakończone</Text>}
     </SafeAreaView>
   );

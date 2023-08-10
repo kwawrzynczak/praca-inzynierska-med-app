@@ -10,6 +10,7 @@ const TabsLayout = () => (
         tabBarLabel: 'Leki',
         headerTitle: 'Leki',
         tabBarIcon: ({ color, size }) => <FontAwesome5 name="pills" size={size} color={color} />,
+        unmountOnBlur: true,
       }}
     />
     <Tabs.Screen
