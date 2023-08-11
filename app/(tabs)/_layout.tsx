@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unstable-nested-components */
+import React from 'react';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 
