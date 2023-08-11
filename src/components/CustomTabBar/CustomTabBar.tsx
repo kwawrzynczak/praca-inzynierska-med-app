@@ -1,6 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import { Animated, Pressable, SafeAreaView, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Text } from '@components/Text';
+import { useAnimation } from '@hooks';
 import { createMaterialTopTabNavigator, MaterialTopTabBarProps } from '@react-navigation/material-top-tabs';
 import { twMerge } from 'tailwind-merge';
 
@@ -26,12 +27,6 @@ export const CustomTabBar = ({ state, descriptors, navigation, position }: Mater
             }
           };
 
-          // const inputRange = state.routes.map((_, i) => i);
-          // const opacity = position.interpolate({
-          //   inputRange,
-          //   outputRange: inputRange.map((i) => (i === index ? 1 : 0)),
-          // });
-
           return (
             <Pressable
               className={twMerge(
@@ -45,7 +40,7 @@ export const CustomTabBar = ({ state, descriptors, navigation, position }: Mater
               testID={options.tabBarTestID}
               onPress={onPress}
             >
-              <Text className={twMerge('text-white font-medium', isFocused && 'text-accent')}>{label}</Text>
+              <Text className={twMerge('text-white', isFocused && 'text-accent font-medium')}>{label}</Text>
             </Pressable>
           );
         })}
