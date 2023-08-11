@@ -6,7 +6,7 @@ import { twMerge } from 'tailwind-merge';
 
 const ActiveScreen = () => {
   return (
-    <View>
+    <View className="flex-1 bg-background">
       <Text>active</Text>
     </View>
   );

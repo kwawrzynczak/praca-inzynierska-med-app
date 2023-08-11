@@ -17,8 +17,8 @@ const TabsLayout = () => (
     <Tabs.Screen
       name="calendar"
       options={{
+        headerShown: false,
         tabBarLabel: 'Kalendarz',
-        headerTitle: 'Kalendarz',
         tabBarIcon: ({ color, size }) => <FontAwesome5 name="calendar-alt" size={size} color={color} />,
       }}
     />
