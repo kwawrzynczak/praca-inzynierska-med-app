@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { Text } from '@components/Text';
 
-export const CalendarListElement = () => {
+export const VisitsListElement = () => {
   return (
     <View className="rounded bg-white p-2 shadow">
       <Text variant="subtitle">Kardiolog</Text>
