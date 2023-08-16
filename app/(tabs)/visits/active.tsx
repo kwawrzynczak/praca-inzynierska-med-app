@@ -36,7 +36,19 @@ const ActiveScreen = () => {
         contentContainerStyle={{ padding: 20, gap: 20 }}
         columnWrapperStyle={{ gap: 20 }}
         data={elements}
-        renderItem={({ item }) => <VisitsListElement key={item.id} id={item.id} />}
+        renderItem={({ item }) => (
+          <Link
+            asChild
+            href={{
+              pathname: '/[id]',
+              params: { id: item.id },
+            }}
+          >
+            <Pressable>
+              <VisitsListElement key={item.id} id={`${item.id}`} />
+            </Pressable>
+          </Link>
+        )}
       />
     </View>
   );

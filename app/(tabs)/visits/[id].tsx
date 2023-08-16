@@ -5,10 +5,6 @@ import { Button, Text, VisitsListElement } from '@components';
 import { Link, useLocalSearchParams } from 'expo-router';
 import { twMerge } from 'tailwind-merge';
 
-interface VisitProps {
-  id: number;
-}
-
 const VisitScreen = () => {
   const { id } = useLocalSearchParams();
   return (
