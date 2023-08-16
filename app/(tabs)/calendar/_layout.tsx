@@ -11,7 +11,7 @@ const Tab = createMaterialTopTabNavigator();
 const CalendarLayout = () => {
   return (
     <Tab.Navigator
-      screenOptions={{ animationEnabled: false, swipeEnabled: false }}
+      screenOptions={{ animationEnabled: false, swipeEnabled: false, tabBarPressOpacity: 0 }}
       tabBar={(props) => <CustomTabBar {...props} />}
     >
       <Tab.Screen name="Nadchodzące" component={ActiveScreen} />
