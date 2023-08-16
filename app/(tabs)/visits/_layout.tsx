@@ -8,7 +8,7 @@ import InactiveScreen from './inactive';
 
 const Tab = createMaterialTopTabNavigator();
 
-const CalendarLayout = () => {
+const VisitsLayout = () => {
   return (
     <Tab.Navigator
       screenOptions={{ animationEnabled: false, swipeEnabled: false, tabBarPressOpacity: 0 }}
@@ -20,4 +20,4 @@ const CalendarLayout = () => {
   );
 };
 
-export default CalendarLayout;
+export default VisitsLayout;

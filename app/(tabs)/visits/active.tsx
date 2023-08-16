@@ -36,7 +36,7 @@ const ActiveScreen = () => {
         contentContainerStyle={{ padding: 20, gap: 20 }}
         columnWrapperStyle={{ gap: 20 }}
         data={elements}
-        renderItem={({ item }) => <VisitsListElement key={item.id} />}
+        renderItem={({ item }) => <VisitsListElement key={item.id} id={item.id} />}
       />
     </View>
   );

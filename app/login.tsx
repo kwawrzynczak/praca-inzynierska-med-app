@@ -5,7 +5,7 @@ import { Link, useRouter } from 'expo-router';
 const LoginScreen = () => {
   const router = useRouter();
   const handleLogin = () => {
-    router.replace('calendar');
+    router.replace('visits');
   };
   return (
     <SafeAreaView className="flex-1 items-center bg-background">

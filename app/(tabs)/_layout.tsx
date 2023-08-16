@@ -15,7 +15,7 @@ const TabsLayout = () => (
       }}
     />
     <Tabs.Screen
-      name="calendar"
+      name="visits"
       options={{
         headerShown: false,
         tabBarLabel: 'Kalendarz',
