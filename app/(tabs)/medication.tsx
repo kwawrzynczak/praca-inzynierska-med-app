@@ -101,7 +101,7 @@ const MedicationScreen = () => {
         Add test
       </Button> */}
 
-      <FAB type="add" className="absolute bottom-2" onPress={handleExpandPress} />
+      <FAB type="add" className="absolute bottom-6 right-6" onPress={handleExpandPress} />
 
       {/* BottomSheet component */}
       <BottomSheet
