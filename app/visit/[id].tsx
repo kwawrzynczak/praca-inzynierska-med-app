@@ -1,18 +1,23 @@
 /* eslint-disable react/no-unstable-nested-components */
-import { Fragment, useState } from 'react';
-import { FlatList, Pressable, SafeAreaView, View } from 'react-native';
-import { Button, FAB, Text, VisitsListElement } from '@components';
-import { Link, useLocalSearchParams } from 'expo-router';
-import { twMerge } from 'tailwind-merge';
+import { View } from 'react-native';
+import { FAB, Text } from '@components';
+import { useLocalSearchParams } from 'expo-router';
 
 const VisitScreen = () => {
   const { id } = useLocalSearchParams();
   return (
-    <View className="flex-1 bg-background">
-      <FAB type="edit" />
-      <FAB type="delete" />
+    <View className="flex-1 bg-background p-4">
+      <View className="absolute right-4 top-4 flex-row gap-4">
+        <FAB type="edit" />
+        <FAB type="delete" />
+      </View>
+
       <Text variant="title">Kardiolog</Text>
       <Text variant="subtitle">lek. med. Jan Nowak</Text>
+      <Text>Notatki do wizyty: </Text>
+      <View>
+        <Text className="rounded-lg bg-white p-2">Pić dużo wody, skierowanie na usg, konsultacje po badaniu usg</Text>
+      </View>
     </View>
   );
 };

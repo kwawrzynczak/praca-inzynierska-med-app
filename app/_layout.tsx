@@ -32,8 +32,9 @@ const StackLayout = () => {
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen name="login" options={{ headerShown: false }} />
-      <Stack.Screen name="register" options={{ headerShown: true, title: 'Rejestracja' }} />
+      <Stack.Screen name="register" options={{ title: 'Rejestracja' }} />
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen name="visit/[id]" options={{ title: 'Powrót' }} />
     </Stack>
   );
 };

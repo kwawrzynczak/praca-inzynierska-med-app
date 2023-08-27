@@ -13,7 +13,7 @@ export const Text = ({ className, variant, ...rest }: StyledTextProps) => (
     className={twMerge(
       'font-normal text-secondary',
       variant === 'title' && 'font-bold text-2xl text-accent',
-      variant === 'subtitle' && 'font-medium text-lg text-secondary',
+      variant === 'subtitle' && 'font-medium text-lg',
       className,
     )}
     {...rest}
