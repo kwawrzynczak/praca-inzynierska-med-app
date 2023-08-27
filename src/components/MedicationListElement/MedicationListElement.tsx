@@ -21,21 +21,9 @@ export const MedicationListElement = ({
       <View>
         <Text className="font-semibold text-lg">{name}</Text>
         <View className="flex-row">
-          <Text>{amount} tab,</Text>
+          <Text>{amount} tab, </Text>
           <Text>{substance}mg</Text>
         </View>
-      </View>
-
-      <View className="flex-row items-center gap-1">
-        <FontAwesome5 name="clock" size={16} />
-        <Text>{time}</Text>
-        <Pressable onPress={onPress}>
-          {isDone ? (
-            <FontAwesome5 solid name="check-circle" size={32} color="#60a5fa" />
-          ) : (
-            <FontAwesome5 name="circle" size={32} color="#60a5fa" />
-          )}
-        </Pressable>
       </View>
     </View>
   );

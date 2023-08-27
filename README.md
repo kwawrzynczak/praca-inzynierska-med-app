@@ -6,6 +6,7 @@
 - resertowanie hasła
 - wysyłanie zaproszenia do podopiecznego
 - powiadomienia
+- modal
 
 ## Leki TODO: Zostawiamy do czasu zrobienia backu :)
 
@@ -18,9 +19,9 @@
 ## Kalendarz TODO:
 
 - ~~dynamiczne routowanie do podstrony z informacjami o wizycie~~
-- ekran zakończonych wizyt
+- ~~ekran zakończonych wizyt~~
 - stworzenie layoutu do VisitScreen
-- możliwość edytowania informacji o wizytach
+- ~~możliwość edytowania informacji o wizytach~~
 - usuwanie wizyty
 
 ## Ustawienia TODO:

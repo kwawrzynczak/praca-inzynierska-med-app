@@ -15,7 +15,7 @@ const VisitScreen = () => {
       <TextInput className="font-medium text-lg text-secondary" editable={editable}>
         lek. med. Jan Nowak
       </TextInput>
-      <Text className="my-2">Notatki do wizyty: </Text>
+      <Text className="mb-2 mt-8 text-base">Notatki do wizyty: </Text>
       <TextInput
         className="rounded-lg border border-white bg-white px-4 py-3 focus:border-accent"
         multiline

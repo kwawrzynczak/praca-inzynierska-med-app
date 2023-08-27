@@ -56,7 +56,11 @@ const MedicationScreen = () => {
   return (
     <SafeAreaView className="flex-1 items-center justify-center bg-background">
       {/* Kalendarz */}
+      <Text variant="subtitle">Styczeń</Text>
       <FlatList
+        className="h-16 pt-2"
+        contentContainerStyle={{ alignItems: 'center' }}
+        showsHorizontalScrollIndicator={false}
         horizontal
         data={DATA}
         renderItem={({ item }) => (
@@ -112,8 +116,8 @@ const MedicationScreen = () => {
         animationConfigs={animationConfigs}
         enablePanDownToClose
       >
-        <View className="flex-1 items-center">
-          <MedicationForm />
+        <View className="flex-1 items-center bg-background pt-4">
+          <MedicationForm onPress={handleClosePress} />
         </View>
       </BottomSheet>
     </SafeAreaView>

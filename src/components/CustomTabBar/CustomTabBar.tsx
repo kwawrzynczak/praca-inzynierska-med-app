@@ -8,7 +8,7 @@ import { twMerge } from 'tailwind-merge';
 export const CustomTabBar = ({ state, descriptors, navigation, position }: MaterialTopTabBarProps) => {
   return (
     <SafeAreaView className="bg-background">
-      <View className="mt-2 flex-row items-center justify-center self-center rounded-xl bg-accent p-1">
+      <View className="mt-6 flex-row items-center justify-center self-center rounded-xl bg-accent p-1">
         {state.routes.map((route, index) => {
           const { options } = descriptors[route.key];
           const label = route.name;
