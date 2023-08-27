@@ -5,27 +5,7 @@ import { Button, Text, VisitsListElement } from '@components';
 import { Link } from 'expo-router';
 import { twMerge } from 'tailwind-merge';
 
-const elements = [
-  { id: 1 },
-  { id: 2 },
-  { id: 3 },
-  { id: 4 },
-  { id: 5 },
-  { id: 6 },
-  { id: 7 },
-  { id: 2 },
-  { id: 3 },
-  { id: 4 },
-  { id: 5 },
-  { id: 6 },
-  { id: 7 },
-  { id: 2 },
-  { id: 3 },
-  { id: 4 },
-  { id: 5 },
-  { id: 6 },
-  { id: 7 },
-];
+const elements = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }, { id: 6 }, { id: 7 }];
 const ActiveScreen = () => {
   return (
     <View className="flex-1 items-center bg-background">
@@ -40,7 +20,7 @@ const ActiveScreen = () => {
           <Link
             asChild
             href={{
-              pathname: '/[id]',
+              pathname: 'doctor/[id]',
               params: { id: item.id },
             }}
           >
