@@ -1,17 +1,20 @@
 /* eslint-disable react/no-unstable-nested-components */
 import { Fragment, useState } from 'react';
 import { FlatList, Pressable, SafeAreaView, View } from 'react-native';
-import { Button, Text, VisitsListElement } from '@components';
+import { Button, FAB, Text, VisitsListElement } from '@components';
 import { Link, useLocalSearchParams } from 'expo-router';
 import { twMerge } from 'tailwind-merge';
 
-const DoctorScreen = () => {
+const VisitScreen = () => {
   const { id } = useLocalSearchParams();
   return (
-    <View className="flex-1 items-center bg-background">
-      <Text>{id}</Text>
+    <View className="flex-1 bg-background">
+      <FAB type="edit" />
+      <FAB type="delete" />
+      <Text variant="title">Kardiolog</Text>
+      <Text variant="subtitle">lek. med. Jan Nowak</Text>
     </View>
   );
 };
 
-export default DoctorScreen;
+export default VisitScreen;

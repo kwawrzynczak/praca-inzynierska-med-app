@@ -20,7 +20,7 @@ const ActiveScreen = () => {
           <Link
             asChild
             href={{
-              pathname: 'doctor/[id]',
+              pathname: 'visit/[id]',
               params: { id: item.id },
             }}
           >

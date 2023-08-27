@@ -1,6 +1,6 @@
 import React, { useMemo, useRef, useState } from 'react';
 import { FlatList, SafeAreaView, View } from 'react-native';
-import { Button, FloatingActionButton, MedicationForm, MedicationListElement, Text } from '@components';
+import { Button, FAB, MedicationForm, MedicationListElement, Text } from '@components';
 import BottomSheet, { useBottomSheetSpringConfigs } from '@gorhom/bottom-sheet';
 import { Medication } from '@types';
 
@@ -101,7 +101,7 @@ const MedicationScreen = () => {
         Add test
       </Button> */}
 
-      <FloatingActionButton className="absolute bottom-2" onPress={handleExpandPress} />
+      <FAB type="add" className="absolute bottom-2" onPress={handleExpandPress} />
 
       {/* BottomSheet component */}
       <BottomSheet
