@@ -4,7 +4,14 @@ import { Button, FAB, MedicationForm, MedicationListElement, Text } from '@compo
 import BottomSheet, { useBottomSheetSpringConfigs } from '@gorhom/bottom-sheet';
 import { Medication } from '@types';
 
-const DATA = [{ name: '1' }, { name: '2' }, { name: '3' }, { name: '4' }, { name: '5' }, { name: '6' }];
+const DATA = [
+  { name: 'pon', day: 1 },
+  { name: 'wt', day: 2 },
+  { name: 'śr', day: 3 },
+  { name: 'czw', day: 4 },
+  { name: 'pt', day: 5 },
+  { name: 'sob', day: 6 },
+];
 const initialMedicationList = [
   {
     id: '1',
@@ -56,25 +63,29 @@ const MedicationScreen = () => {
   return (
     <SafeAreaView className="flex-1 items-center justify-center bg-background">
       {/* Kalendarz */}
-      <Text variant="subtitle">Styczeń</Text>
+      <Text variant="subtitle">styczeń 2024</Text>
       <FlatList
-        className="h-16 pt-2"
+        className="h-24 pt-2"
         contentContainerStyle={{ alignItems: 'center' }}
         showsHorizontalScrollIndicator={false}
         horizontal
         data={DATA}
         renderItem={({ item }) => (
-          <View className="mx-3 h-12 w-12 items-center justify-center rounded-full bg-accent">
-            <Text className="font-semibold text-xl text-white">{item.name}</Text>
+          <View className="mx-3 h-16 w-12 items-center justify-center rounded-lg bg-accent">
+            <Text className="font-semibold text-white">{item.name}</Text>
+            <Text className="font-semibold text-xl text-white">{item.day}</Text>
           </View>
         )}
         keyExtractor={(item) => item.name}
       />
+      <Text variant="subtitle" className="my-2">
+        poniedziałek, 1 stycznia
+      </Text>
 
       {/* SectionList */}
       <FlatList
         contentContainerStyle={{ alignItems: 'center' }}
-        className="mt-5 h-full w-screen"
+        className="h-full w-screen"
         data={medicationList}
         renderItem={({ item }) => (
           <MedicationListElement

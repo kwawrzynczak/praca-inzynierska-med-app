@@ -35,7 +35,7 @@ const TabsLayout = () => (
       options={{
         tabBarLabel: 'Ustawienia',
         headerTitle: 'Ustawienia',
-        tabBarIcon: ({ color, size }) => <FontAwesome5 name="user-cog" size={size} color={color} />,
+        tabBarIcon: ({ color, size }) => <FontAwesome5 name="cog" size={size} color={color} />,
       }}
     />
   </Tabs>
