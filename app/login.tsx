@@ -32,7 +32,7 @@ const LoginScreen = () => {
             secureTextEntry
           />
           <View className="flex-row justify-center">
-            <Text className="font-medium">Nie pamiętasz hasła? </Text>
+            <Text className="font-normal">Nie pamiętasz hasła? </Text>
             <Link href="/" asChild>
               <Pressable>
                 <Text className="font-bold text-accent underline">Zresetuj hasło</Text>
@@ -45,7 +45,7 @@ const LoginScreen = () => {
           Zaloguj się
         </Button>
         <View className="mt-3 flex-row justify-center">
-          <Text className="font-medium">Nie masz konta? </Text>
+          <Text className="font-normal">Nie masz konta? </Text>
           <Link href="/register" asChild>
             <Pressable>
               <Text className="font-bold text-accent underline">Zarejestruj się</Text>

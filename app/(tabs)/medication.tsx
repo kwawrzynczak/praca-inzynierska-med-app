@@ -72,7 +72,7 @@ const MedicationScreen = () => {
         data={DATA}
         renderItem={({ item }) => (
           <View className="mx-3 h-16 w-12 items-center justify-center rounded-lg bg-accent">
-            <Text className="font-semibold text-white">{item.name}</Text>
+            <Text className="font-bold text-white">{item.name}</Text>
             <Text className="font-semibold text-xl text-white">{item.day}</Text>
           </View>
         )}

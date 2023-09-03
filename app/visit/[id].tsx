@@ -12,7 +12,7 @@ const VisitScreen = () => {
       <TextInput className="font-bold text-2xl text-accent" editable={editable}>
         Kardiolog
       </TextInput>
-      <TextInput className="font-medium text-lg text-secondary" editable={editable}>
+      <TextInput className="font-normal text-lg text-secondary" editable={editable}>
         lek. med. Jan Nowak
       </TextInput>
       <Text className="mb-2 mt-8 text-base">Notatki do wizyty: </Text>

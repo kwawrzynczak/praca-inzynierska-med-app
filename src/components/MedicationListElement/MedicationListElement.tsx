@@ -19,7 +19,7 @@ export const MedicationListElement = ({
   return (
     <View className="mb-3 w-80 flex-row items-center justify-between rounded-2xl bg-white px-4 py-3">
       <View>
-        <Text className="font-semibold text-lg">{name}</Text>
+        <Text className="font-bold text-lg">{name}</Text>
         <View className="flex-row">
           <Text>{amount} tab, </Text>
           <Text>{substance}mg</Text>

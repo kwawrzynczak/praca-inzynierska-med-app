@@ -40,7 +40,7 @@ export const CustomTabBar = ({ state, descriptors, navigation, position }: Mater
               testID={options.tabBarTestID}
               onPress={onPress}
             >
-              <Text className={twMerge('text-white', isFocused && 'text-accent font-medium')}>{label}</Text>
+              <Text className={twMerge('text-white font-bold', isFocused && 'text-accent')}>{label}</Text>
             </Pressable>
           );
         })}

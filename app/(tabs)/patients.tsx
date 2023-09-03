@@ -27,7 +27,7 @@ const PatientsScreen = () => {
           </View>
           {selected && (
             <View className="absolute left-0 top-0 z-0 h-32 w-36 items-center justify-center rounded-lg bg-accent">
-              <Text className="font-semibold text-white">Wybierz</Text>
+              <Text className="font-bold text-white">Wybierz</Text>
             </View>
           )}
         </Pressable>

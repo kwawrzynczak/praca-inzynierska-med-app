@@ -36,7 +36,7 @@ export const Button = ({ children, className, variant = 'primary', ...rest }: St
       />
       <Text
         className={twMerge(
-          'font-semibold tracking-wider',
+          'font-bold tracking-wider',
           variant === 'primary' && 'text-white',
           variant === 'secondary' && 'text-secondary',
         )}

@@ -32,7 +32,7 @@ export const StepAccountType = () => {
           >
             {image}
           </Pressable>
-          <Text className="mb-6 mt-4 text-center font-medium text-lg">{text}</Text>
+          <Text className="mb-6 mt-4 text-center font-normal text-lg">{text}</Text>
         </Fragment>
       ))}
     </View>

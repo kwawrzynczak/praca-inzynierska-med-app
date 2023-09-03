@@ -12,8 +12,8 @@ export const Text = ({ className, variant, ...rest }: StyledTextProps) => (
   <ReactNativeText
     className={twMerge(
       'font-normal text-secondary',
-      variant === 'title' && 'font-bold text-2xl text-accent',
-      variant === 'subtitle' && 'font-medium text-lg',
+      variant === 'title' && 'font-extrabold text-2xl text-accent',
+      variant === 'subtitle' && 'font-semibold text-lg',
       className,
     )}
     {...rest}

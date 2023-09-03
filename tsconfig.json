@@ -1,22 +1,46 @@
 {
-  "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "module": "ES2020",
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@components": ["src/components"],
-      "@components/*": ["src/components/*"],
-      "@screens": ["src/screens"],
-      "@screens/*": ["src/screens/*"],
-      "@hooks": ["src/hooks"],
-      "@hooks/*": ["src/hooks/*"],
-      "@types": ["src/types"],
-      "@types/*": ["src/types/*"],
-      "@templates": ["src/templates"],
-      "@templates/*": ["src/templates/*"],
-      "@images": ["src/images"],
-      "@images/*": ["src/images/*"]
+      "@components": [
+        "src/components"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@screens": [
+        "src/screens"
+      ],
+      "@screens/*": [
+        "src/screens/*"
+      ],
+      "@hooks": [
+        "src/hooks"
+      ],
+      "@hooks/*": [
+        "src/hooks/*"
+      ],
+      "@types": [
+        "src/types"
+      ],
+      "@types/*": [
+        "src/types/*"
+      ],
+      "@templates": [
+        "src/templates"
+      ],
+      "@templates/*": [
+        "src/templates/*"
+      ],
+      "@images": [
+        "src/images"
+      ],
+      "@images/*": [
+        "src/images/*"
+      ]
     }
-  }
+  },
+  "extends": "expo/tsconfig.base"
 }
