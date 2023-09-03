@@ -6,15 +6,13 @@ module.exports = {
     fontWeight: {},
     extend: {
       fontFamily: {
-        thin: 'Poppins_100Thin',
-        extralight: 'Poppins_200ExtraLight',
-        light: 'Poppins_300Light',
-        normal: 'Poppins_400Regular',
-        medium: 'Poppins_500Medium',
-        semibold: 'Poppins_600SemiBold',
-        bold: 'Poppins_700Bold',
-        extrabold: 'Poppins_800ExtraBold',
-        black: 'Poppins_900Black',
+        extralight: 'NunitoSans_200ExtraLight',
+        light: 'NunitoSans_300Light',
+        normal: 'NunitoSans_400Regular',
+        semibold: 'NunitoSans_600SemiBold',
+        bold: 'NunitoSans_700Bold',
+        extrabold: 'NunitoSans_800ExtraBold',
+        black: 'NunitoSans_900Black',
       },
       colors: {
         primary: colors.stone[200],
