@@ -1,9 +1,11 @@
 import React, { useMemo, useRef, useState } from 'react';
 import { FlatList, Pressable, SafeAreaView, View } from 'react-native';
+import CalendarStrip from 'react-native-calendar-strip';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { Button, Calendar, FAB, MedicationForm, MedicationListElement, Text } from '@components';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Medication } from '@types';
+import moment from 'moment';
 
 const initialMedicationList = [
   {
@@ -25,8 +27,11 @@ const initialMedicationList = [
 ];
 
 const MedicationScreen = () => {
+  const today = moment();
+
   const [medicationList, setMedicationList] = useState(initialMedicationList);
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(today);
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -39,6 +44,7 @@ const MedicationScreen = () => {
   const handleConfirm = (date: Date) => {
     console.warn('A date has been picked: ', date);
     hideDatePicker();
+    setSelectedDate(moment(date));
   };
 
   // // ref
@@ -76,7 +82,29 @@ const MedicationScreen = () => {
         </Pressable>
       </View>
 
-      <Calendar />
+      <View className="container">
+        <CalendarStrip
+          scrollable
+          daySelectionAnimation={{ type: 'background', duration: 200, highlightColor: '#60a5fa' }}
+          calendarHeaderStyle={{ color: '#666', fontFamily: 'NunitoSans_700Bold' }}
+          dateNameStyle={{ fontFamily: 'NunitoSans_600SemiBold' }}
+          dateNumberStyle={{ fontFamily: 'NunitoSans_700Bold' }}
+          highlightDateNameStyle={{ color: 'white', fontFamily: 'NunitoSans_600SemiBold' }}
+          highlightDateNumberStyle={{ color: 'white', fontFamily: 'NunitoSans_700Bold' }}
+          style={{ height: 80 }}
+          iconLeft={null}
+          iconRight={null}
+          onDateSelected={(date) => {
+            setSelectedDate(date);
+          }}
+          startingDate={moment().subtract(3, 'days')}
+          selectedDate={selectedDate}
+        />
+        {selectedDate.format('LL') === today.format('LL') && (
+          <Text className="my-2 text-center font-bold">Dzisiaj</Text>
+        )}
+        <Text className="my-2 text-center font-bold">{selectedDate.format('LL')}</Text>
+      </View>
 
       {/* SectionList */}
       <FlatList
