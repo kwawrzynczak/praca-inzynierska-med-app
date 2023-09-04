@@ -1,7 +1,8 @@
 import React, { useMemo, useRef, useState } from 'react';
-import { FlatList, SafeAreaView, View } from 'react-native';
+import { FlatList, Pressable, SafeAreaView, View } from 'react-native';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { Button, Calendar, FAB, MedicationForm, MedicationListElement, Text } from '@components';
-import BottomSheet, { useBottomSheetSpringConfigs } from '@gorhom/bottom-sheet';
+import { FontAwesome5 } from '@expo/vector-icons';
 import { Medication } from '@types';
 
 const initialMedicationList = [
@@ -25,20 +26,35 @@ const initialMedicationList = [
 
 const MedicationScreen = () => {
   const [medicationList, setMedicationList] = useState(initialMedicationList);
-  // ref
-  const bottomSheetRef = useRef<BottomSheet>(null);
-  const handleClosePress = () => bottomSheetRef?.current?.close();
-  const handleExpandPress = () => bottomSheetRef?.current?.expand();
-  // variables
-  const snapPoints = useMemo(() => ['100%'], []);
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
-  const animationConfigs = useBottomSheetSpringConfigs({
-    damping: 80,
-    overshootClamping: true,
-    restDisplacementThreshold: 0.1,
-    restSpeedThreshold: 0.1,
-    stiffness: 200,
-  });
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
+  };
+
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
+
+  const handleConfirm = (date: Date) => {
+    console.warn('A date has been picked: ', date);
+    hideDatePicker();
+  };
+
+  // // ref
+  // const bottomSheetRef = useRef<BottomSheet>(null);
+  // const handleClosePress = () => bottomSheetRef?.current?.close();
+  // const handleExpandPress = () => bottomSheetRef?.current?.expand();
+  // // variables
+  // const snapPoints = useMemo(() => ['100%'], []);
+
+  // const animationConfigs = useBottomSheetSpringConfigs({
+  //   damping: 80,
+  //   overshootClamping: true,
+  //   restDisplacementThreshold: 0.1,
+  //   restSpeedThreshold: 0.1,
+  //   stiffness: 200,
+  // });
 
   const addMediaction = ({ id, name, amount, substance, time, isDone }: Medication) => {
     const newMedication = {
@@ -54,6 +70,12 @@ const MedicationScreen = () => {
 
   return (
     <SafeAreaView className="flex-1 items-center justify-center bg-background">
+      <View className="container mr-8 mt-6 items-end ">
+        <Pressable onPress={showDatePicker}>
+          <FontAwesome5 name="calendar-alt" color="#60a5fa" size={25} />
+        </Pressable>
+      </View>
+
       <Calendar />
 
       {/* SectionList */}
@@ -90,21 +112,19 @@ const MedicationScreen = () => {
         Add test
       </Button> */}
 
-      <FAB type="add" className="absolute bottom-6 right-6" onPress={handleExpandPress} />
+      <FAB type="add" className="absolute bottom-6 right-6" onPress={() => console.log('temp')} />
 
-      {/* BottomSheet component */}
-      <BottomSheet
-        ref={bottomSheetRef}
-        index={-1}
-        snapPoints={snapPoints}
-        onClose={handleClosePress}
-        animationConfigs={animationConfigs}
-        enablePanDownToClose
-      >
-        <View className="flex-1 items-center bg-background pt-4">
-          <MedicationForm onPress={handleClosePress} />
-        </View>
-      </BottomSheet>
+      <DateTimePickerModal
+        isVisible={isDatePickerVisible}
+        display="inline"
+        mode="date"
+        onConfirm={handleConfirm}
+        onCancel={hideDatePicker}
+        confirmTextIOS="Wybierz"
+        cancelTextIOS="Wróć"
+        locale="pl_PL"
+        themeVariant="light"
+      />
     </SafeAreaView>
   );
 };

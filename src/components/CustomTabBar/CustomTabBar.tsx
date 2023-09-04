@@ -1,11 +1,10 @@
 /* eslint-disable no-nested-ternary */
-import { Animated, Pressable, SafeAreaView, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Pressable, SafeAreaView, View } from 'react-native';
 import { Text } from '@components/Text';
-import { useAnimation } from '@hooks';
-import { createMaterialTopTabNavigator, MaterialTopTabBarProps } from '@react-navigation/material-top-tabs';
+import { MaterialTopTabBarProps } from '@react-navigation/material-top-tabs';
 import { twMerge } from 'tailwind-merge';
 
-export const CustomTabBar = ({ state, descriptors, navigation, position }: MaterialTopTabBarProps) => {
+export const CustomTabBar = ({ state, descriptors, navigation }: MaterialTopTabBarProps) => {
   return (
     <SafeAreaView className="bg-background">
       <View className="mt-6 flex-row items-center justify-center self-center rounded-xl bg-accent p-1">
@@ -40,7 +39,7 @@ export const CustomTabBar = ({ state, descriptors, navigation, position }: Mater
               testID={options.tabBarTestID}
               onPress={onPress}
             >
-              <Text className={twMerge('text-white font-bold', isFocused && 'text-accent')}>{label}</Text>
+              <Text className={twMerge('text-white font-semibold', isFocused && 'text-accent font-bold')}>{label}</Text>
             </Pressable>
           );
         })}
