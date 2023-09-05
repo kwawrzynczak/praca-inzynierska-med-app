@@ -15,9 +15,10 @@ module.exports = {
         black: 'NunitoSans_900Black',
       },
       colors: {
+        black: ' #0A2342',
         primary: colors.stone[200],
         secondary: '#666',
-        accent: colors.blue[400],
+        accent: '#00008B',
         background: '#E9EEFF',
       },
     },

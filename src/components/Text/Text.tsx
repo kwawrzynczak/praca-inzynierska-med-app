@@ -11,8 +11,8 @@ interface StyledTextProps extends TextProps {
 export const Text = ({ className, variant, ...rest }: StyledTextProps) => (
   <ReactNativeText
     className={twMerge(
-      'font-normal text-secondary',
-      variant === 'title' && 'font-extrabold text-2xl text-accent',
+      'font-normal text-black',
+      variant === 'title' && 'font-extrabold text-xl',
       variant === 'subtitle' && 'font-semibold text-lg',
       className,
     )}
