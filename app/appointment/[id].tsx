@@ -4,7 +4,7 @@ import { TextInput, View } from 'react-native';
 import { Button, FAB, Text } from '@components';
 import { useLocalSearchParams } from 'expo-router';
 
-const VisitScreen = () => {
+const AppointmentScreen = () => {
   const { id } = useLocalSearchParams();
   const [editable, setEditable] = useState(false);
   return (
@@ -38,4 +38,4 @@ const VisitScreen = () => {
   );
 };
 
-export default VisitScreen;
+export default AppointmentScreen;

@@ -7,17 +7,17 @@ import { useAnimation } from '@hooks';
 import { Link } from 'expo-router';
 import { twMerge } from 'tailwind-merge';
 
-interface VisitProps extends PressableProps {
+interface AppointmentsProps extends PressableProps {
   id: string;
 }
-export const VisitsListElement = ({ id, ...rest }: VisitProps) => {
+export const AppointmentsListElement = ({ id, ...rest }: AppointmentsProps) => {
   const { opacityValue, fadeIn, fadeOut } = useAnimation();
 
   return (
     <Link
       asChild
       href={{
-        pathname: 'visit/[id]',
+        pathname: 'appointment/[id]',
         params: { id },
       }}
     >

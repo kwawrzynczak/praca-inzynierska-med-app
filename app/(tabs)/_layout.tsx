@@ -15,7 +15,7 @@ const TabsLayout = () => (
       }}
     />
     <Tabs.Screen
-      name="visits"
+      name="appointments"
       options={{
         headerShown: false,
         tabBarLabel: 'Wizyty',

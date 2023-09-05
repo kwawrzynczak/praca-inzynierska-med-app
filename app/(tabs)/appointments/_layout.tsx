@@ -10,7 +10,7 @@ import InactiveScreen from './inactive';
 
 const Tab = createMaterialTopTabNavigator();
 
-const VisitsLayout = () => {
+const AppointmentLayout = () => {
   return (
     <Tab.Navigator
       screenOptions={{ animationEnabled: false, swipeEnabled: false, tabBarPressOpacity: 0 }}
@@ -22,4 +22,4 @@ const VisitsLayout = () => {
   );
 };
 
-export default VisitsLayout;
+export default AppointmentLayout;

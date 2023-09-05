@@ -1,3 +1,4 @@
+export * from './AppointmentsListElement';
 export * from './Button';
 export * from './Calendar';
 export * from './CustomTabBar';
@@ -8,4 +9,3 @@ export * from './MedicationListElement';
 export * from './StepAccountType';
 export * from './StepRegisterForm';
 export * from './Text';
-export * from './VisitsListElement';

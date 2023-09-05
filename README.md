@@ -23,7 +23,7 @@
 - ~~dynamiczne routowanie do podstrony z informacjami o wizycie~~
 - ~~ekran zakończonych wizyt~~
 - ~~możliwość edytowania informacji o wizytach~~
-- stworzenie layoutu do VisitScreen
+- stworzenie layoutu do AppointmentsScreen
 - usuwanie wizyty
 
 ## Ustawienia TODO:
