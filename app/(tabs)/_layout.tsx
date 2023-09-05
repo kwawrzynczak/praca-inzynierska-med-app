@@ -18,8 +18,8 @@ const TabsLayout = () => (
       name="visits"
       options={{
         headerShown: false,
-        tabBarLabel: 'Kalendarz',
-        tabBarIcon: ({ color, size }) => <FontAwesome5 name="calendar-alt" size={size} color={color} />,
+        tabBarLabel: 'Wizyty',
+        tabBarIcon: ({ color, size }) => <FontAwesome5 name="stethoscope" size={size} color={color} />,
       }}
     />
     <Tabs.Screen

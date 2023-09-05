@@ -7,11 +7,13 @@
 - wysyłanie zaproszenia do podopiecznego
 - powiadomienia
 - modal
+- ustawienia
 
-## Leki TODO: Zostawiamy do czasu zrobienia backu :)
+## Leki TODO: 
 
 - ~~resetowanie stanu BottomSheet po opuszczeniu ekranu Medication~~
-- kalendarz + wybór daty
+- ~~kalendarz + wybór daty~~
+- naprawienie buga w CalendarStrip lub znalezienie nowej biblioteki
 - podział na poranek, południe, wieczór, etc. ==> SectionList component
 - informacje o leku po naciśnięciu
 - formularz dodawania lekarstwa
@@ -20,8 +22,8 @@
 
 - ~~dynamiczne routowanie do podstrony z informacjami o wizycie~~
 - ~~ekran zakończonych wizyt~~
-- stworzenie layoutu do VisitScreen
 - ~~możliwość edytowania informacji o wizytach~~
+- stworzenie layoutu do VisitScreen
 - usuwanie wizyty
 
 ## Ustawienia TODO:
