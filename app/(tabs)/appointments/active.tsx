@@ -9,7 +9,16 @@ const elements = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }, { id: 6
 const ActiveScreen = () => {
   return (
     <View className="flex-1 items-center bg-background">
-      <FlatList
+      {/* if AppointmentsList is empty */}
+      <View className="h-full justify-center">
+        <Text className="text-center" variant="subtitle">
+          Nie masz zaplanowanych żadnych wizyt. Naciśnij +, aby dodać wizytę!
+        </Text>
+      </View>
+
+      {/* show all active appointments */}
+
+      {/* <FlatList
         showsVerticalScrollIndicator={false}
         numColumns={2}
         className="grow"
@@ -17,7 +26,7 @@ const ActiveScreen = () => {
         columnWrapperStyle={{ gap: 20 }}
         data={elements}
         renderItem={({ item }) => <AppointmentsListElement key={item.id} id={`${item.id}`} />}
-      />
+      /> */}
       <FAB type="add" className="absolute bottom-6 right-6" />
     </View>
   );

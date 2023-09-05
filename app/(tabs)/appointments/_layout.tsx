@@ -17,7 +17,7 @@ const AppointmentLayout = () => {
       tabBar={(props) => <CustomTabBar {...props} />}
     >
       <Tab.Screen name="Nadchodzące" component={ActiveScreen} />
-      <Tab.Screen name="Zakończone" component={InactiveScreen} />
+      <Tab.Screen name="Historia" component={InactiveScreen} />
     </Tab.Navigator>
   );
 };

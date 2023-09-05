@@ -34,17 +34,12 @@ const MedicationScreen = () => {
 
   return (
     <SafeAreaView className="flex-1 items-center bg-background">
-      <View className="container mr-8 mt-6 items-end ">
-        <Pressable onPress={showDatePicker}>
-          <FontAwesome5 name="calendar-alt" color="#60a5fa" size={25} />
-        </Pressable>
-      </View>
+      <View className="container mr-8 mt-6 items-end " />
 
       <View className="container">
-        <CalendarStrip
+        {/* <CalendarStrip
           minDate={moment('19200101')}
           scrollable
-          headerText="Wybierz datę"
           daySelectionAnimation={{ type: 'background', duration: 200, highlightColor: '#60a5fa' }}
           calendarHeaderStyle={{ color: '#666', fontFamily: 'NunitoSans_700Bold' }}
           dateNameStyle={{ fontFamily: 'NunitoSans_600SemiBold' }}
@@ -59,15 +54,13 @@ const MedicationScreen = () => {
           }}
           startingDate={moment().subtract(3, 'days')}
           selectedDate={selectedDate}
-        />
+        /> */}
         <View className="mx-4 flex-row justify-between">
-          <Text className="my-2 text-center font-bold">{selectedDate.format('LL')}</Text>
-          {selectedDate.format('LL') !== today.format('LL') && (
-            <Pressable className="flex-row items-center" onPress={() => setSelectedDate(today)}>
-              <Text className="my-2 mr-1 font-bold text-accent">Dzisiaj</Text>
-              <FontAwesome5 name="play" color="#60a5fa" size={10} />
-            </Pressable>
-          )}
+          <Text className="my-2 text-center font-bold">{selectedDate.format('dddd, LL')}</Text>
+          <Pressable onPress={showDatePicker}>
+            {/* <FontAwesome5 name="calendar-alt" color="#60a5fa" size={25} /> */}
+            <Text>Wybierz datę</Text>
+          </Pressable>
         </View>
       </View>
 
@@ -82,7 +75,7 @@ const MedicationScreen = () => {
         confirmTextIOS="Wybierz"
         cancelTextIOS="Wróć"
         themeVariant="light"
-        locale="pl"
+        locale="pl_PL"
       />
     </SafeAreaView>
   );
