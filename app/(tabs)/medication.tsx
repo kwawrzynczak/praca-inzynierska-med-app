@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unstable-nested-components */
 import React, { useRef, useState } from 'react';
 import { Pressable, SafeAreaView, SectionList, View } from 'react-native';
 import CalendarStrip from 'react-native-calendar-strip';
@@ -66,10 +67,10 @@ const MedicationScreen = () => {
   return (
     <View className="flex-1 bg-background">
       {/* okienko górne */}
-      <View className="container rounded-3xl bg-white pb-3 pt-10 shadow-lg">
+      <View className="container rounded-3xl bg-white pb-3 pt-10 shadow">
         <Text variant="title" className="my-2 pl-3 text-start text-lg uppercase tracking-tighter">
-          {selectedDate.format('d') === moment().format('d')
-            ? `dzisiaj, ${selectedDate.format('ll')}`
+          {selectedDate.format('DDMMYY') === moment().format('DDMMYY')
+            ? `dzisiaj, ${selectedDate.format('D MMMM')}`
             : selectedDate.format('dddd, D MMMM')}
         </Text>
         {/* Komponent kalendarza */}
@@ -97,35 +98,41 @@ const MedicationScreen = () => {
           ))}
         </View>
         <View className="mx-4 flex-row justify-center">
-          <Pressable onPress={showDatePicker}>
+          <Pressable className="mt-2 rounded-lg bg-accent p-2" onPress={showDatePicker}>
             {/* <FontAwesome5 name="calendar-alt" color="#60a5fa" size={25} /> */}
-            <Text variant="subtitle" className="mt-2">
+            <Text variant="subtitle" className="text-white">
               Wybierz datę
             </Text>
           </Pressable>
         </View>
       </View>
-      {/* okienko górne konie */}
+      {/* okienko górne koniec */}
 
       {/* SectionList */}
 
       <SectionList
+        contentContainerStyle={{
+          alignItems: 'center',
+          marginTop: '4%',
+          shadowOpacity: 0.1,
+          shadowOffset: { width: 0, height: 4 },
+        }}
         sections={DATA}
         keyExtractor={(item, index) => `${item}${index}`}
         renderItem={({ item }) => (
-          <View className="bg-white p-2 ">
+          <View className="w-[360px] bg-white p-2">
             <Text>{item}</Text>
-            <View className="mx-4 h-[2px] bg-black" />
+            <View className="mx-4 h-[1px] bg-accent" />
           </View>
         )}
         stickySectionHeadersEnabled={false}
         renderSectionHeader={({ section: { title, icon } }) => (
-          <View className="flex-row items-center rounded-t-2xl bg-white p-3 shadow">
+          <View className="w-[360px] flex-row items-center rounded-t-2xl bg-white p-3 shadow">
             {icon}
             <Text className="ml-2 font-bold text-base text-accent">{title}</Text>
           </View>
         )}
-        renderSectionFooter={() => <View className="rounded-b-2xl bg-white p-3" />}
+        renderSectionFooter={() => <View className="mb-4 w-[360px] rounded-b-2xl bg-white p-3" />}
       />
 
       <FAB type="add" className="absolute bottom-6 right-6" onPress={() => console.log('temp')} />
