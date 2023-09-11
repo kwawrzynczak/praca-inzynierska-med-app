@@ -1,4 +1,4 @@
-// export * from './AppointmentsList';
+export * from './AppointmentsList';
 export * from './AppointmentsListElement';
 export * from './Button';
 export * from './Calendar';
