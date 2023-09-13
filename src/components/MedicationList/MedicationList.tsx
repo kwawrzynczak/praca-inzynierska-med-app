@@ -38,7 +38,7 @@ export const MedicationList = () => {
       renderItem={({ item }) => (
         <View className="w-[360px] bg-white p-2">
           <Text>{item}</Text>
-          <View className="mx-4 h-[1px] bg-accent" />
+          <View className="h-[1px] bg-accent" />
         </View>
       )}
       stickySectionHeadersEnabled={false}

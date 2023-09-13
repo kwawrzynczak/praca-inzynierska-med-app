@@ -20,16 +20,13 @@ export const FAB = ({ className, type, ...rest }: StyledButtonProps) => {
       onPressOut={fadeOut}
       className={twMerge(
         'z-0 h-12 w-12 items-center justify-center rounded-full bg-accent',
-        type === 'delete' && 'bg-red-500',
+        type === 'delete' && 'bg-red',
         className,
       )}
       {...rest}
     >
       <Animated.View
-        className={twMerge(
-          'absolute left-0 top-0 h-12 w-12 rounded-full bg-blue-600/60',
-          type === 'delete' && 'bg-red-700',
-        )}
+        className={twMerge('absolute left-0 top-0 h-12 w-12 rounded-full bg-press', type === 'delete' && 'bg-darkred')}
         style={{ opacity: opacityValue }}
       />
       {type === 'add' && <FontAwesome5 name="plus" color="white" size={24} />}

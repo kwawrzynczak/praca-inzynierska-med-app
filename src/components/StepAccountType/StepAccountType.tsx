@@ -25,8 +25,8 @@ export const StepAccountType = () => {
         <Fragment key={id}>
           <Pressable
             className={twMerge(
-              'h-52 w-52 justify-center rounded-full bg-accent/60',
-              selectedId === id && 'scale-105 bg-blue-600/60',
+              'h-52 w-52 justify-center rounded-full bg-accent',
+              selectedId === id && 'scale-105 bg-press',
             )}
             onPress={() => setSelectedId(id)}
           >
