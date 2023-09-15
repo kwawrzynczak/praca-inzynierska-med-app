@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unstable-nested-components */
 import { View } from 'react-native';
-import { AppointmentsList, FAB, Text } from '@components';
+import { AppointmentsList, ConnectedAppointmentsList, FAB, Text } from '@components';
 
 const elements = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }, { id: 6 }, { id: 7 }];
 const InactiveScreen = () => {
@@ -15,7 +15,7 @@ const InactiveScreen = () => {
 
       {/* show all inactive appointments */}
       <Text>Wszystkie minione wizyty</Text>
-      <AppointmentsList appointments={elements} />
+      <ConnectedAppointmentsList />
 
       <FAB type="add" className="absolute bottom-6 right-6" />
     </View>

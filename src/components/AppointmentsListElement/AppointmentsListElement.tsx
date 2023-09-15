@@ -4,13 +4,19 @@ import { Animated, Pressable, type PressableProps } from 'react-native';
 import { Text } from '@components/Text';
 import { useAnimation } from '@hooks';
 import { Link } from 'expo-router';
+import moment from 'moment';
 import { twMerge } from 'tailwind-merge';
 
-interface ListElementProps extends PressableProps {
-  id: string;
+interface ListElementProps extends Omit<PressableProps, 'id'> {
+  id: number;
+  title: string;
+  doctor: string;
+  datetime: Date;
 }
-export const AppointmentsListElement = ({ id, ...rest }: ListElementProps) => {
+export const AppointmentsListElement = ({ id, title, doctor, datetime, ...rest }: ListElementProps) => {
   const { opacityValue, fadeIn, fadeOut } = useAnimation();
+
+  const formattedDate = moment(datetime).format('HH:mm DD.MM.YYYY');
 
   return (
     <Link
@@ -30,9 +36,9 @@ export const AppointmentsListElement = ({ id, ...rest }: ListElementProps) => {
           className={twMerge('absolute left-0 top-0 h-28 w-[360px] rounded-lg bg-accent/10')}
           style={{ opacity: opacityValue }}
         />
-        <Text variant="subtitle">Kardiolog</Text>
-        <Text>9 sierpnia 2023</Text>
-        <Text>lek. med. Jan Nowak</Text>
+        <Text variant="subtitle">{title}</Text>
+        <Text>{formattedDate}</Text>
+        <Text>lek. med. {doctor}</Text>
       </Pressable>
     </Link>
   );

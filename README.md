@@ -2,6 +2,8 @@
 
 ## Apka TODO:
 
+- pobieranie danych do kalendarza w appointemnts _layout :)
+
 - dodanie Taba/Ustawień z listą podopiecznych lub opiekunów
 - resertowanie hasła
 - wysyłanie zaproszenia do podopiecznego

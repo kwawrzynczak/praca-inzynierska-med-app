@@ -47,7 +47,8 @@
           "@hooks": "./src/hooks",
           "@types": "./src/types",
           "@templates": "./src/templates",
-          "@images": "./src/images"
+          "@images": "./src/images",
+          "@services": "./src/services"
         }
       }
     }

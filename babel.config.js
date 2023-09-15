@@ -19,6 +19,7 @@ module.exports = function (api) {
             '@types': './src/types',
             '@templates': './src/templates',
             '@images': './src/images',
+            '@services': './src/services',
           },
         },
       ],
