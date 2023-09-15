@@ -5,7 +5,7 @@ import { Link } from 'expo-router';
 
 const SettingsScreen = () => {
   return (
-    <SafeAreaView className="flex-1 items-center justify-center bg-background">
+    <SafeAreaView className="flex-1 items-center bg-background">
       <Text variant="title" className="mt-12">
         Ustawienia
       </Text>

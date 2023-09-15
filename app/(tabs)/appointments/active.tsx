@@ -13,7 +13,7 @@ const ActiveScreen = () => {
         </Text>
       </View> */}
       <Text>Najbliższa wizyta</Text>
-      <AppointmentsListElement id={`${elements[0].id}`} />
+      <AppointmentsListElement id={elements[0].id.toString()} />
 
       {/* show all active appointments */}
       <Text>Wszystkie wizyty</Text>
