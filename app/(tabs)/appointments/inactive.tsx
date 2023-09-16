@@ -1,9 +1,22 @@
 /* eslint-disable react/no-unstable-nested-components */
 import { View } from 'react-native';
-import { AppointmentsList, ConnectedAppointmentsList, FAB, Text } from '@components';
+import { AppointmentsList, FAB, Text } from '@components';
 
-const elements = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }, { id: 6 }, { id: 7 }];
-const InactiveScreen = () => {
+interface Appointment {
+  id: number;
+  attributes: {
+    title: string;
+    doctor: string;
+    active: boolean;
+    notes?: string;
+    datetime: Date;
+  };
+}
+
+interface AppointmentsListProps {
+  inactiveAppointments: Appointment[];
+}
+const InactiveScreen = ({ inactiveAppointments }: AppointmentsListProps) => {
   return (
     <View className="flex-1 items-center bg-background">
       {/* if AppointmentsList is empty */}
@@ -15,7 +28,7 @@ const InactiveScreen = () => {
 
       {/* show all inactive appointments */}
       <Text>Wszystkie minione wizyty</Text>
-      <ConnectedAppointmentsList />
+      <AppointmentsList appointments={inactiveAppointments} />
 
       <FAB type="add" className="absolute bottom-6 right-6" />
     </View>
