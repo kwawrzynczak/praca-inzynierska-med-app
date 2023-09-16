@@ -48,10 +48,20 @@ const AppointmentLayout = () => {
       tabBar={(props) => <CustomTabBar {...props} />}
     >
       <Tab.Screen name="Nadchodzące">
-        {(props) => <ActiveScreen activeAppointments={appointments} {...props} />}
+        {(props) => (
+          <ActiveScreen
+            activeAppointments={appointments.filter((appointment) => appointment.attributes.active)}
+            {...props}
+          />
+        )}
       </Tab.Screen>
       <Tab.Screen name="Historia">
-        {(props) => <InactiveScreen inactiveAppointments={appointments} {...props} />}
+        {(props) => (
+          <InactiveScreen
+            inactiveAppointments={appointments.filter((appointment) => !appointment.attributes.active)}
+            {...props}
+          />
+        )}
       </Tab.Screen>
     </Tab.Navigator>
   );
