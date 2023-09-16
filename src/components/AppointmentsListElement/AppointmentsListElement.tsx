@@ -27,13 +27,13 @@ export const AppointmentsListElement = ({ id, title, doctor, datetime, ...rest }
       }}
     >
       <Pressable
-        className="h-28 w-[360px] rounded-lg bg-white p-2 shadow"
+        className="h-20 w-[360px] rounded-lg bg-white p-2 shadow"
         onPressIn={fadeIn}
         onPressOut={fadeOut}
         {...rest}
       >
         <Animated.View
-          className={twMerge('absolute left-0 top-0 h-28 w-[360px] rounded-lg bg-accent/10')}
+          className={twMerge('absolute left-0 top-0 h-20 w-[360px] rounded-lg bg-accent/10')}
           style={{ opacity: opacityValue }}
         />
         <Text variant="subtitle">{title}</Text>

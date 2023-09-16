@@ -28,7 +28,7 @@ const ActiveScreen = ({ activeAppointments }: AppointmentsListProps) => {
         doctor={activeAppointments[0]?.attributes.doctor}
       />
       <Text>Wszystkie nadchodzące wizyty</Text>
-      <AppointmentsList appointments={activeAppointments} />
+      <AppointmentsList appointments={activeAppointments.slice(1)} />
       <FAB type="add" className="absolute bottom-6 right-6" />
     </View>
   );

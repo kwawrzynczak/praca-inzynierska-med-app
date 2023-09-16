@@ -2,10 +2,8 @@
 /* eslint-disable react/no-unstable-nested-components */
 import { useEffect, useState } from 'react';
 import { CustomTabBar } from '@components';
-import { createMaterialTopTabNavigator, MaterialTopTabBarProps } from '@react-navigation/material-top-tabs';
-import { NavigationContainer } from '@react-navigation/native';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import api from '@services/api';
-import { Stack } from 'expo-router';
 
 import ActiveScreen from './active';
 import InactiveScreen from './inactive';
@@ -36,6 +34,7 @@ const AppointmentLayout = () => {
         const { data } = await api.get<AppointmentsResponse>('/appointments');
         setAppointments(data.data);
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.error(error);
       }
     };
