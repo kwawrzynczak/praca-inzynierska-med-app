@@ -18,17 +18,22 @@ interface AppointmentsListProps {
 }
 const InactiveScreen = ({ inactiveAppointments }: AppointmentsListProps) => {
   return (
-    <View className="flex-1 items-center bg-background">
-      {/* if AppointmentsList is empty */}
-      {/* <View className="h-full justify-center">
+    <View className="mt-2 flex-1 items-center bg-background">
+      {inactiveAppointments.length === 0 && (
         <Text className="text-center" variant="subtitle">
           Brak historii wizyt.
         </Text>
-      </View> */}
+      )}
 
       {/* show all inactive appointments */}
-      <Text>Wszystkie minione wizyty</Text>
-      <AppointmentsList appointments={inactiveAppointments} />
+      {inactiveAppointments.length !== 0 && (
+        <>
+          <Text className="text-center" variant="subtitle">
+            Wszystkie minione wizyty
+          </Text>
+          <AppointmentsList appointments={inactiveAppointments} />
+        </>
+      )}
 
       <FAB type="add" className="absolute bottom-6 right-6" />
     </View>
