@@ -9,9 +9,10 @@ interface StyledButtonProps extends PressableProps {
   children?: React.ReactNode;
   className?: string;
   variant?: 'primary' | 'secondary';
+  size?: 'small';
 }
 
-export const Button = ({ children, className, variant = 'primary', ...rest }: StyledButtonProps) => {
+export const Button = ({ children, className, variant = 'primary', size, ...rest }: StyledButtonProps) => {
   const { opacityValue, fadeIn, fadeOut } = useAnimation();
 
   return (
@@ -23,14 +24,16 @@ export const Button = ({ children, className, variant = 'primary', ...rest }: St
         className,
         variant === 'primary' && 'bg-accent shadow-zinc-400',
         variant === 'secondary' && 'bg-white shadow-zinc-300',
+        size === 'small' && 'w-40',
       )}
       {...rest}
     >
       <Animated.View
         className={twMerge(
           'absolute left-0 top-0 h-full w-72 rounded-xl',
-          variant === 'primary' && 'bg-blue-900/60',
-          variant === 'secondary' && 'bg-blue-600/30',
+          variant === 'primary' && 'bg-press',
+          variant === 'secondary' && 'bg-press/30',
+          size === 'small' && 'w-40',
         )}
         style={{ opacity: opacityValue }}
       />

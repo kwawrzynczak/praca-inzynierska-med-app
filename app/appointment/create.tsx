@@ -1,9 +1,9 @@
 /* eslint-disable react/no-unstable-nested-components */
 import { useEffect, useState } from 'react';
-import { TextInput, View } from 'react-native';
-import { Button, FAB, Text } from '@components';
+import { View } from 'react-native';
+import { Button, Input, Text } from '@components';
 import api from '@services/api';
-import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useRouter } from 'expo-router';
 import moment from 'moment';
 
 interface Appointment {
@@ -39,14 +39,27 @@ const AppointmentScreen = () => {
   };
   return (
     <View className="flex-1 bg-background p-4">
-      <Button
-        className="mt-4"
-        onPress={() => {
-          void createAppointment();
-        }}
-      >
-        Dodaj wizytę
-      </Button>
+      <View className="items-center">
+        <View>
+          <Input title="Nazwa wizyty" />
+          <Input title="Lekarz" />
+          <Input title="Data wizyty" />
+        </View>
+      </View>
+      <View className="flex-row justify-around">
+        <Button size="small" variant="secondary" className="mt-4" onPress={() => router.back()}>
+          Anuluj
+        </Button>
+        <Button
+          size="small"
+          className="mt-4"
+          onPress={() => {
+            void createAppointment();
+          }}
+        >
+          Dodaj wizytę
+        </Button>
+      </View>
     </View>
   );
 };
