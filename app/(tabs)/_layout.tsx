@@ -10,7 +10,7 @@ const TabsLayout = () => (
       options={{
         tabBarLabel: 'Leki',
         headerShown: false,
-        tabBarIcon: ({ size }) => <FontAwesome5 name="pills" size={size} color="#60a5fa" />,
+        tabBarIcon: ({ size }) => <FontAwesome5 name="pills" size={size} color="#00008B" />,
         unmountOnBlur: false,
       }}
     />
@@ -19,7 +19,7 @@ const TabsLayout = () => (
       options={{
         headerShown: false,
         tabBarLabel: 'Wizyty',
-        tabBarIcon: ({ size }) => <FontAwesome5 name="stethoscope" size={size} color="#60a5fa" />,
+        tabBarIcon: ({ size }) => <FontAwesome5 name="stethoscope" size={size} color="#00008B" />,
       }}
     />
     <Tabs.Screen
@@ -27,7 +27,7 @@ const TabsLayout = () => (
       options={{
         tabBarLabel: 'Ustawienia',
         headerTitle: 'Ustawienia',
-        tabBarIcon: ({ size }) => <FontAwesome5 name="cog" size={size} color="#60a5fa" />,
+        tabBarIcon: ({ size }) => <FontAwesome5 name="cog" size={size} color="#00008B" />,
       }}
     />
   </Tabs>

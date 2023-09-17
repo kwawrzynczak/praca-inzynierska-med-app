@@ -24,7 +24,6 @@ interface CreateAppointment {
     title: string;
     doctor: string;
     active: boolean;
-    notes?: string;
     datetime: Date;
   };
 }
@@ -32,14 +31,13 @@ interface CreateAppointment {
 const ActiveScreen = ({ activeAppointments }: AppointmentsListProps) => {
   const createAppointment = async () => {
     try {
-      const { data } = await api.put<CreateAppointment>('/appointments', {
-        data: { title: 'string', doctor: 'string', active: true, notes: 'string', datetime: moment() },
+      const { data } = await api.post<CreateAppointment>('/appointments', {
+        data: { title: 'string', doctor: 'string', active: true, datetime: moment() },
       });
-      return data;
+      console.log(data);
     } catch (error) {
       console.error(error);
     }
-    return null;
   };
 
   return (
@@ -67,7 +65,13 @@ const ActiveScreen = ({ activeAppointments }: AppointmentsListProps) => {
           <AppointmentsList appointments={activeAppointments.slice(1)} />
         </>
       )}
-      <FAB onPress={() => void createAppointment()} type="add" className="absolute bottom-6 right-6" />
+      <FAB
+        onPress={() => {
+          void createAppointment();
+        }}
+        type="add"
+        className="absolute bottom-6 right-6"
+      />
     </View>
   );
 };
