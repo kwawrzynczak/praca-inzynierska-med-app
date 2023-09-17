@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { TextInput, View } from 'react-native';
 import { Button, FAB, Text } from '@components';
 import api from '@services/api';
-import { useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 
 interface Appointment {
   id: number;
@@ -20,7 +20,7 @@ interface AppointmentResponse {
   data: Appointment;
 }
 
-interface UpdateNotes {
+interface UpdateAppointment {
   data: {
     title: string;
     doctor: string;
@@ -29,6 +29,7 @@ interface UpdateNotes {
 }
 
 const AppointmentScreen = () => {
+  const router = useRouter();
   const { id } = useLocalSearchParams<{ id: string }>();
   const [appointment, setAppointment] = useState<Appointment>();
   const [editable, setEditable] = useState(false);
@@ -57,18 +58,31 @@ const AppointmentScreen = () => {
     void getAppointmentById();
   }, [appointment?.attributes.doctor, appointment?.attributes.notes, appointment?.attributes.title, id]);
 
-  const updateNotes = async () => {
+  const updateAppointmentData = async () => {
     if (!id) {
       console.error('no id provided');
     } else {
       try {
-        const { data } = await api.put<UpdateNotes>(`/appointments/${id}`, { data: { title, doctor, notes } });
+        const { data } = await api.put<UpdateAppointment>(`/appointments/${id}`, { data: { title, doctor, notes } });
         return data;
       } catch (error) {
         console.error(error);
       }
     }
     return null;
+  };
+
+  const deleteAppointment = async () => {
+    if (!id) {
+      console.error('no id provided');
+    } else {
+      try {
+        await api.delete(`/appointments/${id}`);
+        router.back();
+      } catch (error) {
+        console.error(error);
+      }
+    }
   };
 
   return (
@@ -94,7 +108,12 @@ const AppointmentScreen = () => {
 
       <View className="absolute right-4 top-4 flex-row gap-4">
         {!editable && <FAB type="edit" onPress={() => setEditable(true)} />}
-        <FAB type="delete" />
+        <FAB
+          type="delete"
+          onPress={() => {
+            void deleteAppointment();
+          }}
+        />
       </View>
 
       {editable && (
@@ -102,7 +121,7 @@ const AppointmentScreen = () => {
           className="mt-4"
           onPress={() => {
             setEditable(false);
-            void updateNotes();
+            void updateAppointmentData();
           }}
         >
           Zapisz zmiany

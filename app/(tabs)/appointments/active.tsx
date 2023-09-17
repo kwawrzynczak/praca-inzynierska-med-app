@@ -2,6 +2,7 @@
 import { View } from 'react-native';
 import { AppointmentsList, AppointmentsListElement, FAB, Text } from '@components';
 import api from '@services/api';
+import { Link } from 'expo-router';
 import moment from 'moment';
 
 interface Appointment {
@@ -19,27 +20,7 @@ interface AppointmentsListProps {
   activeAppointments: Appointment[];
 }
 
-interface CreateAppointment {
-  data: {
-    title: string;
-    doctor: string;
-    active: boolean;
-    datetime: Date;
-  };
-}
-
 const ActiveScreen = ({ activeAppointments }: AppointmentsListProps) => {
-  const createAppointment = async () => {
-    try {
-      const { data } = await api.post<CreateAppointment>('/appointments', {
-        data: { title: 'string', doctor: 'string', active: true, datetime: moment() },
-      });
-      console.log(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   return (
     <View className="flex-1 items-center bg-background">
       {activeAppointments.length === 0 && (
@@ -65,13 +46,9 @@ const ActiveScreen = ({ activeAppointments }: AppointmentsListProps) => {
           <AppointmentsList appointments={activeAppointments.slice(1)} />
         </>
       )}
-      <FAB
-        onPress={() => {
-          void createAppointment();
-        }}
-        type="add"
-        className="absolute bottom-6 right-6"
-      />
+      <Link asChild href="appointment/create">
+        <FAB type="add" className="absolute bottom-6 right-6" />
+      </Link>
     </View>
   );
 };

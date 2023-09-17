@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unstable-nested-components */
 import { View } from 'react-native';
 import { AppointmentsList, FAB, Text } from '@components';
+import { Link } from 'expo-router';
 
 interface Appointment {
   id: number;
@@ -35,7 +36,9 @@ const InactiveScreen = ({ inactiveAppointments }: AppointmentsListProps) => {
         </>
       )}
 
-      <FAB type="add" className="absolute bottom-6 right-6" />
+      <Link asChild href="appointment/create">
+        <FAB type="add" className="absolute bottom-6 right-6" />
+      </Link>
     </View>
   );
 };
