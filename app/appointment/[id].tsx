@@ -20,10 +20,17 @@ interface AppointmentResponse {
   data: Appointment;
 }
 
+interface UpdateNotes {
+  attributes: {
+    notes: string;
+  };
+}
+
 const AppointmentScreen = () => {
   const { id } = useLocalSearchParams<{ id: string }>();
   const [appointment, setAppointment] = useState<Appointment>();
   const [editable, setEditable] = useState(false);
+  const [notes, setNotes] = useState(appointment?.attributes.notes);
 
   useEffect(() => {
     const getAppointmentById = async () => {
@@ -37,10 +44,33 @@ const AppointmentScreen = () => {
           console.error(error);
         }
       }
+      setNotes(appointment?.attributes.notes);
     };
 
     void getAppointmentById();
-  }, [id]);
+  }, [appointment?.attributes.notes, id]);
+
+  const updateNotes = async () => {
+    if (!id) {
+      console.error('no id provided');
+    } else {
+      try {
+        const { data } = await api.patch<UpdateNotes>(
+          `/appointments/${id}`,
+          { notes: 'notatka' },
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              Accept: 'application/json',
+            },
+          },
+        );
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    setNotes(appointment?.attributes.notes);
+  };
 
   return (
     <View className="flex-1 bg-background p-4">
@@ -55,9 +85,9 @@ const AppointmentScreen = () => {
         className="rounded-lg border border-white bg-white px-4 py-3 focus:border-accent"
         multiline
         editable={editable}
-      >
-        {appointment?.attributes.notes}
-      </TextInput>
+        value={notes}
+        onChangeText={setNotes}
+      />
 
       <View className="absolute right-4 top-4 flex-row gap-4">
         {!editable && <FAB type="edit" onPress={() => setEditable(true)} />}
@@ -65,7 +95,13 @@ const AppointmentScreen = () => {
       </View>
 
       {editable && (
-        <Button className="mt-4" onPress={() => setEditable(false)}>
+        <Button
+          className="mt-4"
+          onPress={() => {
+            setEditable(false);
+            void updateNotes();
+          }}
+        >
           Zapisz zmiany
         </Button>
       )}
