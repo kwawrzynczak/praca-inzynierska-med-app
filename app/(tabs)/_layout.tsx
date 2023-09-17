@@ -20,6 +20,7 @@ const TabsLayout = () => (
         headerShown: false,
         tabBarLabel: 'Wizyty',
         tabBarIcon: ({ size }) => <FontAwesome5 name="stethoscope" size={size} color="#60a5fa" />,
+        unmountOnBlur: true,
       }}
     />
     <Tabs.Screen

@@ -21,7 +21,8 @@ interface AppointmentResponse {
 }
 
 interface UpdateNotes {
-  attributes: {
+  data: {
+    title: string;
     notes: string;
   };
 }
@@ -31,6 +32,7 @@ const AppointmentScreen = () => {
   const [appointment, setAppointment] = useState<Appointment>();
   const [editable, setEditable] = useState(false);
   const [notes, setNotes] = useState(appointment?.attributes.notes);
+  const [title, setTitle] = useState(appointment?.attributes.title);
 
   useEffect(() => {
     const getAppointmentById = async () => {
@@ -45,38 +47,30 @@ const AppointmentScreen = () => {
         }
       }
       setNotes(appointment?.attributes.notes);
+      setTitle(appointment?.attributes.title);
     };
 
     void getAppointmentById();
-  }, [appointment?.attributes.notes, id]);
+  }, [appointment?.attributes.notes, appointment?.attributes.title, id]);
 
   const updateNotes = async () => {
     if (!id) {
       console.error('no id provided');
     } else {
       try {
-        const { data } = await api.patch<UpdateNotes>(
-          `/appointments/${id}`,
-          { notes: 'notatka' },
-          {
-            headers: {
-              'Content-Type': 'application/json',
-              Accept: 'application/json',
-            },
-          },
-        );
+        const { data } = await api.put<UpdateNotes>(`/appointments/${id}`, { data: { title, notes } });
+        return data;
       } catch (error) {
         console.error(error);
       }
     }
-    setNotes(appointment?.attributes.notes);
+    return null;
   };
 
   return (
     <View className="flex-1 bg-background p-4">
-      <TextInput className="font-bold text-2xl text-accent" editable={editable}>
-        {appointment?.attributes.title}
-      </TextInput>
+      <TextInput className="font-bold text-2xl text-accent" editable={editable} value={title} onChangeText={setTitle} />
+
       <TextInput className="font-normal text-lg text-secondary" editable={editable}>
         {appointment?.attributes.doctor}
       </TextInput>
@@ -84,6 +78,7 @@ const AppointmentScreen = () => {
       <TextInput
         className="rounded-lg border border-white bg-white px-4 py-3 focus:border-accent"
         multiline
+        placeholder="Brak notatek"
         editable={editable}
         value={notes}
         onChangeText={setNotes}
