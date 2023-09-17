@@ -23,6 +23,7 @@ interface AppointmentResponse {
 interface UpdateNotes {
   data: {
     title: string;
+    doctor: string;
     notes: string;
   };
 }
@@ -31,8 +32,10 @@ const AppointmentScreen = () => {
   const { id } = useLocalSearchParams<{ id: string }>();
   const [appointment, setAppointment] = useState<Appointment>();
   const [editable, setEditable] = useState(false);
-  const [notes, setNotes] = useState(appointment?.attributes.notes);
+  // TODO: wsadzić to w jeden state
   const [title, setTitle] = useState(appointment?.attributes.title);
+  const [doctor, setDoctor] = useState(appointment?.attributes.doctor);
+  const [notes, setNotes] = useState(appointment?.attributes.notes);
 
   useEffect(() => {
     const getAppointmentById = async () => {
@@ -46,19 +49,20 @@ const AppointmentScreen = () => {
           console.error(error);
         }
       }
-      setNotes(appointment?.attributes.notes);
       setTitle(appointment?.attributes.title);
+      setDoctor(appointment?.attributes.doctor);
+      setNotes(appointment?.attributes.notes);
     };
 
     void getAppointmentById();
-  }, [appointment?.attributes.notes, appointment?.attributes.title, id]);
+  }, [appointment?.attributes.doctor, appointment?.attributes.notes, appointment?.attributes.title, id]);
 
   const updateNotes = async () => {
     if (!id) {
       console.error('no id provided');
     } else {
       try {
-        const { data } = await api.put<UpdateNotes>(`/appointments/${id}`, { data: { title, notes } });
+        const { data } = await api.put<UpdateNotes>(`/appointments/${id}`, { data: { title, doctor, notes } });
         return data;
       } catch (error) {
         console.error(error);
@@ -71,9 +75,13 @@ const AppointmentScreen = () => {
     <View className="flex-1 bg-background p-4">
       <TextInput className="font-bold text-2xl text-accent" editable={editable} value={title} onChangeText={setTitle} />
 
-      <TextInput className="font-normal text-lg text-secondary" editable={editable}>
-        {appointment?.attributes.doctor}
-      </TextInput>
+      <TextInput
+        className="font-normal text-lg text-secondary"
+        editable={editable}
+        value={doctor}
+        onChangeText={setDoctor}
+      />
+
       <Text className="mb-2 mt-8 text-base">Notatki do wizyty: </Text>
       <TextInput
         className="rounded-lg border border-white bg-white px-4 py-3 focus:border-accent"

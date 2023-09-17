@@ -23,14 +23,6 @@ const TabsLayout = () => (
       }}
     />
     <Tabs.Screen
-      name="patients"
-      options={{
-        tabBarLabel: 'Pacjenci',
-        headerTitle: 'Pacjenci',
-        tabBarIcon: ({ size }) => <FontAwesome5 name="users" size={size} color="#60a5fa" />,
-      }}
-    />
-    <Tabs.Screen
       name="settings"
       options={{
         tabBarLabel: 'Ustawienia',

@@ -10,6 +10,7 @@
 - powiadomienia
 - przeniesienie typów do odpowiednich plików
 - poprawki związane z UX/UI
+- usunąć wszystkie console logi
 
 ## Leki TODO: 
 

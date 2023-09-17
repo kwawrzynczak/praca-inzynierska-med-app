@@ -35,7 +35,8 @@
     "import/prefer-default-export": "off",
     "react/require-default-props": "off",
     "simple-import-sort/imports": "warn",
-    "simple-import-sort/exports": "warn"
+    "simple-import-sort/exports": "warn",
+    "no-console": "off"
   },
   "settings": {
     "import/resolver": {

@@ -42,7 +42,8 @@ const AppointmentLayout = () => {
     };
 
     void getAppointments();
-  }, [isFocused]);
+  }, [isFocused, appointments]);
+
   return (
     <Tab.Navigator
       screenOptions={{ animationEnabled: false, swipeEnabled: false, tabBarPressOpacity: 0 }}
