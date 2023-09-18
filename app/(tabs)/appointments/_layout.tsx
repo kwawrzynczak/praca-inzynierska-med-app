@@ -34,7 +34,7 @@ const AppointmentLayout = () => {
     const getAppointments = async () => {
       if (!isFocused) return;
       try {
-        const { data } = await api.get<AppointmentsResponse>('/appointments');
+        const { data } = await api.get<AppointmentsResponse>('/appointments?sort=datetime:asc');
         setAppointments(data.data);
       } catch (error) {
         console.error(error);
@@ -42,7 +42,7 @@ const AppointmentLayout = () => {
     };
 
     void getAppointments();
-  }, [isFocused, appointments]);
+  }, [isFocused]);
 
   return (
     <Tab.Navigator

@@ -38,4 +38,4 @@
 
 
 ## Ustawienia TODO:
-- dodanie pola z zarządzaniem podopiecznymi lub opiekunami, nie w formie taba
+- dodanie pola z zarządzaniem podopiecznymi ~~lub opiekunami, nie~~ w formie taba, opiekunami w ustawieniach

@@ -9,13 +9,13 @@ interface AnimationHook {
 
 const FADE_IN_ANIMATION_CONFIG: Animated.TimingAnimationConfig = {
   toValue: 0.75,
-  duration: 75,
+  duration: 150,
   useNativeDriver: true,
 };
 
 const FADE_OUT_ANIMATION_CONFIG: Animated.TimingAnimationConfig = {
   toValue: 0,
-  duration: 75,
+  duration: 100,
   useNativeDriver: true,
 };
 

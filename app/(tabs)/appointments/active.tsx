@@ -25,25 +25,16 @@ const ActiveScreen = ({ activeAppointments }: AppointmentsListProps) => {
     <View className="flex-1 items-center bg-background">
       {activeAppointments.length === 0 && (
         <Text className="mt-2 text-center" variant="subtitle">
-          Brak nadchodzących wizyt. Naciśnij +, aby dodać wizytę!
+          Brak nadchodzących wizyt. {'\n'}Naciśnij +, aby dodać wizytę!
         </Text>
       )}
 
       {activeAppointments.length !== 0 && (
         <>
           <Text className="my-2 text-center" variant="subtitle">
-            Najbliższa wizyta
-          </Text>
-          <AppointmentsListElement
-            id={activeAppointments[0]?.id}
-            title={activeAppointments[0]?.attributes.title}
-            datetime={activeAppointments[0]?.attributes.datetime}
-            doctor={activeAppointments[0]?.attributes.doctor}
-          />
-          <Text className="my-2 text-center" variant="subtitle">
             Nadchodzące wizyty
           </Text>
-          <AppointmentsList appointments={activeAppointments.slice(1)} />
+          <AppointmentsList appointments={activeAppointments} />
         </>
       )}
       <Link asChild href="appointment/create">

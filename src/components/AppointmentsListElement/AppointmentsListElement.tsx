@@ -16,7 +16,7 @@ interface ListElementProps extends Omit<PressableProps, 'id'> {
 export const AppointmentsListElement = ({ id, title, doctor, datetime, ...rest }: ListElementProps) => {
   const { opacityValue, fadeIn, fadeOut } = useAnimation();
 
-  const formattedDate = moment(datetime).format('HH:mm DD.MM.YYYY');
+  const formattedDate = moment(datetime).format('DD.MM.YYYY HH:mm');
 
   return (
     <Link
