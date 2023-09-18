@@ -24,17 +24,25 @@ const CreateAppointmentScreen = () => {
   const [selectedTime, setSelectedTime] = useState(moment());
   const [title, setTitle] = useState<string>();
   const [doctor, setDoctor] = useState<string>();
+  const [active, setActive] = useState<boolean>(true);
 
   const formattedDate = selectedDate.format('DD.MM.YYYY');
   const preparedDate = selectedDate.format('YYYY-MM-DD');
   const formattedTime = selectedTime.format('HH:mm');
   const datetime = new Date(`${preparedDate}T${formattedTime}`);
 
+  const checkIfActive = () => {
+    const today = moment();
+    if (today.diff(datetime) > 0) setActive(false);
+  };
+
   const createAppointment = async () => {
     try {
+      checkIfActive();
       await api.post<CreateAppointment>('/appointments', {
-        data: { title, doctor, active: true, datetime },
+        data: { title, doctor, active, datetime },
       });
+      console.log(title, doctor, active, datetime);
       router.back();
     } catch (error) {
       console.error(error);

@@ -4,8 +4,8 @@
 
 - ~~pobieranie danych do kalendarza w appointemnts _layout :)~~
 - !! AUTORYZACJA !!
-- dodanie ustawień z listą podopiecznych lub opiekunów
 - resetowanie hasła
+- dodanie pola z zarządzaniem podopiecznymi ~~lub opiekunami, nie~~ w formie taba, opiekunami w ustawieniach
 - wysyłanie zaproszenia do podopiecznego
 - powiadomienia
 - przeniesienie typów do odpowiednich plików
@@ -35,7 +35,8 @@
 - metoda wybierania pola active
 - wybieranie najbliższej wizyty
 - edytowanie daty
+- dodać pola: LOKALIZACJA, ULICA, POKÓJ
+- naprawić problem z rerenderem po wejściu na sceena
 
 
 ## Ustawienia TODO:
-- dodanie pola z zarządzaniem podopiecznymi ~~lub opiekunami, nie~~ w formie taba, opiekunami w ustawieniach
