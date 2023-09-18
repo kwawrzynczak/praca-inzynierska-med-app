@@ -11,6 +11,7 @@
 - przeniesienie typów do odpowiednich plików
 - poprawki związane z UX/UI
 - usunąć wszystkie console logi
+- zmienianie pola ACTIVE w bazie danych
 
 ## Leki TODO: 
 
@@ -32,7 +33,7 @@
 - ~~możliwość edytowania informacji o wizytach~~
 - ~~usuwanie wizyty~~
 - formularz dodawania wizyty
-- metoda wybierania pola active
+- ~~metoda wybierania pola active~~
 - wybieranie najbliższej wizyty
 - edytowanie daty
 - dodać pola: LOKALIZACJA, ULICA, POKÓJ

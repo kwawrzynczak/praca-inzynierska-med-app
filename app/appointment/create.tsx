@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unstable-nested-components */
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Pressable, View } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { Button, Input, Text } from '@components';
@@ -24,25 +24,26 @@ const CreateAppointmentScreen = () => {
   const [selectedTime, setSelectedTime] = useState(moment());
   const [title, setTitle] = useState<string>();
   const [doctor, setDoctor] = useState<string>();
-  const [active, setActive] = useState<boolean>(true);
+  // const [active, setActive] = useState<boolean>(false);
 
   const formattedDate = selectedDate.format('DD.MM.YYYY');
   const preparedDate = selectedDate.format('YYYY-MM-DD');
   const formattedTime = selectedTime.format('HH:mm');
-  const datetime = new Date(`${preparedDate}T${formattedTime}`);
+  const datetime = useMemo(() => new Date(`${preparedDate}T${formattedTime}`), [formattedTime, preparedDate]);
 
-  const checkIfActive = () => {
-    const today = moment();
-    if (today.diff(datetime) > 0) setActive(false);
-  };
+  // useEffect(() => {
+  //   const checkIfActive = () => {
+  //     const today = moment();
+  //     if (datetime.diff(today) > 0) setActive(true);
+  //   };
+  //   checkIfActive();
+  // }, [datetime]);
 
   const createAppointment = async () => {
     try {
-      checkIfActive();
       await api.post<CreateAppointment>('/appointments', {
-        data: { title, doctor, active, datetime },
+        data: { title, doctor, active: true, datetime },
       });
-      console.log(title, doctor, active, datetime);
       router.back();
     } catch (error) {
       console.error(error);

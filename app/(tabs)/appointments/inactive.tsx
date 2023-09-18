@@ -19,9 +19,9 @@ interface AppointmentsListProps {
 }
 const InactiveScreen = ({ inactiveAppointments }: AppointmentsListProps) => {
   return (
-    <View className="mt-2 flex-1 items-center bg-background">
+    <View className="flex-1 items-center bg-background">
       {inactiveAppointments.length === 0 && (
-        <Text className="text-center" variant="subtitle">
+        <Text className="mt-2 text-center" variant="subtitle">
           Brak historii wizyt.
         </Text>
       )}
@@ -29,7 +29,7 @@ const InactiveScreen = ({ inactiveAppointments }: AppointmentsListProps) => {
       {/* show all inactive appointments */}
       {inactiveAppointments.length !== 0 && (
         <>
-          <Text className="text-center" variant="subtitle">
+          <Text className="my-2 text-center" variant="subtitle">
             Wszystkie minione wizyty
           </Text>
           <AppointmentsList appointments={inactiveAppointments} />
