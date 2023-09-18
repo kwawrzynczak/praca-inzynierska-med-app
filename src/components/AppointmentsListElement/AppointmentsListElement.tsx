@@ -12,34 +12,57 @@ interface ListElementProps extends Omit<PressableProps, 'id'> {
   title: string;
   doctor: string;
   datetime: Date;
+  location?: string;
+  street?: string;
+  room?: string;
 }
-export const AppointmentsListElement = ({ id, title, doctor, datetime, ...rest }: ListElementProps) => {
+export const AppointmentsListElement = ({
+  id,
+  title,
+  doctor,
+  datetime,
+  location,
+  street,
+  room,
+  ...rest
+}: ListElementProps) => {
   const { opacityValue, fadeIn, fadeOut } = useAnimation();
 
-  const formattedDate = moment(datetime).format('DD.MM.YYYY HH:mm');
+  const formattedDate = moment(datetime).format('DD MMMM YYYY HH:mm');
 
   return (
-    <Link
-      asChild
-      href={{
-        pathname: 'appointment/[id]',
-        params: { id },
-      }}
-    >
-      <Pressable
-        className="h-20 w-[360px] rounded-lg bg-white p-2 shadow"
-        onPressIn={fadeIn}
-        onPressOut={fadeOut}
-        {...rest}
+    <>
+      <Text className="mb-1 ml-3">{formattedDate}</Text>
+      <Link
+        asChild
+        href={{
+          pathname: 'appointment/[id]',
+          params: { id },
+        }}
       >
-        <Animated.View
-          className={twMerge('absolute left-0 top-0 h-20 w-[360px] rounded-lg bg-accent/10')}
-          style={{ opacity: opacityValue }}
-        />
-        <Text variant="subtitle">{title}</Text>
-        <Text>{formattedDate}</Text>
-        <Text>lek. med. {doctor}</Text>
-      </Pressable>
-    </Link>
+        <Pressable
+          className="h-24 w-[360px] rounded-lg bg-white p-2 shadow"
+          onPressIn={fadeIn}
+          onPressOut={fadeOut}
+          {...rest}
+        >
+          <Animated.View
+            className={twMerge('absolute left-0 top-0 h-24 w-[360px] rounded-lg bg-accent/10')}
+            style={{ opacity: opacityValue }}
+          />
+          <Text variant="subtitle">{title}</Text>
+          <Text className="uppercase">{doctor}</Text>
+          {!!location && !street && <Text>{location}</Text>}
+          {!!street && !location && <Text>{street}</Text>}
+          {!!location && !!street && (
+            <Text>
+              {location} - {street}
+            </Text>
+          )}
+
+          {!!room && <Text>Numer pokoju: {room}</Text>}
+        </Pressable>
+      </Link>
+    </>
   );
 };

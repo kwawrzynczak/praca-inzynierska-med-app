@@ -11,6 +11,9 @@ interface Appointment {
     active: boolean;
     notes?: string;
     datetime: Date;
+    location?: string;
+    street?: string;
+    room?: string;
   };
 }
 

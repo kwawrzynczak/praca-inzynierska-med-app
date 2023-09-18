@@ -32,12 +32,13 @@
 - ~~dodawanie wizyty do bazy~~
 - ~~możliwość edytowania informacji o wizytach~~
 - ~~usuwanie wizyty~~
-- formularz dodawania wizyty
 - ~~metoda wybierania pola active~~
-- wybieranie najbliższej wizyty
+- ~~wybieranie najbliższej wizyty~~
+- formularz dodawania wizyty
 - edytowanie daty
 - dodać pola: LOKALIZACJA, ULICA, POKÓJ
-- naprawić problem z rerenderem po wejściu na sceena
+- naprawić problem z rerenderem po wejściu na screena [id]
+- dodać modal
 
 
 ## Ustawienia TODO:

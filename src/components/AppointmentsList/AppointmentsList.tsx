@@ -10,6 +10,9 @@ interface Appointment {
     active: boolean;
     notes?: string;
     datetime: Date;
+    location?: string;
+    street?: string;
+    room?: string;
   };
 }
 
@@ -30,6 +33,9 @@ export const AppointmentsList = ({ appointments }: AppointmentsListProps) => {
           title={item.attributes.title}
           datetime={item.attributes.datetime}
           doctor={item.attributes.doctor}
+          location={item.attributes.location}
+          street={item.attributes.street}
+          room={item.attributes.room}
         />
       )}
     />

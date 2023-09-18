@@ -13,6 +13,9 @@ interface CreateAppointment {
     doctor: string;
     active: boolean;
     datetime: Date;
+    location?: string;
+    street?: string;
+    room?: string;
   };
 }
 
@@ -24,6 +27,9 @@ const CreateAppointmentScreen = () => {
   const [selectedTime, setSelectedTime] = useState(moment());
   const [title, setTitle] = useState<string>();
   const [doctor, setDoctor] = useState<string>();
+  const [location, setLocation] = useState<string>();
+  const [street, setStreet] = useState<string>();
+  const [room, setRoom] = useState<string>();
   // const [active, setActive] = useState<boolean>(false);
 
   const formattedDate = selectedDate.format('DD.MM.YYYY');
