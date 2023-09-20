@@ -11,7 +11,7 @@
 - przeniesienie typów do odpowiednich plików
 - poprawki związane z UX/UI
 - usunąć wszystkie console logi
-- zmienianie pola ACTIVE w bazie danych
+- usunąć pole ACTIVE z bazy
 
 ## Leki TODO: 
 
@@ -38,6 +38,7 @@
 - edytowanie daty
 - dodać pola: LOKALIZACJA, ULICA, POKÓJ
 - naprawić problem z rerenderem po wejściu na screena [id]
+- sprawdzanie daty
 - dodać modal
 
 

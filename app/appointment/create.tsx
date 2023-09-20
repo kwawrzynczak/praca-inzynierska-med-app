@@ -13,8 +13,8 @@ interface CreateAppointment {
     doctor: string;
     active: boolean;
     datetime: Date;
-    location?: string;
-    street?: string;
+    location: string;
+    street: string;
     room?: string;
   };
 }

@@ -12,8 +12,8 @@ interface ListElementProps extends Omit<PressableProps, 'id'> {
   title: string;
   doctor: string;
   datetime: Date;
-  location?: string;
-  street?: string;
+  location: string;
+  street: string;
   room?: string;
 }
 export const AppointmentsListElement = ({
@@ -52,13 +52,9 @@ export const AppointmentsListElement = ({
           />
           <Text variant="subtitle">{title}</Text>
           <Text className="uppercase">{doctor}</Text>
-          {!!location && !street && <Text>{location}</Text>}
-          {!!street && !location && <Text>{street}</Text>}
-          {!!location && !!street && (
-            <Text>
-              {location} - {street}
-            </Text>
-          )}
+          <Text variant="subtitle">
+            {location} - {street}
+          </Text>
 
           {!!room && <Text>Numer pokoju: {room}</Text>}
         </Pressable>
