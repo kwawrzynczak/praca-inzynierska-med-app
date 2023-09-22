@@ -3,21 +3,8 @@ import { useEffect, useState } from 'react';
 import { TextInput, View } from 'react-native';
 import { Button, FAB, Text } from '@components';
 import api from '@services/api';
+import { type Appointment } from '@types';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-
-interface Appointment {
-  id: number;
-  attributes: {
-    title: string;
-    doctor: string;
-    active: boolean;
-    notes?: string;
-    datetime: Date;
-    location: string;
-    street: string;
-    room?: string;
-  };
-}
 
 interface AppointmentResponse {
   data: Appointment;
@@ -27,7 +14,11 @@ interface UpdateAppointment {
   data: {
     title: string;
     doctor: string;
-    notes: string;
+    datetime: Date;
+    notes?: string;
+    location: string;
+    street: string;
+    room?: string;
   };
 }
 
@@ -36,10 +27,6 @@ const AppointmentScreen = () => {
   const { id } = useLocalSearchParams<{ id: string }>();
   const [appointment, setAppointment] = useState<Appointment>();
   const [editable, setEditable] = useState(false);
-  // TODO: wsadzić to w jeden state
-  const [title, setTitle] = useState(appointment?.attributes.title);
-  const [doctor, setDoctor] = useState(appointment?.attributes.doctor);
-  const [notes, setNotes] = useState(appointment?.attributes.notes);
 
   useEffect(() => {
     const getAppointmentById = async () => {
@@ -53,20 +40,27 @@ const AppointmentScreen = () => {
           console.error(error);
         }
       }
-      setTitle(appointment?.attributes.title);
-      setDoctor(appointment?.attributes.doctor);
-      setNotes(appointment?.attributes.notes);
     };
 
     void getAppointmentById();
-  }, [appointment?.attributes.doctor, appointment?.attributes.notes, appointment?.attributes.title, id]);
+  }, [id]);
 
   const updateAppointmentData = async () => {
     if (!id) {
       console.error('no id provided');
     } else {
       try {
-        const { data } = await api.put<UpdateAppointment>(`/appointments/${id}`, { data: { title, doctor, notes } });
+        const { data } = await api.put<UpdateAppointment>(`/appointments/${id}`, {
+          data: {
+            appointment: appointment?.attributes.title,
+            doctor: appointment?.attributes.doctor,
+            datetime: appointment?.attributes.datetime,
+            notes: appointment?.attributes.notes,
+            location: appointment?.attributes.location,
+            street: appointment?.attributes.street,
+            room: appointment?.attributes.room,
+          },
+        });
         return data;
       } catch (error) {
         console.error(error);
@@ -88,15 +82,59 @@ const AppointmentScreen = () => {
     }
   };
 
+  const handleTextChange = <T extends keyof Appointment['attributes']>(key: T, value: Appointment['attributes'][T]) => {
+    setAppointment((prev) => {
+      if (!prev) return prev;
+      return { ...prev, attributes: { ...prev?.attributes, [key]: value } };
+    });
+  };
+
+  if (!appointment) {
+    return (
+      <View>
+        <Text>Loading...</Text>
+      </View>
+    );
+  }
+
   return (
     <View className="flex-1 bg-background p-4">
-      <TextInput className="font-bold text-2xl text-accent" editable={editable} value={title} onChangeText={setTitle} />
+      <TextInput
+        className="font-bold text-2xl text-accent focus:border-accent"
+        editable={editable}
+        value={appointment?.attributes.title}
+        onChangeText={(value) => handleTextChange('title', value)}
+      />
 
       <TextInput
-        className="font-normal text-lg text-secondary"
+        className="font-normal text-lg text-secondary focus:border-accent"
         editable={editable}
-        value={doctor}
-        onChangeText={setDoctor}
+        value={appointment?.attributes.doctor}
+        onChangeText={(value) => handleTextChange('doctor', value)}
+      />
+      <TextInput
+        className="font-normal text-lg text-secondary focus:border-accent"
+        editable={editable}
+        value={appointment?.attributes.datetime.toString()}
+        onChangeText={(value) => handleTextChange('datetime', new Date(value))}
+      />
+      <TextInput
+        className="font-normal text-lg text-secondary focus:border-accent"
+        editable={editable}
+        value={appointment?.attributes.location}
+        onChangeText={(value) => handleTextChange('location', value)}
+      />
+      <TextInput
+        className="font-normal text-lg text-secondary focus:border-accent"
+        editable={editable}
+        value={appointment?.attributes.street}
+        onChangeText={(value) => handleTextChange('street', value)}
+      />
+      <TextInput
+        className="font-normal text-lg text-secondary focus:border-accent"
+        editable={editable}
+        value={appointment?.attributes.room}
+        onChangeText={(value) => handleTextChange('room', value)}
       />
 
       <Text className="mb-2 mt-8 text-base">Notatki do wizyty: </Text>
@@ -105,8 +143,8 @@ const AppointmentScreen = () => {
         multiline
         placeholder="Brak notatek"
         editable={editable}
-        value={notes}
-        onChangeText={setNotes}
+        value={appointment?.attributes.notes}
+        onChangeText={(value) => handleTextChange('notes', value)}
       />
 
       <View className="absolute right-4 top-4 flex-row gap-4">
