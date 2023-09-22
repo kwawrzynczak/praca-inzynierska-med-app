@@ -1,20 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { FlatList } from 'react-native';
 import { AppointmentsListElement } from '@components/AppointmentsListElement';
-
-interface Appointment {
-  id: number;
-  attributes: {
-    title: string;
-    doctor: string;
-    active: boolean;
-    notes?: string;
-    datetime: Date;
-    location: string;
-    street: string;
-    room?: string;
-  };
-}
+import { type Appointment } from '@types';
 
 interface AppointmentsListProps {
   appointments: Appointment[];

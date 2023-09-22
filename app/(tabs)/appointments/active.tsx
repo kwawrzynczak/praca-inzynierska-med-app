@@ -2,22 +2,9 @@
 import { Pressable, TextInput, View } from 'react-native';
 import { AppointmentsList, AppointmentsListElement, FAB, Input, Text } from '@components';
 import api from '@services/api';
+import { type Appointment } from '@types';
 import { Link } from 'expo-router';
 import moment from 'moment';
-
-interface Appointment {
-  id: number;
-  attributes: {
-    title: string;
-    doctor: string;
-    active: boolean;
-    notes?: string;
-    datetime: Date;
-    location: string;
-    street: string;
-    room?: string;
-  };
-}
 
 interface AppointmentsListProps {
   activeAppointments: Appointment[];

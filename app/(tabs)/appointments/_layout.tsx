@@ -5,23 +5,10 @@ import { CustomTabBar } from '@components';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { useIsFocused } from '@react-navigation/native';
 import api from '@services/api';
+import { type Appointment } from '@types';
 
 import ActiveScreen from './active';
 import InactiveScreen from './inactive';
-
-interface Appointment {
-  id: number;
-  attributes: {
-    title: string;
-    doctor: string;
-    active: boolean;
-    notes?: string;
-    datetime: Date;
-    location: string;
-    street: string;
-    room?: string;
-  };
-}
 
 interface AppointmentsResponse {
   data: Appointment[];
