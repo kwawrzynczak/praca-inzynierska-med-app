@@ -13,16 +13,16 @@ interface AppointmentsListProps {
 const ActiveScreen = ({ activeAppointments }: AppointmentsListProps) => {
   return (
     <View className="flex-1 items-center bg-background">
-      <View className="flex-row gap-10">
-        <Pressable className="h-fit justify-center rounded-lg bg-accent p-2 text-center">
-          <Text className="text-white">Data</Text>
+      <View className="w-screen flex-row justify-around pt-3">
+        {/* Datepicker */}
+        <Pressable className="h-fit justify-center rounded-lg border border-white bg-white px-3 py-2 text-center">
+          <Text className="text-black">Data</Text>
         </Pressable>
+        {/* SearchBar */}
         <TextInput
-          className="rounded-lg bg-white p-2"
-          placeholder="uzytkownik@example.com"
+          className="w-48 rounded-lg border border-white bg-white p-2 focus:border-accent"
+          placeholder="Szukaj..."
           placeholderTextColor="#666"
-          textContentType="emailAddress"
-          keyboardType="email-address"
         />
       </View>
       {activeAppointments.length === 0 && (
