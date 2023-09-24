@@ -7,15 +7,9 @@ import api from '@services/api';
 import { useRouter } from 'expo-router';
 import moment from 'moment';
 
-interface CreateAppointment {
+interface CreateMedication {
   data: {
     title: string;
-    doctor: string;
-    active: boolean;
-    datetime: Date;
-    location: string;
-    street: string;
-    room?: string;
   };
 }
 
@@ -26,10 +20,7 @@ const CreateMedicationScreen = () => {
   const [selectedDate, setSelectedDate] = useState(moment());
   const [selectedTime, setSelectedTime] = useState(moment());
   const [title, setTitle] = useState<string>();
-  const [doctor, setDoctor] = useState<string>();
-  const [location, setLocation] = useState<string>();
-  const [street, setStreet] = useState<string>();
-  const [room, setRoom] = useState<string>();
+
   // const [active, setActive] = useState<boolean>(false);
 
   const formattedDate = selectedDate.format('DD.MM.YYYY');
@@ -45,10 +36,10 @@ const CreateMedicationScreen = () => {
   //   checkIfActive();
   // }, [datetime]);
 
-  const createAppointment = async () => {
+  const createMedication = async () => {
     try {
-      await api.post<CreateAppointment>('/appointments', {
-        data: { title, doctor, active: true, datetime },
+      await api.post<CreateMedication>('/medication', {
+        data: { title },
       });
       router.back();
     } catch (error) {
@@ -85,8 +76,7 @@ const CreateMedicationScreen = () => {
     <View className="flex-1 bg-background p-4">
       <View className="items-center">
         <View>
-          <Input title="Nazwa wizyty" value={title} onChangeText={setTitle} />
-          <Input title="Lekarz" value={doctor} onChangeText={setDoctor} />
+          <Input title="Nazwa lekarstwa" value={title} onChangeText={setTitle} />
           <View className="flex-row items-center gap-2">
             <Text className="mr-[72px]">Wybierz datę</Text>
             <Pressable className="rounded bg-white p-2" onPress={() => showDatePicker()}>
@@ -106,7 +96,7 @@ const CreateMedicationScreen = () => {
           size="small"
           className="mt-4"
           onPress={() => {
-            void createAppointment();
+            void createMedication();
           }}
         >
           Dodaj wizytę

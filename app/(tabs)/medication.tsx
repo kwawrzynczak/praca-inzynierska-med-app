@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Pressable, View } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { FAB, MedicationList, Text } from '@components';
+import { Link } from 'expo-router';
 import moment from 'moment';
 import { twMerge } from 'tailwind-merge';
 
@@ -49,7 +50,7 @@ const MedicationScreen = () => {
             : selectedDate.format('dddd, D MMMM')}
         </Text>
         {/* Komponent kalendarza */}
-        <View className="container flex-row justify-center">
+        {/* <View className="container flex-row justify-center">
           {weekList.map((item) => (
             <View className="items-center" key={item.format('D')}>
               <Text className="font-bold">{item.format('dd')}</Text>
@@ -71,7 +72,7 @@ const MedicationScreen = () => {
               </Pressable>
             </View>
           ))}
-        </View>
+        </View> */}
         <View className="mx-4 flex-row justify-center">
           <Pressable className="mt-2 rounded-lg bg-accent p-2" onPress={showDatePicker}>
             {/* <FontAwesome5 name="calendar-alt" color="#60a5fa" size={25} /> */}
@@ -83,7 +84,9 @@ const MedicationScreen = () => {
       </View>
       {/* okienko górne koniec */}
       <MedicationList />
-      <FAB type="add" className="absolute bottom-6 right-6" onPress={() => console.log('temp')} />
+      <Link asChild href="medication/create">
+        <FAB type="add" className="absolute bottom-6 right-6" onPress={() => console.log('temp')} />
+      </Link>
 
       <DateTimePickerModal
         isVisible={isDatePickerVisible}
