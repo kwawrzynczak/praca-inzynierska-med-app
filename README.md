@@ -2,7 +2,8 @@
 
 ## Apka TODO:
 
-- ~~pobieranie danych do kalendarza w appointemnts _layout :)~~
+- ~~pobieranie danych do kalendarza w appointments _layout :)~~
+
 - !! AUTORYZACJA !!
 - resetowanie hasła
 - dodanie pola z zarządzaniem podopiecznymi ~~lub opiekunami, nie~~ w formie taba, opiekunami w ustawieniach
@@ -12,18 +13,22 @@
 - poprawki związane z UX/UI
 - usunąć wszystkie console logi
 - usunąć pole ACTIVE z bazy
+- modal przy usuwaniu
 
 ## Leki TODO: 
 
-- wymyślenie ostatecznego wyglądu kalendarza
-- formularz dodawania lekarstwa
-- ?informacje o leku po naciśnięciu 
-- wygląd pojedynczego elementu listy
-- naprawić enumy
 - ~~resetowanie stanu BottomSheet po opuszczeniu ekranu Medication~~
 - ~~kalendarz + wybór daty~~
 - ~~podział na poranek, południe, wieczór, etc. ==> SectionList component~~
 - ~~naprawienie buga w CalendarStrip lub znalezienie nowej biblioteki~~
+
+- wymyślenie ostatecznego wyglądu kalendarza
+- formularz dodawania lekarstwa
+- informacje o leku po naciśnięciu 
+- wygląd pojedynczego elementu listy
+- naprawić enumy
+- ?dodać możliwość dodania zdjęcia 
+
 
 ## Kalendarz TODO:
 
@@ -35,12 +40,12 @@
 - ~~usuwanie wizyty~~
 - ~~metoda wybierania pola active~~
 - ~~wybieranie najbliższej wizyty~~
+- ~~dodać pola: LOKALIZACJA, ULICA, POKÓJ~~
+
 - formularz dodawania wizyty
 - edytowanie daty
-- dodać pola: LOKALIZACJA, ULICA, POKÓJ
 - naprawić problem z rerenderem po wejściu na screena [id]
 - sprawdzanie daty
-- dodać modal
 
 
 ## Ustawienia TODO:
