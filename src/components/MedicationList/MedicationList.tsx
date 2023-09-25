@@ -12,22 +12,22 @@ export const MedicationList = ({ medication }: MedicationListProps) => {
     {
       title: 'poranek',
       icon: <FontAwesome5 name="cloud-sun" color="#809fff" size={20} />,
-      data: medication,
+      data: medication.filter((item) => item.attributes.time.includes('09:00')),
     },
     {
       title: 'południe',
       icon: <FontAwesome5 solid name="sun" color="#809fff" size={20} />,
-      data: [],
+      data: medication.filter((item) => item.attributes.time.includes('09:00')),
     },
     {
       title: 'wieczór',
       icon: <FontAwesome5 name="cloud-moon" color="#809fff" size={20} />,
-      data: [],
+      data: medication.filter((item) => item.attributes.time.includes('09:00')),
     },
     {
       title: 'noc',
       icon: <FontAwesome5 solid name="moon" color="#809fff" size={20} />,
-      data: medication,
+      data: medication.filter((item) => item.attributes.time.includes('09:00')),
     },
   ];
   return (
@@ -37,6 +37,13 @@ export const MedicationList = ({ medication }: MedicationListProps) => {
         marginTop: '4%',
       }}
       sections={medicationSections}
+      stickySectionHeadersEnabled={false}
+      renderSectionHeader={({ section: { title, icon } }) => (
+        <View className="w-[360px] flex-row items-center rounded-t-2xl bg-white p-3">
+          {icon}
+          <Text className="ml-2 font-bold text-base text-accent">{title}</Text>
+        </View>
+      )}
       keyExtractor={(item, index) => `${item.attributes.name}${index}`}
       renderItem={({ item }) => (
         <MedicationListElement
@@ -45,13 +52,6 @@ export const MedicationList = ({ medication }: MedicationListProps) => {
           time={item.attributes.time}
           meal={item.attributes.meal}
         />
-      )}
-      stickySectionHeadersEnabled={false}
-      renderSectionHeader={({ section: { title, icon } }) => (
-        <View className="w-[360px] flex-row items-center rounded-t-2xl bg-white p-3">
-          {icon}
-          <Text className="ml-2 font-bold text-base text-accent">{title}</Text>
-        </View>
       )}
       renderSectionFooter={() => <View className="mb-4 w-[360px] rounded-b-2xl bg-white p-3" />}
     />
