@@ -1,30 +1,34 @@
+import { useState } from 'react';
 import { SectionList, Text, View } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { Medication } from '@types';
 
-const DATA = [
-  {
-    title: 'poranek',
-    icon: <FontAwesome5 name="cloud-sun" color="#00008B" size={20} />,
-    data: ['Pizza', 'Burger', 'Risotto'],
-  },
-  {
-    title: 'południe',
-    icon: <FontAwesome5 solid name="sun" color="#00008B" size={20} />,
-    data: ['French Fries', 'Onion Rings', 'Fried Shrimps'],
-  },
-  {
-    title: 'wieczór',
-    icon: <FontAwesome5 name="cloud-moon" color="#00008B" size={20} />,
-    data: ['Water', 'Coke', 'Beer'],
-  },
-  {
-    title: 'noc',
-    icon: <FontAwesome5 solid name="moon" color="#00008B" size={20} />,
-    data: ['Water', 'Coke', 'Beer'],
-  },
-];
-
-export const MedicationList = () => {
+interface MedicationListProps {
+  medication: Medication[];
+}
+export const MedicationList = ({ medication }: MedicationListProps) => {
+  const medicationSections = [
+    {
+      title: 'poranek',
+      icon: <FontAwesome5 name="cloud-sun" color="#809fff" size={20} />,
+      data: medication,
+    },
+    {
+      title: 'południe',
+      icon: <FontAwesome5 solid name="sun" color="#809fff" size={20} />,
+      data: [],
+    },
+    {
+      title: 'wieczór',
+      icon: <FontAwesome5 name="cloud-moon" color="#809fff" size={20} />,
+      data: [],
+    },
+    {
+      title: 'noc',
+      icon: <FontAwesome5 solid name="moon" color="#809fff" size={20} />,
+      data: medication,
+    },
+  ];
   return (
     <SectionList
       contentContainerStyle={{
@@ -33,12 +37,12 @@ export const MedicationList = () => {
         shadowOpacity: 0.1,
         shadowOffset: { width: 0, height: 4 },
       }}
-      sections={DATA}
-      keyExtractor={(item, index) => `${item}${index}`}
+      sections={medicationSections}
+      keyExtractor={(item, index) => `${item.attributes.name}${index}`}
       renderItem={({ item }) => (
         <View className="w-[360px] bg-white p-2">
-          <Text>{item}</Text>
-          <View className="h-[1px] bg-accent" />
+          <Text>{item.attributes.name}</Text>
+          {/* <View className="h-[1px] bg-accent" /> */}
         </View>
       )}
       stickySectionHeadersEnabled={false}

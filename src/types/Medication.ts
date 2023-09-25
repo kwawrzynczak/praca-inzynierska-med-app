@@ -1,8 +1,8 @@
 export interface Medication {
-  id: string;
-  name: string;
-  amount: string;
-  substance: string;
-  time: string;
-  isDone: boolean;
+  id: number;
+  attributes: {
+    name: string;
+    meal: string;
+    time: string;
+  };
 }
