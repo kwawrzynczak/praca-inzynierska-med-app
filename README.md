@@ -19,6 +19,7 @@
 - formularz dodawania lekarstwa
 - ?informacje o leku po naciśnięciu 
 - wygląd pojedynczego elementu listy
+- naprawić enumy
 - ~~resetowanie stanu BottomSheet po opuszczeniu ekranu Medication~~
 - ~~kalendarz + wybór daty~~
 - ~~podział na poranek, południe, wieczór, etc. ==> SectionList component~~

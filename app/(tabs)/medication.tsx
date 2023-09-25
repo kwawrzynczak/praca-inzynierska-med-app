@@ -3,13 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { Pressable, View } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { FAB, MedicationList, Text } from '@components';
-import { FontAwesome5 } from '@expo/vector-icons';
 import { useIsFocused } from '@react-navigation/native';
 import api from '@services/api';
 import { type Medication } from '@types';
 import { Link } from 'expo-router';
 import moment from 'moment';
-import { twMerge } from 'tailwind-merge';
 
 import 'moment/locale/pl';
 

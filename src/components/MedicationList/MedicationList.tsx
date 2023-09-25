@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { SectionList, Text, View } from 'react-native';
+import { MedicationListElement } from '@components/MedicationListElement';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Medication } from '@types';
 
@@ -34,20 +35,20 @@ export const MedicationList = ({ medication }: MedicationListProps) => {
       contentContainerStyle={{
         alignItems: 'center',
         marginTop: '4%',
-        shadowOpacity: 0.1,
-        shadowOffset: { width: 0, height: 4 },
       }}
       sections={medicationSections}
       keyExtractor={(item, index) => `${item.attributes.name}${index}`}
       renderItem={({ item }) => (
-        <View className="w-[360px] bg-white p-2">
-          <Text>{item.attributes.name}</Text>
-          {/* <View className="h-[1px] bg-accent" /> */}
-        </View>
+        <MedicationListElement
+          id={item.id}
+          name={item.attributes.name}
+          time={item.attributes.time}
+          meal={item.attributes.meal}
+        />
       )}
       stickySectionHeadersEnabled={false}
       renderSectionHeader={({ section: { title, icon } }) => (
-        <View className="w-[360px] flex-row items-center rounded-t-2xl bg-white p-3 shadow">
+        <View className="w-[360px] flex-row items-center rounded-t-2xl bg-white p-3">
           {icon}
           <Text className="ml-2 font-bold text-base text-accent">{title}</Text>
         </View>
