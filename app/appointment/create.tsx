@@ -37,14 +37,6 @@ const CreateAppointmentScreen = () => {
   const formattedTime = selectedTime.format('HH:mm');
   const datetime = useMemo(() => new Date(`${preparedDate}T${formattedTime}`), [formattedTime, preparedDate]);
 
-  // useEffect(() => {
-  //   const checkIfActive = () => {
-  //     const today = moment();
-  //     if (datetime.diff(today) > 0) setActive(true);
-  //   };
-  //   checkIfActive();
-  // }, [datetime]);
-
   const createAppointment = async () => {
     try {
       await api.post<CreateAppointment>('/appointments', {

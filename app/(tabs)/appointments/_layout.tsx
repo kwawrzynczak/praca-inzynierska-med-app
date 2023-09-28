@@ -6,6 +6,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { useIsFocused } from '@react-navigation/native';
 import api from '@services/api';
 import { type Appointment } from '@types';
+import moment from 'moment';
 
 import ActiveScreen from './active';
 import InactiveScreen from './inactive';
@@ -19,6 +20,7 @@ const Tab = createMaterialTopTabNavigator();
 const AppointmentLayout = () => {
   const [appointments, setAppointments] = useState<Appointment[]>([]);
   const isFocused = useIsFocused();
+  const today = new Date();
 
   useEffect(() => {
     const getAppointments = async () => {
@@ -42,7 +44,9 @@ const AppointmentLayout = () => {
       <Tab.Screen name="Nadchodzące">
         {(props) => (
           <ActiveScreen
-            activeAppointments={appointments.filter((appointment) => appointment.attributes.active)}
+            activeAppointments={appointments?.filter(
+              (appointment) => new Date(appointment.attributes.datetime) > today,
+            )}
             {...props}
           />
         )}
@@ -50,7 +54,9 @@ const AppointmentLayout = () => {
       <Tab.Screen name="Historia">
         {(props) => (
           <InactiveScreen
-            inactiveAppointments={appointments.filter((appointment) => !appointment.attributes.active)}
+            inactiveAppointments={appointments.filter(
+              (appointment) => new Date(appointment.attributes.datetime) < today,
+            )}
             {...props}
           />
         )}
