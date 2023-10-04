@@ -3,7 +3,6 @@ export interface Appointment {
   attributes: {
     title: string;
     doctor: string;
-    active: boolean;
     notes?: string;
     datetime: Date;
     location: string;

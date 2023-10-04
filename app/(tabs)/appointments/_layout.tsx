@@ -6,7 +6,6 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { useIsFocused } from '@react-navigation/native';
 import api from '@services/api';
 import { type Appointment } from '@types';
-import moment from 'moment';
 
 import ActiveScreen from './active';
 import InactiveScreen from './inactive';

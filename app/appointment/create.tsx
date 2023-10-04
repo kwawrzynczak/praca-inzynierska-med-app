@@ -30,7 +30,6 @@ const CreateAppointmentScreen = () => {
   const [location, setLocation] = useState<string>();
   const [street, setStreet] = useState<string>();
   const [room, setRoom] = useState<string>();
-  // const [active, setActive] = useState<boolean>(false);
 
   const formattedDate = selectedDate.format('DD.MM.YYYY');
   const preparedDate = selectedDate.format('YYYY-MM-DD');

@@ -3,16 +3,16 @@
 ## Apka TODO:
 
 - ~~pobieranie danych do kalendarza w appointments _layout :)~~
+- ~~usunąć pole ACTIVE z bazy~~
+- ~~przeniesienie typów do odpowiednich plików~~
 
 - !! AUTORYZACJA !!
 - resetowanie hasła
 - dodanie pola z zarządzaniem podopiecznymi ~~lub opiekunami, nie~~ w formie taba, opiekunami w ustawieniach
 - wysyłanie zaproszenia do podopiecznego
 - powiadomienia
-- przeniesienie typów do odpowiednich plików
 - poprawki związane z UX/UI
 - usunąć wszystkie console logi
-- usunąć pole ACTIVE z bazy
 - modal przy usuwaniu
 
 ## Leki TODO: 
@@ -41,11 +41,11 @@
 - ~~metoda wybierania pola active~~
 - ~~wybieranie najbliższej wizyty~~
 - ~~dodać pola: LOKALIZACJA, ULICA, POKÓJ~~
+- ~~sprawdzanie daty~~
 
 - formularz dodawania wizyty
 - edytowanie daty
 - naprawić problem z rerenderem po wejściu na screena [id]
-- sprawdzanie daty
 
 
 ## Ustawienia TODO:
