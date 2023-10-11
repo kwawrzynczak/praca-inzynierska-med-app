@@ -14,6 +14,8 @@
 - poprawki związane z UX/UI
 - usunąć wszystkie console logi
 - modal przy usuwaniu
+- można usunąć komponent kalendarza ?
+- stworzenie ekranu rejestracji
 
 ## Leki TODO: 
 

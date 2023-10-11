@@ -34,6 +34,7 @@ const StackLayout = () => {
       <Stack.Screen name="appointment/create" options={{ title: 'Dodaj wizytę' }} />
       <Stack.Screen name="medication/[id]" options={{ title: 'Powrót' }} />
       <Stack.Screen name="medication/create" options={{ title: 'Dodaj lekarstwo' }} />
+      <Stack.Screen name="patient/[id]" options={{ headerShown: false }} />
     </Stack>
   );
 };
