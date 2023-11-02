@@ -8,6 +8,7 @@ export * from './Input';
 export * from './MedicationForm';
 export * from './MedicationList';
 export * from './MedicationListElement';
+export * from './SettingsTabElement';
 export * from './StepAccountType';
 export * from './StepRegisterForm';
 export * from './Text';
