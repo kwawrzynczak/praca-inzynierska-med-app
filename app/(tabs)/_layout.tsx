@@ -1,23 +1,43 @@
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { BottomTabBar } from '@react-navigation/bottom-tabs';
 import { Tabs } from 'expo-router';
 
-const activeLabel = '#00008B';
-const inctiveLabel = '#9B9B9B';
+const activeLabel = '#809fff';
+const inactiveLabel = '#E6E6E6';
 const TabsLayout = () => (
-  <Tabs>
+  <Tabs
+    screenOptions={{
+      tabBarStyle: { backgroundColor: '#000d33', height: 88 },
+    }}
+  >
+    <Tabs.Screen
+      name="home"
+      options={{
+        tabBarLabel: 'Home',
+        tabBarLabelStyle: { fontSize: 14, fontWeight: '500', marginTop: -4 },
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        tabBarIcon: ({ focused }) => (
+          <FontAwesome5 name="house-user" size={22} color={focused ? activeLabel : inactiveLabel} />
+        ),
+        tabBarActiveTintColor: activeLabel,
+        tabBarInactiveTintColor: inactiveLabel,
+        headerShown: false,
+        unmountOnBlur: false,
+      }}
+    />
     <Tabs.Screen
       name="medication"
       options={{
         tabBarLabel: 'Leki',
-        tabBarLabelStyle: { fontSize: 12, fontWeight: '500', marginTop: -2 },
+        tabBarLabelStyle: { fontSize: 14, fontWeight: '500', marginTop: -4 },
         // eslint-disable-next-line react/jsx-props-no-spreading
-        tabBarIcon: ({ size, focused }) => (
-          <FontAwesome5 name="pills" size={22} color={focused ? activeLabel : inctiveLabel} />
+        tabBarIcon: ({ focused }) => (
+          <FontAwesome5 name="pills" size={22} color={focused ? activeLabel : inactiveLabel} />
         ),
         tabBarActiveTintColor: activeLabel,
-        tabBarInactiveTintColor: inctiveLabel,
+        tabBarInactiveTintColor: inactiveLabel,
         headerShown: false,
         unmountOnBlur: false,
       }}
@@ -27,38 +47,27 @@ const TabsLayout = () => (
       options={{
         headerShown: false,
         tabBarLabel: 'Wizyty',
-        tabBarLabelStyle: { fontSize: 12, fontWeight: '500', marginTop: -2 },
+        tabBarLabelStyle: { fontSize: 14, fontWeight: '500', marginTop: -4 },
         tabBarIcon: ({ focused }) => (
-          <FontAwesome5 name="notes-medical" size={22} color={focused ? activeLabel : inctiveLabel} />
+          <FontAwesome5 name="notes-medical" size={22} color={focused ? activeLabel : inactiveLabel} />
         ),
 
         tabBarActiveTintColor: activeLabel,
-        tabBarInactiveTintColor: inctiveLabel,
+        tabBarInactiveTintColor: inactiveLabel,
       }}
     />
-    <Tabs.Screen
-      name="patients"
-      options={{
-        headerShown: false,
-        tabBarLabel: 'Pacjenci',
-        tabBarLabelStyle: { fontSize: 12, fontWeight: '500', marginTop: -2 },
-        tabBarIcon: ({ focused }) => (
-          <FontAwesome5 name="users" size={22} color={focused ? activeLabel : inctiveLabel} />
-        ),
 
-        tabBarActiveTintColor: activeLabel,
-        tabBarInactiveTintColor: inctiveLabel,
-      }}
-    />
     <Tabs.Screen
-      name="settings"
+      name="more"
       options={{
-        tabBarLabel: 'Ustawienia',
-        tabBarLabelStyle: { fontSize: 12, fontWeight: '500', marginTop: -2 },
+        tabBarLabel: 'Więcej',
+        tabBarLabelStyle: { fontSize: 14, fontWeight: '500', marginTop: -4 },
         headerTitle: 'Ustawienia',
-        tabBarIcon: ({ focused }) => <FontAwesome5 name="cog" size={22} color={focused ? activeLabel : inctiveLabel} />,
+        tabBarIcon: ({ focused }) => (
+          <FontAwesome5 name="ellipsis-h" size={22} color={focused ? activeLabel : inactiveLabel} />
+        ),
         tabBarActiveTintColor: activeLabel,
-        tabBarInactiveTintColor: inctiveLabel,
+        tabBarInactiveTintColor: inactiveLabel,
       }}
     />
   </Tabs>

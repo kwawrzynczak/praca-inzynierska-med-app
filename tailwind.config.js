@@ -18,6 +18,7 @@ module.exports = {
         background: '#E9EEFF',
         secondary: '#5A5A5A',
         accent: '#00008B',
+        lightblue: '#809fff',
         press: colors.blue[600],
         black: ' #0A2342',
         red: colors.red[500],

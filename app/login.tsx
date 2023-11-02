@@ -1,11 +1,22 @@
 import { Pressable, SafeAreaView, View } from 'react-native';
 import { Button, Input, Text } from '@components';
+import api from '@services/api';
 import { Link, useRouter } from 'expo-router';
 
 const LoginScreen = () => {
   const router = useRouter();
-  const handleLogin = () => {
-    router.replace('appointments');
+  const handleLogin = async () => {
+    try {
+      const response: { data: { jwt: string; user: any } } = await api.post('/auth/local', {
+        identifier: 'caregiver1@gmail.com',
+        password: 'caregiver',
+      });
+      console.log(response.data.jwt);
+      console.log(response.data.user);
+      router.replace('appointments');
+    } catch (error) {
+      console.error(error);
+    }
   };
   return (
     <SafeAreaView className="flex-1 items-center bg-background">
@@ -41,7 +52,12 @@ const LoginScreen = () => {
           </View>
         </View>
 
-        <Button onPress={handleLogin} className="">
+        <Button
+          onPress={() => {
+            void handleLogin();
+          }}
+          className=""
+        >
           Zaloguj się
         </Button>
         <View className="mt-3 flex-row justify-center">

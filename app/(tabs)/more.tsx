@@ -3,11 +3,11 @@ import { SafeAreaView } from 'react-native';
 import { Button, Text } from '@components';
 import { Link } from 'expo-router';
 
-const SettingsScreen = () => {
+const MoreScreen = () => {
   return (
     <SafeAreaView className="flex-1 items-center bg-background">
       <Text variant="title" className="mt-12">
-        Ustawienia
+        Więcej
       </Text>
 
       <Link href="/" asChild>
@@ -17,4 +17,4 @@ const SettingsScreen = () => {
   );
 };
 
-export default SettingsScreen;
+export default MoreScreen;
