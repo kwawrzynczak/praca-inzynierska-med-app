@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { FC, Fragment, ReactNode } from 'react';
-import { Pressable, PressableProps, View, ViewProps } from 'react-native';
+import React, { FC } from 'react';
+import { Pressable, PressableProps, View } from 'react-native';
 import { Text } from '@components/Text';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Link } from 'expo-router';
