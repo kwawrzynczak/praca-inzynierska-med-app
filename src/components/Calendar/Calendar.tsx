@@ -1,4 +1,3 @@
-import { Fragment, useState } from 'react';
 import { Pressable, View } from 'react-native';
 import { Text } from '@components/Text';
 import moment from 'moment';

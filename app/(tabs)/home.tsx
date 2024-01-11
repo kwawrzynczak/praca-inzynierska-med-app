@@ -9,42 +9,31 @@ import moment from 'moment';
 const HomeScreen = () => {
   const today = moment();
   const isFocused = useIsFocused();
-
-  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [selectedDate, setSelectedDate] = useState(today);
 
-  const showDatePicker = () => {
-    setDatePickerVisibility(true);
-  };
-
-  const hideDatePicker = () => {
-    setDatePickerVisibility(false);
-  };
-
-  const handleConfirm = (date: Date) => {
-    hideDatePicker();
-    setSelectedDate(moment(date));
-  };
   return (
     <View className="flex-1 bg-background">
-      {/* okienko górne */}
-      <View className="container rounded-3xl bg-white pb-3 pt-10 shadow">
-        <Text variant="title" className="my-2 pl-3 text-start text-lg uppercase tracking-tighter">
+      <View className="container rounded-3xl bg-white pb-3 pt-16 shadow">
+        <Text variant="title" className="text-center text-lg uppercase tracking-tighter">
           {selectedDate.format('DDMMYY') === moment().format('DDMMYY')
-            ? `dzisiaj, ${selectedDate.format('D MMMM')}`
-            : selectedDate.format('dddd, D MMMM')}
+            ? `dzisiaj, ${selectedDate.format('LL')}`
+            : selectedDate.format('dddd, LL')}
         </Text>
-
-        <View className="mx-4 flex-row justify-center">
+        <View className="mx-4 mt-2 flex-row justify-center">
           <View className="container">
             <CalendarStrip
               scrollable
-              daySelectionAnimation={{ type: 'background', duration: 200, highlightColor: '#60a5fa' }}
-              calendarHeaderStyle={{ color: '#666', fontFamily: 'NunitoSans_700Bold' }}
-              dateNameStyle={{ fontFamily: 'NunitoSans_600SemiBold' }}
-              dateNumberStyle={{ fontFamily: 'NunitoSans_700Bold' }}
-              highlightDateNameStyle={{ color: 'white', fontFamily: 'NunitoSans_600SemiBold' }}
-              highlightDateNumberStyle={{ color: 'white', fontFamily: 'NunitoSans_700Bold' }}
+              daySelectionAnimation={{
+                type: 'border',
+                duration: 200,
+                borderWidth: 1,
+                borderHighlightColor: '#666',
+              }}
+              calendarHeaderStyle={{ color: '#666', fontFamily: 'NunitoSans_700Bold', fontSize: 16 }}
+              dateNameStyle={{ fontFamily: 'NunitoSans_600SemiBold', fontSize: 12 }}
+              dateNumberStyle={{ fontFamily: 'NunitoSans_700Bold', fontSize: 16 }}
+              highlightDateNameStyle={{ fontFamily: 'NunitoSans_700Bold', fontSize: 12 }}
+              highlightDateNumberStyle={{ fontFamily: 'NunitoSans_700Bold', fontSize: 16 }}
               style={{ height: 80 }}
               iconLeft={null}
               iconRight={null}
@@ -54,10 +43,6 @@ const HomeScreen = () => {
               startingDate={moment().subtract(3, 'days')}
               selectedDate={selectedDate}
             />
-            {selectedDate.format('LL') === today.format('LL') && (
-              <Text className="my-2 text-center font-bold">Dzisiaj</Text>
-            )}
-            <Text className="my-2 text-center font-bold">{selectedDate.format('LL')}</Text>
           </View>
         </View>
       </View>
@@ -66,3 +51,30 @@ const HomeScreen = () => {
 };
 
 export default HomeScreen;
+
+//  <DateTimePickerModal
+// isVisible={isDatePickerVisible}
+// display="spinner"
+// mode="date"
+// onConfirm={handleConfirm}
+// onCancel={hideDatePicker}
+// confirmTextIOS="Wybierz"
+// cancelTextIOS="Wróć"
+// themeVariant="light"
+// locale="pl_PL"
+// />
+
+// const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+
+// const showDatePicker = () => {
+//   setDatePickerVisibility(true);
+// };
+
+// const hideDatePicker = () => {
+//   setDatePickerVisibility(false);
+// };
+
+// const handleConfirm = (date: Date) => {
+//   hideDatePicker();
+//   setSelectedDate(moment(date));
+// };
