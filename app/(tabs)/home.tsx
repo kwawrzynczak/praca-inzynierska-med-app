@@ -2,15 +2,14 @@
 import { useState } from 'react';
 import { View } from 'react-native';
 import CalendarStrip from 'react-native-calendar-strip';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Button, Text } from '@components';
-import { FontAwesome, FontAwesome5 } from '@expo/vector-icons';
-import { useIsFocused } from '@react-navigation/native';
+import { Text } from '@components';
+import { FontAwesome } from '@expo/vector-icons';
+// import { useIsFocused } from '@react-navigation/native';
 import moment from 'moment';
 
 const HomeScreen = () => {
   const today = moment();
-  const isFocused = useIsFocused();
+  // const isFocused = useIsFocused();
   const [selectedDate, setSelectedDate] = useState(today);
 
   return (
