@@ -2,7 +2,9 @@
 import { useState } from 'react';
 import { View } from 'react-native';
 import CalendarStrip from 'react-native-calendar-strip';
-import { Text } from '@components';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Button, Text } from '@components';
+import { FontAwesome, FontAwesome5 } from '@expo/vector-icons';
 import { useIsFocused } from '@react-navigation/native';
 import moment from 'moment';
 
@@ -12,14 +14,10 @@ const HomeScreen = () => {
   const [selectedDate, setSelectedDate] = useState(today);
 
   return (
-    <View className="flex-1 bg-background">
-      <View className="container rounded-3xl bg-white pb-3 pt-16 shadow">
-        <Text variant="title" className="text-center text-lg uppercase tracking-tighter">
-          {selectedDate.format('DDMMYY') === moment().format('DDMMYY')
-            ? `dzisiaj, ${selectedDate.format('LL')}`
-            : selectedDate.format('dddd, LL')}
-        </Text>
-        <View className="mx-4 mt-2 flex-row justify-center">
+    <View className="w-full flex-1 gap-y-4 bg-background">
+      <View className="container rounded-b-3xl bg-gray-100 pb-3 pt-12 shadow">
+        <View className="mx-4 flex-row justify-center">
+          {/* Calendar container */}
           <View className="container">
             <CalendarStrip
               scrollable
@@ -44,6 +42,27 @@ const HomeScreen = () => {
               selectedDate={selectedDate}
             />
           </View>
+          {/* Calendar container */}
+        </View>
+      </View>
+      {/* Current caretaker info */}
+      <View className="mx-4 flex-row items-center justify-between rounded-full bg-gray-100 p-3 pr-4 shadow">
+        <View className="h-14 w-14 rounded-full bg-red" />
+        <View className="flex items-center justify-center">
+          <Text variant="subtitle">Sprawdź, jak ma się Marek</Text>
+          <Text className="text-gray-500">Naciśnij, aby zmienić podopiecznego</Text>
+        </View>
+        <FontAwesome name="angle-right" size={24} color="#666" />
+      </View>
+      {/* Current caretaker info */}
+      <View>
+        <Text variant="title" className="text-center text-lg uppercase tracking-tighter">
+          {selectedDate.format('DDMMYY') === moment().format('DDMMYY')
+            ? `dzisiaj, ${selectedDate.format('LL')}`
+            : selectedDate.format('dddd, LL')}
+        </Text>
+        <View className="flex h-44 items-center justify-center">
+          <Text>Brak planów na dziś</Text>
         </View>
       </View>
     </View>
