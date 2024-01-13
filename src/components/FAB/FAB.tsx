@@ -1,17 +1,19 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable tailwindcss/no-custom-classname */
-import { Animated, Pressable, type PressableProps } from 'react-native';
+import { Animated, Pressable, type PressableProps, View } from 'react-native';
+import { Text } from '@components/Text';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { useAnimation } from '@hooks';
 import { twMerge } from 'tailwind-merge';
 
 interface StyledButtonProps extends PressableProps {
+  children?: React.ReactNode;
   className?: string;
-  type: 'add' | 'edit' | 'delete';
+  type?: 'add' | 'edit' | 'delete' | 'custom';
   onPress?: () => void;
 }
 
-export const FAB = ({ className, type, ...rest }: StyledButtonProps) => {
+export const FAB = ({ children, className, type, ...rest }: StyledButtonProps) => {
   const { opacityValue, fadeIn, fadeOut } = useAnimation();
 
   return (
@@ -32,6 +34,12 @@ export const FAB = ({ className, type, ...rest }: StyledButtonProps) => {
       {type === 'add' && <FontAwesome5 name="plus" color="white" size={24} />}
       {type === 'edit' && <FontAwesome5 name="pen" color="white" size={22} />}
       {type === 'delete' && <FontAwesome5 name="trash" color="white" size={22} />}
+      {type === 'custom' && (
+        <View className="flex flex-row ">
+          <FontAwesome5 name="plus" color="white" size={22} />
+          <Text>{children}</Text>
+        </View>
+      )}
     </Pressable>
   );
 };

@@ -1,16 +1,20 @@
 /* eslint-disable react/no-unstable-nested-components */
 import { useState } from 'react';
-import { View } from 'react-native';
+import { Animated, Pressable, View } from 'react-native';
 import CalendarStrip from 'react-native-calendar-strip';
 import { Text } from '@components';
 import { FontAwesome } from '@expo/vector-icons';
+import { useAnimation } from '@hooks';
+import { Link } from 'expo-router';
 // import { useIsFocused } from '@react-navigation/native';
 import moment from 'moment';
+import { twMerge } from 'tailwind-merge';
 
 const HomeScreen = () => {
   const today = moment();
   // const isFocused = useIsFocused();
   const [selectedDate, setSelectedDate] = useState(today);
+  const { opacityValue, fadeIn, fadeOut } = useAnimation();
 
   return (
     <View className="w-full flex-1 gap-y-4 bg-background">
@@ -40,14 +44,26 @@ const HomeScreen = () => {
         </View>
       </View>
       {/* Current caretaker info */}
-      <View className="mx-4 flex-row items-center justify-between rounded-full bg-gray-100 p-3 pr-4 shadow">
-        <View className="h-14 w-14 rounded-full bg-red" />
-        <View className="flex items-center justify-center">
-          <Text variant="subtitle">Sprawdź, jak ma się Marek</Text>
-          <Text className="text-gray-500">Naciśnij, aby zmienić podopiecznego</Text>
-        </View>
-        <FontAwesome name="angle-right" size={24} color="#666" />
-      </View>
+      <Link href="/more/patients" asChild>
+        <Pressable
+          onPressIn={fadeIn}
+          onPressOut={fadeOut}
+          className={twMerge(
+            'mx-4 flex-row items-center justify-between rounded-full bg-gray-100 p-3 pr-4 active:scale-[.98] shadow',
+          )}
+        >
+          <View className="h-14 w-14 rounded-full bg-red" />
+          <View className="flex items-center justify-center">
+            <Text variant="subtitle">Sprawdź, jak ma się Marek</Text>
+            <Text className="text-gray-500">Naciśnij, aby zmienić podopiecznego</Text>
+          </View>
+          <FontAwesome name="angle-right" size={24} color="#666" />
+          <Animated.View
+            className={twMerge('absolute left-0 top-0 w-[360px] h-20 rounded-full')}
+            style={{ opacity: opacityValue }}
+          />
+        </Pressable>
+      </Link>
       {/* Current caretaker info */}
       <View>
         <Text variant="title" className="text-center text-lg uppercase tracking-tighter">

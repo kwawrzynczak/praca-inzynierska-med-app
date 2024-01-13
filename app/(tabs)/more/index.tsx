@@ -5,7 +5,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { Link, usePathname } from 'expo-router';
 
 const tabs = [
-  { name: 'Pacjenci', path: '/more/patients', icon: 'user-md' },
+  { name: 'Pacjenci', path: '/more/patients', icon: 'user-friends' },
   { name: 'Lekarze', path: '/more/doctors', icon: 'user-md' },
   { name: 'Placówki', path: '/more/facilities', icon: 'hospital' },
 ];

@@ -61,7 +61,7 @@ const TabsLayout = () => (
       options={{
         tabBarLabel: 'Więcej',
         tabBarLabelStyle: { fontSize: 14, fontWeight: '500', marginTop: -4 },
-        headerTitle: 'Ustawienia',
+        headerShown: false,
         tabBarIcon: ({ focused }) => (
           <FontAwesome5 name="ellipsis-h" size={22} color={focused ? activeLabel : inactiveLabel} />
         ),
