@@ -21,17 +21,12 @@ const HomeScreen = () => {
           <View className="container">
             <CalendarStrip
               scrollable
-              daySelectionAnimation={{
-                type: 'border',
-                duration: 200,
-                borderWidth: 1,
-                borderHighlightColor: '#666',
-              }}
-              calendarHeaderStyle={{ color: '#666', fontFamily: 'NunitoSans_700Bold', fontSize: 16 }}
-              dateNameStyle={{ fontFamily: 'NunitoSans_600SemiBold', fontSize: 12 }}
+              daySelectionAnimation={{ type: 'background', duration: 200, highlightColor: '#60a5fa' }}
+              calendarHeaderStyle={{ color: '#666', fontFamily: 'NunitoSans_700Bold' }}
+              dateNameStyle={{ fontFamily: 'NunitoSans_600SemiBold', fontSize: 10 }}
               dateNumberStyle={{ fontFamily: 'NunitoSans_700Bold', fontSize: 16 }}
-              highlightDateNameStyle={{ fontFamily: 'NunitoSans_700Bold', fontSize: 12 }}
-              highlightDateNumberStyle={{ fontFamily: 'NunitoSans_700Bold', fontSize: 16 }}
+              highlightDateNameStyle={{ color: 'white', fontFamily: 'NunitoSans_600SemiBold', fontSize: 10 }}
+              highlightDateNumberStyle={{ color: 'white', fontFamily: 'NunitoSans_700Bold', fontSize: 16 }}
               style={{ height: 80 }}
               iconLeft={null}
               iconRight={null}
