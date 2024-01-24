@@ -30,6 +30,7 @@ const TabsLayout = () => (
       name="medication"
       options={{
         tabBarLabel: 'Leki',
+        title: 'Leki',
         tabBarLabelStyle: { fontSize: 14, fontWeight: '500', marginTop: -4 },
         // eslint-disable-next-line react/jsx-props-no-spreading
         tabBarIcon: ({ focused }) => (
@@ -37,15 +38,14 @@ const TabsLayout = () => (
         ),
         tabBarActiveTintColor: activeLabel,
         tabBarInactiveTintColor: inactiveLabel,
-        headerShown: false,
         unmountOnBlur: false,
       }}
     />
     <Tabs.Screen
       name="appointments"
       options={{
-        headerShown: false,
         tabBarLabel: 'Wizyty',
+        title: 'Wizyty',
         tabBarLabelStyle: { fontSize: 14, fontWeight: '500', marginTop: -4 },
         tabBarIcon: ({ focused }) => (
           <FontAwesome5 name="notes-medical" size={22} color={focused ? activeLabel : inactiveLabel} />

@@ -2,7 +2,7 @@ import { SafeAreaView, View } from 'react-native';
 import { Button, Input, Text } from '@components';
 import { Link } from 'expo-router';
 
-const RegisterScreen = () => {
+const InviteScreen = () => {
   return (
     <SafeAreaView className="flex-1 items-center justify-center bg-background">
       <Text variant="title" className="mt-12">
@@ -27,4 +27,4 @@ const RegisterScreen = () => {
   );
 };
 
-export default RegisterScreen;
+export default InviteScreen;
