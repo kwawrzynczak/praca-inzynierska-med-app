@@ -12,20 +12,16 @@ const tabs = [
 
 const MoreScreen = () => {
   return (
-    <SafeAreaView className="flex-1 bg-background ">
-      <View>
-        {tabs.map(({ name, path, icon }, index) => (
-          <SettingsTabElement
-            className={index === 0 ? 'border-t-2' : ''}
-            key={name}
-            name={name}
-            path={path}
-            icon={icon}
-          />
+    <SafeAreaView className="flex-1 bg-background">
+      <View className="mt-10 border-y-2 border-slate-300">
+        {tabs.map(({ name, path, icon }) => (
+          <SettingsTabElement key={name} name={name} path={path} icon={icon} />
         ))}
       </View>
 
-      <SettingsTabElement className="mt-6 border-t-2" name="Ustawienia" path="/settings" icon="cog" />
+      <View className="mt-10 border-y-2 border-slate-300">
+        <SettingsTabElement name="Ustawienia" path="/settings" icon="cog" />
+      </View>
 
       <Link href="/" asChild>
         <Button>Wyloguj się</Button>

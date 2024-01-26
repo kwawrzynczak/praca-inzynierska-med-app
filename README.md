@@ -10,21 +10,18 @@
 - pomyśleć nad dodaniem notatek
 - usunąć wszystkie console logi
 
-  
-## Home: 
+## Home:
 
 - kalendarz
 - podsumowanie
 
-
-## Leki: 
+## Leki:
 
 - formularz dodawania lekarstwa
-- informacje o leku po naciśnięciu 
+- informacje o leku po naciśnięciu
 - wygląd pojedynczego elementu listy
 - naprawić enumy
-- ?dodać możliwość dodania zdjęcia 
-
+- ?dodać możliwość dodania zdjęcia
 
 ## Wizyty:
 
@@ -32,7 +29,6 @@
 - edytowanie daty
 - naprawić problem z rerenderem po wejściu na screena [id]
 - edytowanie ekranu z informacjami o wizycie
-
 
 ## Więcej:
 
@@ -42,4 +38,3 @@
 - ekran podopiecznych/opiekunów
 - ekran placówek
 - ekran lekarzy
-  

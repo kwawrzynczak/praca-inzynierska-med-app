@@ -2,13 +2,7 @@ export interface Medication {
   id: number;
   attributes: {
     name: string;
-    meal: Meal;
+    meal: string;
     time: string;
   };
-}
-
-export enum Meal {
-  independently,
-  before,
-  after,
 }

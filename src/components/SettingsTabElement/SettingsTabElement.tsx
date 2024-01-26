@@ -16,13 +16,7 @@ interface SettingsTabElementProps extends PressableProps {
 export const SettingsTabElement: FC<SettingsTabElementProps> = ({ className, name, icon, path = '', ...rest }) => {
   return (
     <Link href={path} asChild>
-      <Pressable
-        {...rest}
-        className={twMerge(
-          'h-12 w-screen flex-row border-b-2 border-slate-400 bg-slate-300 items-center pl-6',
-          className,
-        )}
-      >
+      <Pressable {...rest} className={twMerge('h-12 w-screen flex-row bg-white items-center pl-6', className)}>
         <View className="w-6">
           <FontAwesome5 name={icon} size={20} color="black" />
         </View>

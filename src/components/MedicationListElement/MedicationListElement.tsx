@@ -1,21 +1,18 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { ReactNode } from 'react';
 import { Animated, Pressable, PressableProps, View } from 'react-native';
 import { Text } from '@components/Text';
-import { FontAwesome5 } from '@expo/vector-icons';
 import { useAnimation } from '@hooks';
-import { Meal, type Medication } from '@types';
 import { Link } from 'expo-router';
-import moment from 'moment';
 import { twMerge } from 'tailwind-merge';
 
 interface ListElementProps extends Omit<PressableProps, 'id'> {
   id: number;
   name: string;
   time: string;
-  meal: Meal;
+  meal: string;
+  dosage: number;
 }
-export const MedicationListElement = ({ id, name, time, meal, ...rest }: ListElementProps) => {
+export const MedicationListElement = ({ id, name, time, meal, dosage, ...rest }: ListElementProps) => {
   const { opacityValue, fadeIn, fadeOut } = useAnimation();
 
   return (
@@ -27,7 +24,7 @@ export const MedicationListElement = ({ id, name, time, meal, ...rest }: ListEle
       }}
     >
       <Pressable
-        className="w-[360px] flex-row items-center justify-between border border-accent/20 bg-white px-4 py-3"
+        className="mb-4 w-[360px] flex-row items-center justify-between rounded-xl bg-white px-4 py-3"
         onPressIn={fadeIn}
         onPressOut={fadeOut}
         {...rest}
@@ -37,9 +34,15 @@ export const MedicationListElement = ({ id, name, time, meal, ...rest }: ListEle
           style={{ opacity: opacityValue }}
         />
         <View className="flex-row">
+          <View className="h-10 w-10 rounded-full bg-red" />
           <View>
             <Text className="font-bold text-lg">{name}</Text>
-            <Text className="font-bold text-lg">{meal}</Text>
+            <Text className="font-bold text-lg">
+              {meal === 'independently' && ''}
+              {meal === 'before' && 'przed posiłkiem'}
+              {meal === 'after' && 'po posiłku'}
+            </Text>
+            <Text>Pozostałe dawki: {dosage}</Text>
           </View>
           <Text className="font-bold text-lg">{time.toString().slice(0, 5)}</Text>
         </View>

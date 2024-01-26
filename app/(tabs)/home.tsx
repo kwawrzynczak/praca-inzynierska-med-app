@@ -1,18 +1,64 @@
 /* eslint-disable react/no-unstable-nested-components */
-import { useState } from 'react';
-import { Animated, Pressable, View } from 'react-native';
+import { useEffect, useState } from 'react';
+import { Animated, FlatList, Pressable, ScrollView, View } from 'react-native';
 import CalendarStrip from 'react-native-calendar-strip';
-import { Text } from '@components';
+import { AppointmentsList, AppointmentsListElement, MedicationList, MedicationListElement, Text } from '@components';
 import { FontAwesome } from '@expo/vector-icons';
 import { useAnimation } from '@hooks';
+import { EmptyImage } from '@images/Empty';
+import { useIsFocused } from '@react-navigation/native';
+import api from '@services/api';
+import { Appointment, Medication } from '@types';
 import { Link } from 'expo-router';
 import moment from 'moment';
 import { twMerge } from 'tailwind-merge';
+
+interface AppointmentsResponse {
+  data: Appointment[];
+}
+
+interface MedicationResponse {
+  data: Medication[];
+}
 
 const HomeScreen = () => {
   const today = moment();
   const [selectedDate, setSelectedDate] = useState(today);
   const { opacityValue, fadeIn, fadeOut } = useAnimation();
+  const [appointments, setAppointments] = useState<Appointment[]>([]);
+  const [medication, setMedication] = useState<Medication[]>([]);
+  const filteredMedication = medication.filter(
+    (med) => moment(med.attributes.datetime).format('DDMMYY') === selectedDate.format('DDMMYY'),
+  );
+  const filteredAppointments = appointments.filter(
+    (appointment) => moment(appointment.attributes.datetime).format('DDMMYY') === selectedDate.format('DDMMYY'),
+  );
+
+  const isFocused = useIsFocused();
+
+  useEffect(() => {
+    const getAppointments = async () => {
+      if (!isFocused) return;
+      try {
+        const { data } = await api.get<AppointmentsResponse>('/appointments?sort=datetime:asc');
+        setAppointments(data.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    const getMedication = async () => {
+      if (!isFocused) return;
+      try {
+        const { data } = await api.get<MedicationResponse>('/medications');
+        setMedication(data.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    void getMedication();
+    void getAppointments();
+  }, [isFocused]);
 
   return (
     <View className="w-full flex-1 gap-y-4 bg-background">
@@ -64,17 +110,45 @@ const HomeScreen = () => {
       </Link>
       {/* Current caretaker info */}
       <View>
-        <Text variant="title" className="text-center text-lg uppercase tracking-tighter">
+        <Text variant="title" className="mb-5 text-center text-lg uppercase tracking-tighter">
           {selectedDate.format('DDMMYY') === moment().format('DDMMYY')
             ? `dzisiaj, ${selectedDate.format('LL')}`
             : selectedDate.format('dddd, LL')}
         </Text>
 
-        <View className="flex h-44 items-center justify-center">
-          <Text>
-            Brak planów na {selectedDate.format('DDMMYY') !== moment().format('DDMMYY') ? 'ten dzień' : 'dziś'}
-          </Text>
-        </View>
+        {filteredAppointments.length === 0 && filteredMedication.length === 0 && (
+          <View className="flex h-64 items-center justify-center">
+            <Text variant="subtitle">
+              Brak planów na {selectedDate.format('DDMMYY') !== moment().format('DDMMYY') ? 'ten dzień' : 'dziś'}
+            </Text>
+          </View>
+        )}
+
+        <ScrollView className="self-center">
+          {filteredMedication.map((med) => (
+            <MedicationListElement
+              key={med.id}
+              id={med.id}
+              name={med.attributes.name}
+              meal={med.attributes.meal}
+              time={med.attributes.time}
+              dosage={10}
+            />
+          ))}
+
+          {filteredAppointments.map((app) => (
+            <AppointmentsListElement
+              key={app.id}
+              id={app.id}
+              title={app.attributes.title}
+              datetime={app.attributes.datetime}
+              doctor={app.attributes.doctor}
+              location={app.attributes.location}
+              street={app.attributes.street}
+              room={app.attributes.room}
+            />
+          ))}
+        </ScrollView>
       </View>
     </View>
   );

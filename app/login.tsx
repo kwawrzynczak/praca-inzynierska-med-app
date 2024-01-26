@@ -9,11 +9,11 @@ const LoginScreen = () => {
     try {
       const response: { data: { jwt: string; user: any } } = await api.post('/auth/local', {
         identifier: 'caregiver1@gmail.com',
-        password: 'caregiver',
+        password: '123456',
       });
       console.log(response.data.jwt);
       console.log(response.data.user);
-      router.replace('appointments');
+      router.replace('home');
     } catch (error) {
       console.error(error);
     }

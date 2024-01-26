@@ -11,7 +11,7 @@ export const AppointmentsList = ({ appointments }: AppointmentsListProps) => {
   return (
     <FlatList
       className="grow"
-      contentContainerStyle={{ gap: 20, justifyContent: 'center' }}
+      contentContainerStyle={{ gap: 12, justifyContent: 'center' }}
       data={appointments}
       renderItem={({ item }) => (
         <AppointmentsListElement
