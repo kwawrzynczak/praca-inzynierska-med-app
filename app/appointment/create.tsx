@@ -11,11 +11,9 @@ interface CreateAppointment {
   data: {
     title: string;
     doctor: string;
-    active: boolean;
     datetime: Date;
     location: string;
     street: string;
-    room?: string;
   };
 }
 
@@ -29,7 +27,6 @@ const CreateAppointmentScreen = () => {
   const [doctor, setDoctor] = useState<string>();
   const [location, setLocation] = useState<string>();
   const [street, setStreet] = useState<string>();
-  const [room, setRoom] = useState<string>();
 
   const formattedDate = selectedDate.format('DD.MM.YYYY');
   const preparedDate = selectedDate.format('YYYY-MM-DD');
@@ -39,7 +36,7 @@ const CreateAppointmentScreen = () => {
   const createAppointment = async () => {
     try {
       await api.post<CreateAppointment>('/appointments', {
-        data: { title, doctor, active: true, datetime },
+        data: { title, doctor, datetime, location, street },
       });
       router.back();
     } catch (error) {
@@ -78,6 +75,8 @@ const CreateAppointmentScreen = () => {
         <View>
           <Input title="Nazwa wizyty" value={title} onChangeText={setTitle} />
           <Input title="Lekarz" value={doctor} onChangeText={setDoctor} />
+          <Input title="Placówka" value={location} onChangeText={setLocation} />
+          <Input title="Ulica" value={street} onChangeText={setStreet} />
           <View className="flex-row items-center gap-2">
             <Text className="mr-[72px]">Wybierz datę</Text>
             <Pressable className="rounded bg-white p-2" onPress={() => showDatePicker()}>

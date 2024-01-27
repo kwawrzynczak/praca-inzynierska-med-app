@@ -7,6 +7,5 @@ export interface Appointment {
     datetime: Date;
     location: string;
     street: string;
-    room?: string;
   };
 }
