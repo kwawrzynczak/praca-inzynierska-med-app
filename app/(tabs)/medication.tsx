@@ -6,6 +6,7 @@ import { FAB, MedicationList, Text } from '@components';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { useIsFocused } from '@react-navigation/native';
 import api from '@services/api';
+import { useUserStore } from '@stores';
 import { type Medication } from '@types';
 import { Link } from 'expo-router';
 
@@ -16,12 +17,15 @@ interface MedicationResponse {
 const MedicationScreen = () => {
   const [medication, setMedication] = useState<Medication[]>([]);
   const isFocused = useIsFocused();
+  const code = useUserStore((state) => state.userCode);
 
   useEffect(() => {
     const getMedication = async () => {
       if (!isFocused) return;
       try {
-        const { data } = await api.get<MedicationResponse>('/medications');
+        const { data } = await api.get<MedicationResponse>(
+          `/medications?populate=*&filters[patient][code][$eq]=${code}`,
+        );
         setMedication(data.data);
       } catch (error) {
         console.error(error);

@@ -5,6 +5,7 @@ import { CustomTabBar } from '@components';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { useIsFocused } from '@react-navigation/native';
 import api from '@services/api';
+import { useUserStore } from '@stores';
 import { type Appointment } from '@types';
 
 import ActiveScreen from './active';
@@ -20,12 +21,15 @@ const AppointmentLayout = () => {
   const [appointments, setAppointments] = useState<Appointment[]>([]);
   const isFocused = useIsFocused();
   const today = new Date();
+  const code = useUserStore((state) => state.userCode);
 
   useEffect(() => {
     const getAppointments = async () => {
       if (!isFocused) return;
       try {
-        const { data } = await api.get<AppointmentsResponse>('/appointments?sort=datetime:asc');
+        const { data } = await api.get<AppointmentsResponse>(
+          `/appointments?sort=datetime:asc&populate=*&filters[patient][code][$eq]=${code}`,
+        );
         setAppointments(data.data);
       } catch (error) {
         console.error(error);

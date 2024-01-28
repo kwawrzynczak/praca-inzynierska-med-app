@@ -8,6 +8,7 @@ import { FontAwesome, FontAwesome5 } from '@expo/vector-icons';
 import { useAnimation } from '@hooks';
 import { useIsFocused } from '@react-navigation/native';
 import api from '@services/api';
+import { useUserStore } from '@stores';
 import { Appointment, Medication } from '@types';
 import { Link } from 'expo-router';
 import moment from 'moment';
@@ -27,6 +28,7 @@ const HomeScreen = () => {
   const { opacityValue, fadeIn, fadeOut } = useAnimation();
   const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [medication, setMedication] = useState<Medication[]>([]);
+  const code = useUserStore((state) => state.userCode);
 
   const filteredMedication = medication.filter((med) => {
     const startDate = moment(med.attributes.since);
@@ -44,7 +46,9 @@ const HomeScreen = () => {
     const getAppointments = async () => {
       if (!isFocused) return;
       try {
-        const { data } = await api.get<AppointmentsResponse>('/appointments?sort=datetime:asc');
+        const { data } = await api.get<AppointmentsResponse>(
+          `/appointments?sort=datetime:asc&populate=*&filters[patient][code][$eq]=${code}`,
+        );
         setAppointments(data.data);
       } catch (error) {
         console.error(error);
@@ -53,7 +57,9 @@ const HomeScreen = () => {
     const getMedication = async () => {
       if (!isFocused) return;
       try {
-        const { data } = await api.get<MedicationResponse>('/medications');
+        const { data } = await api.get<MedicationResponse>(
+          `/medications?populate=*&filters[patient][code][$eq]=${code}`,
+        );
         setMedication(data.data);
       } catch (error) {
         console.error(error);
@@ -62,7 +68,7 @@ const HomeScreen = () => {
 
     void getMedication();
     void getAppointments();
-  }, [isFocused]);
+  }, [code, isFocused]);
 
   return (
     <View className="w-full flex-1 gap-y-4 bg-background">
