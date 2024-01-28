@@ -27,10 +27,13 @@ const HomeScreen = () => {
   const { opacityValue, fadeIn, fadeOut } = useAnimation();
   const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [medication, setMedication] = useState<Medication[]>([]);
-  const filteredMedication = medication;
-  //   .filter(
-  //   (med) => moment(med.attributes.datetime).format('DDMMYY') === selectedDate.format('DDMMYY'),
-  // );
+
+  const filteredMedication = medication.filter((med) => {
+    const startDate = moment(med.attributes.since);
+    const substractedDays = parseInt(med.attributes.days, 10) - 1;
+    const endDate = moment(med.attributes.since).add(substractedDays, 'days');
+    return selectedDate.isBetween(startDate, endDate, 'day', '[]');
+  });
   const filteredAppointments = appointments.filter(
     (appointment) => moment(appointment.attributes.datetime).format('DDMMYY') === selectedDate.format('DDMMYY'),
   );
@@ -126,33 +129,35 @@ const HomeScreen = () => {
             </Text>
           </View>
         )}
-        <ScrollView className="self-center">
-          {filteredMedication.length !== 0 && <Text className="mb-2 font-semibold text-lg">Leki</Text>}
-          {filteredMedication.map((med) => (
-            <MedicationListElement
-              key={med.id}
-              id={med.id}
-              name={med.attributes.name}
-              meal={med.attributes.meal}
-              time={med.attributes.time}
-              dosage={med.attributes.dosage}
-            />
-          ))}
+        <View className="h-[52vh]">
+          <ScrollView className="mb-2 self-center">
+            {filteredMedication.length !== 0 && <Text className="mb-2 font-semibold text-lg">Leki</Text>}
+            {filteredMedication.map((med) => (
+              <MedicationListElement
+                key={med.id}
+                id={med.id}
+                name={med.attributes.name}
+                meal={med.attributes.meal}
+                time={med.attributes.time}
+                dosage={med.attributes.dosage}
+              />
+            ))}
 
-          {filteredAppointments.length !== 0 && <Text className="mb-2 font-semibold text-lg">Wizyty</Text>}
-          {filteredAppointments.map((app) => (
-            <AppointmentsListElement
-              key={app.id}
-              id={app.id}
-              title={app.attributes.title}
-              datetime={app.attributes.datetime}
-              doctor={app.attributes.doctor}
-              location={app.attributes.location}
-              street={app.attributes.street}
-              showDate={false}
-            />
-          ))}
-        </ScrollView>
+            {filteredAppointments.length !== 0 && <Text className="mb-2 font-semibold text-lg">Wizyty</Text>}
+            {filteredAppointments.map((app) => (
+              <AppointmentsListElement
+                key={app.id}
+                id={app.id}
+                title={app.attributes.title}
+                datetime={app.attributes.datetime}
+                doctor={app.attributes.doctor}
+                location={app.attributes.location}
+                street={app.attributes.street}
+                showDate={false}
+              />
+            ))}
+          </ScrollView>
+        </View>
       </View>
     </View>
   );

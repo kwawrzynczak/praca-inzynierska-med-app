@@ -41,7 +41,7 @@ export const AppointmentsListElement = ({
         }}
       >
         <Pressable
-          className="h-24 w-[360px] rounded-lg bg-white p-2 shadow"
+          className="h-24 w-[360px] rounded-lg bg-white px-4 py-3 shadow"
           onPressIn={fadeIn}
           onPressOut={fadeOut}
           {...rest}
