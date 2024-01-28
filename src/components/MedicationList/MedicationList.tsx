@@ -16,6 +16,7 @@ export const MedicationList = ({ medication }: MedicationListProps) => {
           name={item.attributes.name}
           time={item.attributes.time}
           meal={item.attributes.meal}
+          dosage={item.attributes.dosage}
         />
       )}
     />

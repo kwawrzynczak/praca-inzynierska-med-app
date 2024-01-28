@@ -1,11 +1,11 @@
+/* eslint-disable tailwindcss/enforces-shorthand */
 /* eslint-disable react/no-unstable-nested-components */
 import { useEffect, useState } from 'react';
-import { Animated, FlatList, Pressable, ScrollView, View } from 'react-native';
+import { Animated, Pressable, ScrollView, View } from 'react-native';
 import CalendarStrip from 'react-native-calendar-strip';
-import { AppointmentsList, AppointmentsListElement, MedicationList, MedicationListElement, Text } from '@components';
+import { AppointmentsListElement, MedicationListElement, Text } from '@components';
 import { FontAwesome } from '@expo/vector-icons';
 import { useAnimation } from '@hooks';
-import { EmptyImage } from '@images/Empty';
 import { useIsFocused } from '@react-navigation/native';
 import api from '@services/api';
 import { Appointment, Medication } from '@types';
@@ -27,9 +27,10 @@ const HomeScreen = () => {
   const { opacityValue, fadeIn, fadeOut } = useAnimation();
   const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [medication, setMedication] = useState<Medication[]>([]);
-  const filteredMedication = medication.filter(
-    (med) => moment(med.attributes.datetime).format('DDMMYY') === selectedDate.format('DDMMYY'),
-  );
+  const filteredMedication = medication;
+  //   .filter(
+  //   (med) => moment(med.attributes.datetime).format('DDMMYY') === selectedDate.format('DDMMYY'),
+  // );
   const filteredAppointments = appointments.filter(
     (appointment) => moment(appointment.attributes.datetime).format('DDMMYY') === selectedDate.format('DDMMYY'),
   );
@@ -145,7 +146,6 @@ const HomeScreen = () => {
               doctor={app.attributes.doctor}
               location={app.attributes.location}
               street={app.attributes.street}
-              room={app.attributes.room}
             />
           ))}
         </ScrollView>

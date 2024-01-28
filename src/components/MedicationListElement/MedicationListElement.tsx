@@ -10,7 +10,7 @@ interface ListElementProps extends Omit<PressableProps, 'id'> {
   name: string;
   time: string;
   meal: string;
-  dosage: number;
+  dosage: number | string;
 }
 export const MedicationListElement = ({ id, name, time, meal, dosage, ...rest }: ListElementProps) => {
   const { opacityValue, fadeIn, fadeOut } = useAnimation();
@@ -34,7 +34,7 @@ export const MedicationListElement = ({ id, name, time, meal, dosage, ...rest }:
           style={{ opacity: opacityValue }}
         />
         <View className="flex-row">
-          <View className="h-10 w-10 rounded-full bg-red" />
+          <View className="size-10 rounded-full bg-red" />
           <View>
             <Text className="font-bold text-lg">{name}</Text>
             <Text className="font-bold text-lg">
@@ -44,7 +44,7 @@ export const MedicationListElement = ({ id, name, time, meal, dosage, ...rest }:
             </Text>
             <Text>Pozostałe dawki: {dosage}</Text>
           </View>
-          <Text className="font-bold text-lg">{time.toString().slice(0, 5)}</Text>
+          <Text className="font-bold text-lg">{time.slice(0, 5)}</Text>
         </View>
       </Pressable>
     </Link>

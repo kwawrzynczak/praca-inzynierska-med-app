@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unstable-nested-components */
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { Pressable, View } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { Button, Input, Text } from '@components';
@@ -9,37 +9,27 @@ import moment from 'moment';
 
 interface CreateMedication {
   data: {
-    title: string;
+    name: string;
+    meal: string;
+    time: string;
+    patient?: string | number;
+    dosage: number;
   };
 }
 
 const CreateMedicationScreen = () => {
   const router = useRouter();
-  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [isTimePickerVisible, setTimePickerVisibility] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(moment());
   const [selectedTime, setSelectedTime] = useState(moment());
-  const [title, setTitle] = useState<string>();
-
-  // const [active, setActive] = useState<boolean>(false);
-
-  const formattedDate = selectedDate.format('DD.MM.YYYY');
-  const preparedDate = selectedDate.format('YYYY-MM-DD');
-  const formattedTime = selectedTime.format('HH:mm');
-  const datetime = useMemo(() => new Date(`${preparedDate}T${formattedTime}`), [formattedTime, preparedDate]);
-
-  // useEffect(() => {
-  //   const checkIfActive = () => {
-  //     const today = moment();
-  //     if (datetime.diff(today) > 0) setActive(true);
-  //   };
-  //   checkIfActive();
-  // }, [datetime]);
+  const [name, setName] = useState<string>();
+  const [meal, setMeal] = useState<string>();
+  const [dosage, setDosage] = useState<string>('1');
+  const time = selectedTime.format('HH:mm');
 
   const createMedication = async () => {
     try {
-      await api.post<CreateMedication>('/medication', {
-        data: { title },
+      await api.post<CreateMedication>('/medications', {
+        data: { name, meal, time, dosage },
       });
       router.back();
     } catch (error) {
@@ -47,26 +37,14 @@ const CreateMedicationScreen = () => {
     }
   };
 
-  const showDatePicker = () => {
-    setDatePickerVisibility(true);
-  };
-
   const showTimePicker = () => {
     setTimePickerVisibility(true);
-  };
-
-  const hideDatePicker = () => {
-    setDatePickerVisibility(false);
   };
 
   const hideTimePicker = () => {
     setTimePickerVisibility(false);
   };
 
-  const handleDateConfirm = (date: Date) => {
-    hideDatePicker();
-    setSelectedDate(moment(date));
-  };
   const handleTimeConfirm = (date: Date) => {
     hideTimePicker();
     setSelectedTime(moment(date));
@@ -76,14 +54,14 @@ const CreateMedicationScreen = () => {
     <View className="flex-1 bg-background p-4">
       <View className="items-center">
         <View>
-          <Input title="Nazwa lekarstwa" value={title} onChangeText={setTitle} />
+          <Input title="Nazwa lekarstwa" value={name} onChangeText={setName} />
+          <Input title="Posiłek" value={meal} onChangeText={setMeal} />
+          <Input title="Dawka" value={dosage} onChangeText={setDosage} />
           <View className="flex-row items-center gap-2">
             <Text className="mr-[72px]">Wybierz datę</Text>
-            <Pressable className="rounded bg-white p-2" onPress={() => showDatePicker()}>
-              <Text>{formattedDate}</Text>
-            </Pressable>
+
             <Pressable className="rounded bg-white p-2" onPress={() => showTimePicker()}>
-              <Text>{formattedTime}</Text>
+              <Text>{time}</Text>
             </Pressable>
           </View>
         </View>
@@ -112,16 +90,6 @@ const CreateMedicationScreen = () => {
         themeVariant="light"
         locale="pl_PL"
         mode="time"
-      />
-      <DateTimePickerModal
-        isVisible={isDatePickerVisible}
-        onConfirm={handleDateConfirm}
-        onCancel={hideDatePicker}
-        confirmTextIOS="Wybierz"
-        cancelTextIOS="Wróć"
-        themeVariant="light"
-        locale="pl_PL"
-        mode="date"
       />
     </View>
   );
