@@ -1,10 +1,12 @@
 /* eslint-disable react/no-unstable-nested-components */
-import { useEffect, useState } from 'react';
-import { TextInput, View } from 'react-native';
+import React, { useEffect, useMemo, useState } from 'react';
+import { Pressable, TextInput, View } from 'react-native';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { Button, FAB, Text } from '@components';
 import api from '@services/api';
 import { type Appointment } from '@types';
 import { useLocalSearchParams, useRouter } from 'expo-router';
+import moment from 'moment';
 
 interface AppointmentResponse {
   data: Appointment;
@@ -18,7 +20,6 @@ interface UpdateAppointment {
     notes?: string;
     location: string;
     street: string;
-    room?: string;
   };
 }
 
@@ -27,6 +28,13 @@ const AppointmentScreen = () => {
   const { id } = useLocalSearchParams<{ id: string }>();
   const [appointment, setAppointment] = useState<Appointment>();
   const [editable, setEditable] = useState(false);
+  const [isTimePickerVisible, setTimePickerVisibility] = useState(false);
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(moment());
+  const [selectedTime, setSelectedTime] = useState(moment());
+  const preparedDate = selectedDate.format('YYYY-MM-DD');
+  const formattedTime = selectedTime.format('HH:mm');
+  const datetime = useMemo(() => new Date(`${preparedDate}T${formattedTime}`), [formattedTime, preparedDate]);
 
   useEffect(() => {
     const getAppointmentById = async () => {
@@ -54,11 +62,10 @@ const AppointmentScreen = () => {
           data: {
             appointment: appointment?.attributes.title,
             doctor: appointment?.attributes.doctor,
-            datetime: appointment?.attributes.datetime,
+            datetime,
             notes: appointment?.attributes.notes,
             location: appointment?.attributes.location,
             street: appointment?.attributes.street,
-            room: appointment?.attributes.room,
           },
         });
         return data;
@@ -89,6 +96,31 @@ const AppointmentScreen = () => {
     });
   };
 
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
+  };
+
+  const showTimePicker = () => {
+    setTimePickerVisibility(true);
+  };
+
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
+
+  const hideTimePicker = () => {
+    setTimePickerVisibility(false);
+  };
+
+  const handleDateConfirm = (date: Date) => {
+    hideDatePicker();
+    setSelectedDate(moment(date));
+  };
+  const handleTimeConfirm = (date: Date) => {
+    hideTimePicker();
+    setSelectedTime(moment(date));
+  };
+
   if (!appointment) {
     return (
       <View>
@@ -112,12 +144,16 @@ const AppointmentScreen = () => {
         value={appointment?.attributes.doctor}
         onChangeText={(value) => handleTextChange('doctor', value)}
       />
-      <TextInput
-        className="font-normal text-lg text-secondary focus:border-accent"
-        editable={editable}
-        value={appointment?.attributes.datetime.toString()}
-        onChangeText={(value) => handleTextChange('datetime', new Date(value))}
-      />
+      <View className="flex-row items-center py-2">
+        <Pressable className="rounded" onPress={() => showTimePicker()}>
+          <Text className="mr-2 text-center text-base">{selectedDate.format('DD MMMM YYYY')}</Text>
+        </Pressable>
+
+        <Pressable className="rounded" onPress={() => showDatePicker()}>
+          <Text className="text-base">{selectedTime.format('HH:MM')}</Text>
+        </Pressable>
+      </View>
+
       <TextInput
         className="font-normal text-lg text-secondary focus:border-accent"
         editable={editable}
@@ -129,12 +165,6 @@ const AppointmentScreen = () => {
         editable={editable}
         value={appointment?.attributes.street}
         onChangeText={(value) => handleTextChange('street', value)}
-      />
-      <TextInput
-        className="font-normal text-lg text-secondary focus:border-accent"
-        editable={editable}
-        value={appointment?.attributes.room}
-        onChangeText={(value) => handleTextChange('room', value)}
       />
 
       <Text className="mb-2 mt-8 text-base">Notatki do wizyty: </Text>
@@ -168,6 +198,27 @@ const AppointmentScreen = () => {
           Zapisz zmiany
         </Button>
       )}
+
+      <DateTimePickerModal
+        isVisible={isTimePickerVisible}
+        onConfirm={handleTimeConfirm}
+        onCancel={hideTimePicker}
+        confirmTextIOS="Wybierz"
+        cancelTextIOS="Wróć"
+        themeVariant="light"
+        locale="pl_PL"
+        mode="time"
+      />
+      <DateTimePickerModal
+        isVisible={isDatePickerVisible}
+        onConfirm={handleDateConfirm}
+        onCancel={hideDatePicker}
+        confirmTextIOS="Wybierz"
+        cancelTextIOS="Wróć"
+        themeVariant="light"
+        locale="pl_PL"
+        mode="date"
+      />
     </View>
   );
 };

@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import { FlatList, View } from 'react-native';
 import { Button, FAB, Input, Text } from '@components';
 import { Link } from 'expo-router';
 
-interface Patient {
-  name: string;
-  email: string;
-}
+// interface Patient {
+//   name: string;
+//   email: string;
+// }
 
 const patientsList = [
   { email: 'jurek@gmail.com', name: 'Jurek', id: 1 },
@@ -14,12 +14,12 @@ const patientsList = [
 ];
 
 const PatientsScreen = () => {
-  const generateCode = () => {
-    return Math.floor(Math.random() * (999999999 - 100000000 + 1) + 100000000);
-  };
+  // const generateCode = () => {
+  //   return Math.floor(Math.random() * (999999999 - 100000000 + 1) + 100000000);
+  // };
   return (
     <View className="flex-1 items-center justify-center bg-background">
-      {/* <Text variant="subtitle" className="my-5">
+      <Text variant="subtitle" className="my-5">
         Dodaj podopiecznego
       </Text>
       <Input placeholder="uzytkownik@example.com" />
@@ -51,11 +51,11 @@ const PatientsScreen = () => {
             </View>
           </Link>
         )}
-      /> */}
-      <Text className="text-3xl text-accent" variant="title">
+      />
+      {/* <Text className="text-3xl text-accent" variant="title">
         {generateCode()}
       </Text>
-      <Text variant="subtitle">Podaj opiekunowi swój kod, aby zapewnić mu dostęp do Twojej dokumentacji medycznej</Text>
+      <Text variant="subtitle">Podaj opiekunowi swój kod, aby zapewnić mu dostęp do Twojej dokumentacji medycznej</Text> */}
     </View>
   );
 };
