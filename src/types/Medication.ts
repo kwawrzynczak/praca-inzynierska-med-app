@@ -6,5 +6,6 @@ export interface Medication {
     time: string;
     dosage: string;
     days: string;
+    since: Date;
   };
 }
