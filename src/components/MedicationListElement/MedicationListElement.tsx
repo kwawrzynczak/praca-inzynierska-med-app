@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/enforces-shorthand */
 /* eslint-disable react/jsx-props-no-spreading */
 import { Animated, Pressable, PressableProps, View } from 'react-native';
 import { Text } from '@components/Text';
@@ -10,7 +11,7 @@ interface ListElementProps extends Omit<PressableProps, 'id'> {
   name: string;
   time: string;
   meal: string;
-  dosage: number | string;
+  dosage: string;
 }
 export const MedicationListElement = ({ id, name, time, meal, dosage, ...rest }: ListElementProps) => {
   const { opacityValue, fadeIn, fadeOut } = useAnimation();
@@ -24,7 +25,7 @@ export const MedicationListElement = ({ id, name, time, meal, dosage, ...rest }:
       }}
     >
       <Pressable
-        className="mb-4 w-[360px] flex-row items-center justify-between rounded-xl bg-white px-4 py-3"
+        className="mb-4 w-[360px] flex-row items-center justify-between rounded-lg bg-white px-4 py-3"
         onPressIn={fadeIn}
         onPressOut={fadeOut}
         {...rest}
@@ -33,18 +34,17 @@ export const MedicationListElement = ({ id, name, time, meal, dosage, ...rest }:
           className={twMerge('absolute left-0 top-0 h-24 w-[360px] rounded-lg bg-accent/10')}
           style={{ opacity: opacityValue }}
         />
-        <View className="flex-row">
-          <View className="size-10 rounded-full bg-red" />
+        <View className="flex-row items-center gap-4">
+          <View className="h-14 w-14 rounded-2xl bg-red" />
           <View>
             <Text className="font-bold text-lg">{name}</Text>
-            <Text className="font-bold text-lg">
-              {meal === 'independently' && ''}
-              {meal === 'before' && 'przed posiłkiem'}
+            <Text className="text-base">{dosage}</Text>
+            <Text className="font-semibold text-base">
+              {time.slice(0, 5)} {meal === 'before' && 'przed posiłkiem'}
               {meal === 'after' && 'po posiłku'}
+              {meal === 'with' && 'w trakcie posiłku'}
             </Text>
-            <Text>Pozostałe dawki: {dosage}</Text>
           </View>
-          <Text className="font-bold text-lg">{time.slice(0, 5)}</Text>
         </View>
       </Pressable>
     </Link>

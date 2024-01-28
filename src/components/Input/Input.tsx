@@ -11,7 +11,7 @@ interface StyledInputProps extends TextInputProps {
 export const Input = ({ className, title, ...rest }: StyledInputProps) => {
   return (
     <>
-      {!!title && <Text className="mb-1 font-normal">{title}</Text>}
+      {!!title && <Text className="mb-1 font-normal text-base">{title}</Text>}
       <ReactNativeInput
         className={twMerge(
           'mb-4 h-12 w-72 rounded-lg border border-white bg-white px-4 py-3 focus:border-accent',

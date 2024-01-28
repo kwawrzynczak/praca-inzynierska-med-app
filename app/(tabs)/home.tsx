@@ -111,7 +111,7 @@ const HomeScreen = () => {
       </Link>
       {/* Current caretaker info */}
       <View>
-        <Text variant="title" className="mb-5 text-center text-lg uppercase tracking-tighter">
+        <Text variant="title" className="mb-2 text-center text-lg uppercase tracking-tighter">
           {selectedDate.format('DDMMYY') === moment().format('DDMMYY')
             ? `dzisiaj, ${selectedDate.format('LL')}`
             : selectedDate.format('dddd, LL')}
@@ -124,8 +124,8 @@ const HomeScreen = () => {
             </Text>
           </View>
         )}
-
         <ScrollView className="self-center">
+          {filteredMedication.length !== 0 && <Text className="mb-2 font-semibold text-lg">Leki</Text>}
           {filteredMedication.map((med) => (
             <MedicationListElement
               key={med.id}
@@ -133,10 +133,11 @@ const HomeScreen = () => {
               name={med.attributes.name}
               meal={med.attributes.meal}
               time={med.attributes.time}
-              dosage={10}
+              dosage={med.attributes.dosage}
             />
           ))}
 
+          {filteredAppointments.length !== 0 && <Text className="mb-2 font-semibold text-lg">Wizyty</Text>}
           {filteredAppointments.map((app) => (
             <AppointmentsListElement
               key={app.id}
@@ -146,6 +147,7 @@ const HomeScreen = () => {
               doctor={app.attributes.doctor}
               location={app.attributes.location}
               street={app.attributes.street}
+              showDate={false}
             />
           ))}
         </ScrollView>

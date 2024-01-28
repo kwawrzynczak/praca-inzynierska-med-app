@@ -77,18 +77,18 @@ const CreateAppointmentScreen = () => {
           <Input title="Lekarz" value={doctor} onChangeText={setDoctor} />
           <Input title="Placówka" value={location} onChangeText={setLocation} />
           <Input title="Ulica" value={street} onChangeText={setStreet} />
-          <View className="flex-row items-center gap-2">
-            <Text className="mr-[72px]">Wybierz datę</Text>
+          <View className="flex-row items-center gap-2 pt-2">
+            <Text className="mr-[20px] text-base">Wybierz datę</Text>
             <Pressable className="rounded bg-white p-2" onPress={() => showDatePicker()}>
-              <Text>{formattedDate}</Text>
+              <Text className="text-base">{formattedDate}</Text>
             </Pressable>
             <Pressable className="rounded bg-white p-2" onPress={() => showTimePicker()}>
-              <Text>{formattedTime}</Text>
+              <Text className="text-base">{formattedTime}</Text>
             </Pressable>
           </View>
         </View>
       </View>
-      <View className="flex-row justify-around">
+      <View className="mt-6 flex-row justify-around">
         <Button size="small" variant="secondary" className="mt-4" onPress={() => router.back()}>
           Anuluj
         </Button>

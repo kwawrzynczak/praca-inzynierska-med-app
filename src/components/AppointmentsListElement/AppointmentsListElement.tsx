@@ -14,7 +14,7 @@ interface ListElementProps extends Omit<PressableProps, 'id'> {
   datetime: Date;
   location: string;
   street: string;
-  room?: string;
+  showDate?: boolean;
 }
 export const AppointmentsListElement = ({
   id,
@@ -23,7 +23,7 @@ export const AppointmentsListElement = ({
   datetime,
   location,
   street,
-  room,
+  showDate = true,
   ...rest
 }: ListElementProps) => {
   const { opacityValue, fadeIn, fadeOut } = useAnimation();
@@ -32,7 +32,7 @@ export const AppointmentsListElement = ({
 
   return (
     <>
-      <Text className="mb-1 ml-3">{formattedDate}</Text>
+      {showDate && <Text className="mb-1 ml-3">{formattedDate}</Text>}
       <Link
         asChild
         href={{
@@ -55,8 +55,6 @@ export const AppointmentsListElement = ({
           <Text variant="subtitle">
             {location} - {street}
           </Text>
-
-          {!!room && <Text>Numer pokoju: {room}</Text>}
         </Pressable>
       </Link>
     </>

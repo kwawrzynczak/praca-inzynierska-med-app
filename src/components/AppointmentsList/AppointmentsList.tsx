@@ -22,7 +22,6 @@ export const AppointmentsList = ({ appointments }: AppointmentsListProps) => {
           doctor={item.attributes.doctor}
           location={item.attributes.location}
           street={item.attributes.street}
-          room={item.attributes.room}
         />
       )}
     />
