@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { Animated, Pressable, ScrollView, View } from 'react-native';
 import CalendarStrip from 'react-native-calendar-strip';
 import { AppointmentsListElement, MedicationListElement, Text } from '@components';
-import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome, FontAwesome5 } from '@expo/vector-icons';
 import { useAnimation } from '@hooks';
 import { useIsFocused } from '@react-navigation/native';
 import api from '@services/api';
@@ -97,7 +97,9 @@ const HomeScreen = () => {
             'mx-4 flex-row items-center justify-between rounded-full bg-white p-3 pr-4 active:scale-[.98] shadow',
           )}
         >
-          <View className="h-14 w-14 rounded-full bg-red" />
+          <View className="h-14 w-14 items-center justify-center rounded-full border-2 border-accent bg-neutral-100">
+            <FontAwesome5 name="user-alt" size={30} color="#809fff" />
+          </View>
           <View className="flex items-center justify-center">
             <Text variant="subtitle">Sprawdź, jak ma się Marek</Text>
             <Text className="text-gray-500">Naciśnij, aby zmienić podopiecznego</Text>
