@@ -1,11 +1,11 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { SafeAreaView } from 'react-native';
 import { Button, StepAccountType, StepRegisterForm } from '@components';
 import { useMultistepForm } from '@hooks';
 import { Link } from 'expo-router';
 
 const RegisterScreen = () => {
-  const [selectedId, setSelectedId] = useState<string>();
+  // const [selectedId, setSelectedId] = useState<string>();
   const { steps, currentStepIndex, step, back, next } = useMultistepForm([<StepAccountType />, <StepRegisterForm />]);
   return (
     <SafeAreaView className="flex-1 items-center justify-center bg-background">

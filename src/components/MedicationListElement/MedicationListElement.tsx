@@ -3,6 +3,7 @@
 import { Animated, Pressable, PressableProps, View } from 'react-native';
 import { Text } from '@components/Text';
 import { useAnimation } from '@hooks';
+import Pills from '@images/Pills';
 import { Link } from 'expo-router';
 import { twMerge } from 'tailwind-merge';
 
@@ -35,7 +36,9 @@ export const MedicationListElement = ({ id, name, time, meal, dosage, ...rest }:
           style={{ opacity: opacityValue }}
         />
         <View className="flex-row items-center gap-4">
-          <View className="h-14 w-14 rounded-2xl bg-red" />
+          <View className="h-14 w-14 items-center justify-center rounded-2xl border border-lightblue bg-neutral-100">
+            <Pills height={44} width={44} />
+          </View>
           <View>
             <Text className="font-bold text-lg">{name}</Text>
             <Text className="text-base">{dosage}</Text>
