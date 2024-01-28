@@ -16,9 +16,11 @@
       "@templates/*": ["src/templates/*"],
       "@images": ["src/images"],
       "@images/*": ["src/images/*"],
+      "@stores": ["src/stores"],
+      "@stores/*": ["src/stores/*"],
       "@services": ["src/services"],
-      "@services/*": ["src/services/*"]
-    }
+      "@services/*": ["src/services/*"],
+    },
   },
-  "extends": "expo/tsconfig.base"
+  "extends": "expo/tsconfig.base",
 }

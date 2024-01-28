@@ -33,6 +33,11 @@ const MedicationScreen = () => {
 
   return (
     <SafeAreaView className="flex-1 bg-background">
+      {medication.length === 0 && (
+        <Text className="mt-3 text-center" variant="subtitle">
+          Brak leków
+        </Text>
+      )}
       <MedicationList medication={medication} />
       <Link asChild href="medication/create">
         <FAB className="absolute bottom-0 right-0 m-4" type="add" />

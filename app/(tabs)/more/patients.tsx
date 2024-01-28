@@ -1,42 +1,34 @@
-// import { useEffect, useState } from 'react';
-import { FlatList, Pressable, View } from 'react-native';
+import { useEffect } from 'react';
+import { FlatList, View } from 'react-native';
 import { Button, FAB, Input, Text } from '@components';
-import { Link } from 'expo-router';
-import { create } from 'zustand';
+import { useUserStore } from '@stores/useUserStore';
+import { twMerge } from 'tailwind-merge';
 
 // interface Patient {
 //   name: string;
 //   email: string;
 // }
 
-interface UserState {
-  userCode: number;
-  setNewUser: (code: number) => void;
-}
-
-const useUserStore = create<UserState>()((set) => ({
-  userCode: 0,
-  setNewUser: (code) => set(() => ({ userCode: code })),
-}));
-
 const patientsList = [
   { email: 'jurek@gmail.com', name: 'Jurek', id: 1, code: 123456789 },
-  { email: 'marek@gmail.com', name: 'marek', id: 2, code: 123456780 },
+  { email: 'marek@gmail.com', name: 'Marek', id: 2, code: 123456780 },
 ];
 
 const PatientsScreen = () => {
   const code = useUserStore((state) => state.userCode);
   const setNewUser = useUserStore((state) => state.setNewUser);
 
-  console.log(code);
+  useEffect(() => {
+    setNewUser(patientsList[0].code);
+  }, [setNewUser]);
 
   return (
     <View className="flex-1 items-center justify-center bg-background">
       <Text variant="subtitle" className="my-5">
         Dodaj podopiecznego
       </Text>
-      <Input placeholder="uzytkownik@example.com" />
-      <Button>Wyślij</Button>
+      <Input placeholder="Podaj kod podopiecznego" />
+      <Button>Dodaj podopiecznego</Button>
       <Text variant="subtitle" className="my-5">
         Twoi podopieczni
       </Text>
@@ -45,20 +37,22 @@ const PatientsScreen = () => {
         contentContainerStyle={{ gap: 12, justifyContent: 'center' }}
         data={patientsList}
         renderItem={({ item }) => (
-          <Pressable
-            onPress={() => setNewUser(item.code)}
-            className="flex w-80 flex-row items-center justify-between rounded-xl border-2 border-accent bg-white p-3"
+          <View
+            className={twMerge(
+              'flex w-80 flex-row items-center justify-between rounded-xl border-2 border-white bg-white p-3',
+              code === item.code && 'border-accent',
+            )}
           >
             <View>
-              <Text>{item.name}</Text>
-              <Text>{item.email}</Text>
+              <Text className="text-base">{item.name}</Text>
+              <Text className="text-base">{item.email}</Text>
             </View>
 
             <View className="flex-row gap-x-2">
-              <FAB type="custom" />
+              {code !== item.code && <FAB type="add" onPress={() => setNewUser(item.code)} />}
               <FAB type="delete" />
             </View>
-          </Pressable>
+          </View>
         )}
       />
       {/* <Text className="text-3xl text-accent" variant="title">

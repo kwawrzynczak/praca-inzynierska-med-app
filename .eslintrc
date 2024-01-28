@@ -2,7 +2,7 @@
   "root": true,
   "env": {
     "es2021": true,
-    "node": true
+    "node": true,
   },
   "extends": [
     "plugin:react/recommended",
@@ -12,16 +12,16 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:prettier/recommended",
-    "plugin:tailwindcss/recommended"
+    "plugin:tailwindcss/recommended",
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "./tsconfig.json",
     "ecmaFeatures": {
-      "jsx": true
+      "jsx": true,
     },
     "ecmaVersion": "latest",
-    "sourceType": "module"
+    "sourceType": "module",
   },
   "plugins": ["react", "@typescript-eslint", "simple-import-sort"],
   "rules": {
@@ -36,7 +36,7 @@
     "react/require-default-props": "off",
     "simple-import-sort/imports": "warn",
     "simple-import-sort/exports": "warn",
-    "no-console": "off"
+    "no-console": "off",
   },
   "settings": {
     "import/resolver": {
@@ -49,10 +49,11 @@
           "@types": "./src/types",
           "@templates": "./src/templates",
           "@images": "./src/images",
-          "@services": "./src/services"
-        }
-      }
-    }
+          "@stores": "./src/stores",
+          "@services": "./src/services",
+        },
+      },
+    },
   },
   "overrides": [
     // override "simple-import-sort" config
@@ -74,11 +75,11 @@
               // Other relative imports. Put same-folder imports and `.` last.
               ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
               // Style imports.
-              ["^.+\\.?(css)$"]
-            ]
-          }
-        ]
-      }
-    }
-  ]
+              ["^.+\\.?(css)$"],
+            ],
+          },
+        ],
+      },
+    },
+  ],
 }
