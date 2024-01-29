@@ -10,8 +10,8 @@ import { twMerge } from 'tailwind-merge';
 // }
 
 const patientsList = [
-  { email: 'jurek@gmail.com', name: 'Jurek', id: 1, code: 123456789 },
-  { email: 'marek@gmail.com', name: 'Marek', id: 2, code: 123456780 },
+  { email: 'jurek@gmail.com', name: 'Jurek', id: 1, code: 123456780 },
+  { email: 'marek@gmail.com', name: 'Marek', id: 2, code: 123456789 },
 ];
 
 const PatientsScreen = () => {

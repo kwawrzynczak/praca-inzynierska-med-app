@@ -33,7 +33,7 @@ const MedicationScreen = () => {
     };
 
     void getMedication();
-  }, [isFocused]);
+  }, [code, isFocused]);
 
   return (
     <SafeAreaView className="flex-1 bg-background">

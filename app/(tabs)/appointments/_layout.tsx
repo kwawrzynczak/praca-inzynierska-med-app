@@ -37,7 +37,7 @@ const AppointmentLayout = () => {
     };
 
     void getAppointments();
-  }, [isFocused]);
+  }, [code, isFocused]);
 
   return (
     <Tab.Navigator
